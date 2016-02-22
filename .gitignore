@@ -2,3 +2,5 @@ stanford-ner/*.*
 stanford-parser/*.*
 *.xml
 *.iml
+
+.DS_Store
