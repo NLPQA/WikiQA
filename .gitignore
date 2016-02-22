@@ -1,0 +1,4 @@
+stanford-ner/*.*
+stanford-parser/*.*
+*.xml
+*.iml
