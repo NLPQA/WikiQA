@@ -15,27 +15,32 @@ def buildMap():
     prev_id = ""
 
     with open(gold_path, 'r') as f:
-        for line in f:
-            if first == 0:
-                first = 1
-                continue
-            values = line.split('\t')
-            if values[1] == prev_id:
-                continue
-            else:
-                prev_id = values[1]
-            if values[6] == "True" or values[7] == "True":
-                continue
-            if values[8] == "too hard":
-                continue
-
-            title, path, diff, quest, ans = values[2], values[3],values[4], values[5], values[8]
-
-            questions[title].append((quest, diff))
-            answers[title][quest] = ans
-            paths[title] = path
-
+        lines = f.read().splitlines()
     f.close()
+
+    i = 2
+    while i < len(lines):
+        line = lines[i]
+
+        values = line.split('\t')
+
+        if values[6] == "True" or values[7] == "True":
+            i += 2
+            continue
+        if values[8] == "too hard":
+            i += 2
+            continue
+
+        title, path, diff, quest, ans = values[2], values[3],values[4], values[5], values[8]
+        if len(ans) == 0:
+            i += 2
+            continue
+
+        questions[title].append((quest, diff))
+        answers[title][quest] = ans
+        paths[title] = path
+        i += 2
+
 
 
 def findAns(title, question):
@@ -48,10 +53,13 @@ def findAns(title, question):
         sys.stdout.write( "Article not found\n")
 
 def retrieveQues(title):
+    qs = []
     if title in questions:
         for q in questions[title]:
             #sys.stdout.write(q[0]+'\t'+q[1]+'\n')
             sys.stdout.write(q[0]+'\n')
+            qs.append(q[0])
+        return qs
     else:
         sys.stdout.write( "article not found \n")
 
@@ -64,7 +72,11 @@ def findPath(title):
 
 buildMap()
 
-retrieveQues("Perl")
+qs = retrieveQues("Perl")
+
+for q in qs:
+    findAns("Perl", q)
+
 # findAns("Slumdog_Millionaire", "Did the film gross $12 million in Japan?")
 # findPath("Slumdog_Millionaire")
 
