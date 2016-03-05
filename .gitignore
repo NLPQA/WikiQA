@@ -3,4 +3,7 @@ stanford-parser/*.*
 *.xml
 *.iml
 
-.DS_Store
+*.DS_Store
+*.pyc
+
+.idea/.name

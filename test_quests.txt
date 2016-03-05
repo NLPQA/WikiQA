@@ -1,0 +1,9 @@
+Does the trend of rising hardware costs lead to the design of Perl?
+Did Perl 2 have support for binary data streams?
+Does Perl only borrow features from C?
+What was Perl originally named?
+When was the version 1.0 released?
+When id Perl originally developed?
+Does the overall structure of Perl derive broadly from C?
+Did Perl 5 gain widespread popularity in the late 1990s?
+Was Perl originally developed by Larry Wall?
