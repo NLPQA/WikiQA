@@ -1,15 +1,16 @@
 __author__ = 'laceyliu'
 
-parser_path ='/Users/laceyliu/Documents/workspace/WikiQA/stanford-parser-full'
-ner_path = '/Users/laceyliu/Documents/workspace/WikiQA/stanford-ner'
+dir = "/Users/laceyliu/Documents/workspace/"
+parser_path = dir + 'WikiQA/stanford-parser-full/'
+ner_path = dir+'WikiQA/stanford-ner'
 which_java = '/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/HOME/bin/java'
+
 import os
 from nltk.parse.stanford import StanfordParser
-# from nltk.tag.stanford import StanfordNERTagger
 from nltk.tag.stanford import StanfordNERTagger
 def new_parser():
     os.environ['JAVAHOME'] =  which_java
-    os.environ['CLASSPATH'] = parser_path + ";" + ner_path
+    os.environ['CLASSPATH'] = parser_path
     os.environ['STANFORD_MODELS'] = parser_path
     return StanfordParser()
 

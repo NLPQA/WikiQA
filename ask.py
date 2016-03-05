@@ -7,6 +7,7 @@ import nltk.stem
 
 import stanford_utils
 stemmer = nltk.stem.PorterStemmer()
+
 def get_binary(sentence):
     sent = nltk.word_tokenize(sentence)
     tagged = nltk.pos_tag(sent)
