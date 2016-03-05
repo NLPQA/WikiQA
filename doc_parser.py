@@ -1,6 +1,8 @@
 __author__ = 'laceyliu'
 from bs4 import BeautifulSoup
 from nltk import tokenize
+import nltk
+import string
 
 cur_article = ""
 content = ""
@@ -8,6 +10,13 @@ vocab = {}
 idfs = {}
 sentences = []
 vects = []
+
+stemmer = nltk.stem.PorterStemmer()
+
+stopwords = []
+with open('stopwords.txt') as sf:
+    stopwords = sf.read().splitlines()
+sf.close()
 
 
 def doc_to_sents(article):
@@ -42,7 +51,10 @@ def doc_to_vocab(article):
 
     for sent in sentences:
         tokens = tokenize.word_tokenize(sent)
+
         for token in tokens:
+            token = stemmer.stem(token).encode('ascii', 'ignore')
+
             if not vocab.has_key(token):
                 vocab[token] = 1
             else:
@@ -51,8 +63,15 @@ def doc_to_vocab(article):
 
 def sent_to_vect(sent):
     vect = {}
+    sent = sent.translate(None, string.punctuation)
     tokens = tokenize.word_tokenize(sent)
+
     for token in tokens:
+        # if token in stopwords:
+        #     continue
+
+        token = stemmer.stem(token).encode('ascii', 'ignore')
+
         if token in vect.keys():
             vect[token] += 1
         else:
@@ -77,8 +96,9 @@ def doc_to_idfs(article):
     if len(vocab) == 0:
         doc_to_vocab(article)
     for token in vocab.keys():
-        for sent in sentences:
-            if token in sent:
+        for sent in vects:
+
+            if token in sent.keys():
                 if idfs.has_key(token):
                     idfs[token] += 1
                 else:

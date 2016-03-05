@@ -3,13 +3,15 @@ __author__ = 'laceyliu'
 import nltk
 import nltk.tokenize
 import nltk.tag
+import nltk.stem
 
 import stanford_utils
-
+stemmer = nltk.stem.PorterStemmer()
 def get_binary(sentence):
     sent = nltk.word_tokenize(sentence)
     tagged = nltk.pos_tag(sent)
     question = ""
+
 
     for i in xrange(len(tagged)):
 
@@ -19,13 +21,13 @@ def get_binary(sentence):
             tagged.insert(0, tagged.pop(i))
             break
         elif tagged[i][1] == 'VBD':
-            tagged[i] = (tagged[i][0][:-2], 'VB')
+            tagged[i] = (stemmer.stem(tagged[i][0]), 'VB')
             if tagged[0][1] != 'NNP' or tagged[0][1] != 'NNPS':
                 tagged[0] = (tagged[0][0].lower(), tagged[0][1])
             tagged.insert(0, ('did', 'MD'))
             break
         elif tagged[i][1] == 'VBZ':
-            tagged[i] = (tagged[i][0][:-1], 'VB')
+            tagged[i] = (stemmer.stem(tagged[i][0]), 'VB')
             if tagged[0][1] != 'NNP' or tagged[0][1] != 'NNPS':
                 tagged[0] = (tagged[0][0].lower(), tagged[0][1])
             tagged.insert(0, ('Does', 'MD'))
@@ -64,11 +66,11 @@ def get_who(sentence):
                 question += 'Who is '
                 start = i + 1
             elif tagged[i][1] == 'VBD':
-                verb = tagged[i][0][:-2]
+                verb = stemmer.stem(tagged[i][0])
                 question += 'Who did ' + verb + ' '
                 start = i + 1
             elif tagged[i][1] == 'VBZ':
-                verb = tagged[i][0][:-1]
+                verb = stemmer.stem(tagged[i][0])
                 question += 'Who does ' + verb + ' '
                 start = i + 1
             for j in range(start,len(tagged)):
@@ -219,10 +221,10 @@ tests = ['Clinton Drew, born March 9, 1983, is an American soccer player who pla
 for test in tests:
     print "========================\n"
     print test
-    print get_binary(test).title()
-    print get_what(test)
-    print get_who(test)
-    print get_howmany(test)
-    print get_when(test)
-    print get_where(test)
-    print get_why(test)
+    print get_binary(test)
+    # print get_what(test)
+    # print get_who(test)
+    # print get_howmany(test)
+    # print get_when(test)
+    # print get_where(test)
+    # print get_why(test)
