@@ -7,3 +7,5 @@ stanford-parser/*.*
 *.pyc
 
 .idea/.name
+
+data/.DS_Store
