@@ -1,8 +1,11 @@
 __author__ = 'laceyliu'
 import doc_parser
 import stanford_utils
+import tree_parser
+from nltk import Tree
 mds = ["did", "do", "does", "di", "do", "doe"]
 tagger = stanford_utils.new_NERtagger()
+stemmer = doc_parser.stemmer
 
 def answer_binary(q, s):
     # print q
@@ -26,14 +29,58 @@ def answer_how_many(q, s):
 
 def answer_what(q, s):
     return ""
+
 def answer_who(q, s):
     return ""
 
 def answer_why(q, s):
     return ""
+
 def answer_when(q, s):
-    return ""
+    # handles the wh-subject-question: S -> Wh- NP VP
+    q_tree = tree_parser.sent_to_tree(q)
+    s_tree = tree_parser.sent_to_tree(s)
+    q_np, q_vp = get_np_vp(q_tree)
+    s_np, s_vp = get_np_vp(s_tree)
+    # match head of both VPs
+    q_vp_head = get_vp_head(q_vp)
+    s_vp_head = get_vp_head(s_vp)
+    q_vp_head = stemmer.stem(tree_parser.tree_to_sent(q_vp_head)).encode('ascii', 'ignore')
+    s_vp_head = stemmer.stem(tree_parser.tree_to_sent(s_vp_head)).encode('ascii', 'ignore')
+    if q_vp_head == s_vp_head:
+        tree = tree_parser.tree_to_sent(Tree('S', [s_np, s_vp]))
+    return tree
+
+
 def answer_where(q, s):
     return ""
 
-print answer_how_many('111', 'test 12 taest 12')
+
+
+
+# helper functions:
+def get_np_vp(tree):
+    np = None
+    vp = None
+    for subtree in tree.subtrees():
+        if np is None and subtree.label() == "NP":
+            np = subtree
+        if vp is None and subtree.label() == "VP":
+            vp = subtree
+    return np, vp
+
+def get_vp_head(vp):
+    for sub in vp.subtrees():
+        if sub.label() == "VB" or sub.label() == "VBD":
+            return sub
+
+
+# Yes or No questions
+# print answer_binary("Do adjectives come before nouns?",
+#                   "In English, adjectives come before the nouns they modify and after determiners.")
+# print answer_binary("Was Harry Potter and the Prisoner of Azkaban the first film in the series to be released in both conventional and IMAX theatres?",
+#                     "It was the first film in the series to be released in both conventional and IMAX theatres.")
+
+
+# When questions
+print answer_when("When did John graduate from cmu?", "John graduated from cmu in 1990s.")

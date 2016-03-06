@@ -52,13 +52,17 @@ def findAns(title, question):
     else:
         sys.stdout.write( "Article not found\n")
 
-def retrieveQues(title):
+def retrieveQues(title, type=None):
     qs = []
     if title in questions:
         for q in questions[title]:
             #sys.stdout.write(q[0]+'\t'+q[1]+'\n')
-            sys.stdout.write(q[0]+'\n')
-            qs.append(q[0])
+            if type is not None and q[0].startswith(type):
+                sys.stdout.write(q[0]+'\n')
+                qs.append(q[0])
+            elif type is None:
+                sys.stdout.write(q[0]+'\n')
+                qs.append(q[0])
         return qs
     else:
         sys.stdout.write( "article not found \n")
@@ -72,11 +76,11 @@ def findPath(title):
 
 buildMap()
 
-qs = retrieveQues("Perl")
-
-for q in qs:
-    findAns("Perl", q)
-
+# qs = retrieveQues("Perl")
+#
+# for q in qs:
+#     findAns("Perl", q)
+#
 # findAns("Slumdog_Millionaire", "Did the film gross $12 million in Japan?")
 # findPath("Slumdog_Millionaire")
 
