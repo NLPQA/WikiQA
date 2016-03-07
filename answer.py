@@ -6,7 +6,7 @@ from nltk import Tree
 mds = ["did", "do", "does", "di", "do", "doe"]
 tagger = stanford_utils.new_NERtagger()
 stemmer = doc_parser.stemmer
-
+import nltk.parse
 def answer_binary(q, s):
     # print q
     # print s
@@ -48,13 +48,26 @@ def answer_when(q, s):
     q_vp_head = stemmer.stem(tree_parser.tree_to_sent(q_vp_head)).encode('ascii', 'ignore')
     s_vp_head = stemmer.stem(tree_parser.tree_to_sent(s_vp_head)).encode('ascii', 'ignore')
     if q_vp_head == s_vp_head:
-        tree = tree_parser.tree_to_sent(Tree('S', [s_np, s_vp]))
-    return tree
+        ans = tree_parser.tree_to_sent(Tree('S', [s_np, s_vp]))
+    else:
+        ans = ""
+    return ans
+
+def ans_when(q, sents):
+    ans = ""
+    for sent in sents:
+        tagged = nltk.pos_tag(nltk.word_tokenize(sent[0].replace("-", " ")))
+        pps = [item for item in tagged if item[1] == "IN"]
+        if len(pps) == 0:
+            continue
+        ans = answer_when(q, sent[0])
+        if len(ans) > 0:
+            break
+    return ans
 
 
 def answer_where(q, s):
     return ""
-
 
 
 
@@ -83,4 +96,4 @@ def get_vp_head(vp):
 
 
 # When questions
-print answer_when("When did John graduate from cmu?", "John graduated from cmu in 1990s.")
+# print answer_when("When did John graduate from cmu?", "John graduated from cmu in 1990s.")
