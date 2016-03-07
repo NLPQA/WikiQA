@@ -13,7 +13,6 @@ def get_binary(sentence):
     tagged = nltk.pos_tag(sent)
     question = ""
 
-
     for i in xrange(len(tagged)):
 
         if tagged[i][1] == 'MD' or tagged[i][0] == 'have' or (tagged[i][0] == 'has' and tagged[i][1] == 'VBZ') or tagged[i][0] == 'am'  or tagged[i][0] == 'are' or (tagged[i][0] == 'is' and tagged[i][1] == 'VBZ'):

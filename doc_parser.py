@@ -78,6 +78,7 @@ def sent_to_vect(sent):
             vect[token] = 1
     return vect
 
+
 def doc_to_vects(article):
     global vects
     if cur_article != article:
@@ -97,7 +98,6 @@ def doc_to_idfs(article):
         doc_to_vocab(article)
     for token in vocab.keys():
         for sent in vects:
-
             if token in sent.keys():
                 if idfs.has_key(token):
                     idfs[token] += 1
