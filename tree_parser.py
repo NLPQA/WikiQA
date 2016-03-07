@@ -1,6 +1,7 @@
 __author__ = 'laceyliu'
 import stanford_utils
 from nltk import Tree
+
 parser = stanford_utils.new_parser()
 
 def sents_to_trees(sentences):
@@ -11,6 +12,8 @@ def sent_to_tree(sentence):
     return Tree(t,list(t))
 
 def tree_to_sent(tree):
+    if tree == None:
+        return ""
     return ' '.join(tree.leaves())
 
 
