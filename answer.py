@@ -2,11 +2,13 @@ __author__ = 'laceyliu'
 import doc_parser
 import stanford_utils
 import tree_parser
+import sys
 from nltk import Tree
 mds = ["did", "do", "does", "di", "do", "doe"]
 tagger = stanford_utils.new_NERtagger()
 stemmer = doc_parser.stemmer
 import nltk.parse
+
 def answer_binary(q, s):
     # print q
     # print s
@@ -40,18 +42,15 @@ def answer_when(q, s):
     # handles the wh-subject-question: S -> Wh- NP VP
     q_tree = tree_parser.sent_to_tree(q)
     s_tree = tree_parser.sent_to_tree(s)
-    q_np, q_vp = get_np_vp(q_tree)
-    s_np, s_vp = get_np_vp(s_tree)
-    # match head of both VPs
-    q_vp_head = get_vp_head(q_vp)
-    s_vp_head = get_vp_head(s_vp)
-    q_vp_head = stemmer.stem(tree_parser.tree_to_sent(q_vp_head)).encode('ascii', 'ignore')
-    s_vp_head = stemmer.stem(tree_parser.tree_to_sent(s_vp_head)).encode('ascii', 'ignore')
-    if q_vp_head == s_vp_head:
-        ans = tree_parser.tree_to_sent(Tree('S', [s_np, s_vp]))
-    else:
-        ans = ""
-    return ans
+    # print s_tree
+    q_np, q_vp = get_question_np_vp(q_tree)  # assume question has only one top level np, one vp.
+    q_vp_head_tree = get_vp_head(q_vp)
+    print "Question main verb:", tree_parser.tree_to_sent(q_vp_head_tree)
+    s_vp_list = extract_vps(s_tree, match_vp_head=tree_parser.tree_to_sent(q_vp_head_tree))  # extract matching vp
+    if len(s_vp_list) > 1:
+        print "We got multiple VP. Chose the first one."
+    ans = tree_parser.tree_to_sent(Tree('S', [q_np, extract_pp(s_vp_list[0])]))+"."
+    return ans.capitalize()
 
 def ans_when(q, sents):
     ans = ""
@@ -72,7 +71,12 @@ def answer_where(q, s):
 
 
 # helper functions:
-def get_np_vp(tree):
+# get_np_vp: Extract top level NP, VP
+
+def stem(word):
+    return stemmer.stem(word).encode('ascii', 'ignore')
+
+def get_question_np_vp(tree):
     np = None
     vp = None
     for subtree in tree.subtrees():
@@ -82,10 +86,35 @@ def get_np_vp(tree):
             vp = subtree
     return np, vp
 
+def extract_vps(tree, match_vp_head=None):
+    vps = []
+    for subtree in tree.subtrees():
+        if subtree.label() == "VP":
+            if match_vp_head is not None:
+                for child in subtree:
+                    if child.label().startswith("VB") and stem(tree_parser.tree_to_sent(child)) == stem(match_vp_head):
+                        vps += [subtree]
+            else:
+                vps += [subtree]
+    assert(len(vps) > 0)
+    return vps
+
 def get_vp_head(vp):
-    for sub in vp.subtrees():
-        if sub.label() == "VB" or sub.label() == "VBD":
+    for sub in vp:
+        if sub.label().startswith("VB"):
             return sub
+    return None
+
+def extract_pp(vp):
+    print "Extracting PP from (", tree_parser.tree_to_sent(vp), ") ..."
+    print vp
+    sub_trees = []
+    for sub in vp:
+        if sub.label().startswith("VB"):
+            sub_trees += [sub]
+        elif sub.label() == "PP":  # optimize this branch.
+            sub_trees += [sub]
+    return Tree('VP', sub_trees)
 
 
 # Yes or No questions
@@ -94,6 +123,16 @@ def get_vp_head(vp):
 # print answer_binary("Was Harry Potter and the Prisoner of Azkaban the first film in the series to be released in both conventional and IMAX theatres?",
 #                     "It was the first film in the series to be released in both conventional and IMAX theatres.")
 
+# tests
+def test():
+    count = 0
+    for line in open("data/question_sent_pair"):
+        count += 1
+        if line.startswith("When"):
+            q = line.split("?")[0]
+            sent = line.split("?")[1]
+            print "Question:", q+"?"
+            print answer_when(q, sent)
+            print
 
-# When questions
-# print answer_when("When did John graduate from cmu?", "John graduated from cmu in 1990s.")
+test()
