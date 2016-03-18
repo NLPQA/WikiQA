@@ -36,7 +36,21 @@ def answer_who(q, s):
     return ""
 
 def answer_why(q, s):
-    return ""
+    s_tokens = nltk.word_tokenize((s.lower()))
+    ans = ""
+    if "because" in s_tokens:
+        ans = " ".join(s_tokens[s_tokens.index("because"):])
+    elif "therefore" in s_tokens:
+        ans = " ".join(s_tokens[:s_tokens.index("therefore")])
+    elif "so" in s_tokens:
+        ans = " ".join(s_tokens[:s_tokens.index("so")])
+    elif "due to" in s_tokens:
+        reason_token = s_tokens[s_tokens.index("due"):]
+        reason_token = reason_token[1:]
+        if "," in reason_token:
+            reason_token = reason_token[:s_tokens.index(",")]
+        ans = " ".join(reason_token)
+    return ans
 
 def answer_when(q, s):
     # handles the wh-subject-question: S -> Wh- NP VP

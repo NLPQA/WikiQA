@@ -42,7 +42,7 @@ for q in quests:
         ans = answer.answer_who(q, best)
     elif q_tokens[0] == 'Why':
         ans = answer.answer_why(q, best)
-    elif q_tokens[0] == 'How many':
+    elif q_tokens[0] == 'How' and q_tokens[1] == 'many':
         for sent in ranked_sents:
             if len(filter(str.isdigit, sent)) > 0:
                 ans = answer.answer_how_many(q, sent)
