@@ -1,8 +1,8 @@
 __author__ = 'laceyliu'
 from bs4 import BeautifulSoup
 from nltk import tokenize
-import nltk
 import string
+from nltk.corpus import wordnet as wn
 
 cur_article = ""
 content = ""
@@ -10,8 +10,6 @@ vocab = {}
 idfs = {}
 sentences = []
 vects = []
-
-stemmer = nltk.stem.PorterStemmer()
 
 stopwords = []
 with open('stopwords.txt') as sf:
@@ -53,7 +51,13 @@ def doc_to_vocab(article):
         tokens = tokenize.word_tokenize(sent)
 
         for token in tokens:
-            token = stemmer.stem(token).encode('ascii', 'ignore')
+            #token = stemmer.stem(token).encode('ascii', 'ignore')
+
+            token = wn.morphy(token)
+            if token == None:
+                continue
+            else:
+               token = token .encode('ascii', 'ignore')
 
             if not vocab.has_key(token):
                 vocab[token] = 1
@@ -65,12 +69,17 @@ def sent_to_vect(sent):
     vect = {}
     sent = sent.translate(None, string.punctuation)
     tokens = tokenize.word_tokenize(sent)
-
+    tokens = filter(None, tokens)
     for token in tokens:
         # if token in stopwords:
         #     continue
+        token = wn.morphy(token)
+        if token == None:
+            continue
+        else:
+            token = token.encode('ascii', 'ignore')
 
-        token = stemmer.stem(token).encode('ascii', 'ignore')
+        #token = stemmer.stem(token).encode('ascii', 'ignore')
 
         if token in vect.keys():
             vect[token] += 1
