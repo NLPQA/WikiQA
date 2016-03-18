@@ -76,12 +76,13 @@ def findPath(title):
 
 buildMap()
 
-# qs = retrieveQues("Perl")
-#
-# for q in qs:
-#     findAns("Perl", q)
-#
+qs = retrieveQues("Cancer_(constellation)")
+
+for q in qs:
+    print q
+    findAns("Cancer_(constellation)", q)
+
 # findAns("Slumdog_Millionaire", "Did the film gross $12 million in Japan?")
-# findPath("Slumdog_Millionaire")
+print findPath("Cancer_(constellation)")
 
 

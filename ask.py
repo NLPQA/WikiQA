@@ -123,7 +123,6 @@ def get_howmany(sentence):
     question = "How many " + concat(map(lambda x: x[0], object)) + " " + concat(main_sentence)+"?"
     return question
 
-
 def get_why(sentence):
     d = nltk.tokenize.word_tokenize(sentence)
     tagged = nltk.tag.pos_tag(d)
