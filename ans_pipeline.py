@@ -16,12 +16,14 @@ def quest_to_state(q):
        return ' '.join(tokens[3:])
    return ' '. join(tokens[1:])
 
-wiki_path, question_path = "test_wiki.htm", "test_quests.txt"
+# wiki_path, question_path = "test_wiki.htm", "test_quests.txt"
+wiki_path, question_path = "test/a5.htm", "test/a5q.txt"
 
 sents = doc_parser.doc_to_sents(wiki_path)
 sent_vects = doc_parser.doc_to_vects(wiki_path)
 sent_idfs = doc_parser.doc_to_idfs(wiki_path)
 quests = []
+
 with  open(question_path) as f:
     quests = f.read().splitlines()
 answers = []
@@ -43,15 +45,21 @@ for q in quests:
     elif q_tokens[0] == 'Why':
         ans = answer.answer_why(q, best)
     elif q_tokens[0] == 'How' and q_tokens[1] == 'many':
-        for sent in ranked_sents:
-            if len(filter(str.isdigit, sent)) > 0:
-                ans = answer.answer_how_many(q, sent)
-                break
+        ans = ""
+        # for sent in ranked_sents:
+        #     num = filter(str.isdigit, sent[0])
+        #     if len(num) > 0:
+        #         ans = answer.answer_how_many(q, sent[0])
+        #         break
+        for s in ranked_sents[:5]:
+            print s[0]
     elif q_tokens[0] == 'Where':
         ans = answer.answer_where(q, best)
     elif q_tokens[0] == 'When':
-        #ans = answer.answer_when(q, best)
-        ans = answer.ans_when(q2, ranked_sents)
+        ans = answer.answer_when(q, best)
+        #ans = answer.ans_when(q2, ranked_sents)
+    elif q_tokens[0] == "Which":
+        ans = answer.answer_which(q, best)
     else:
         ans = answer.answer_binary(q, best)
     answers.append(ans)
