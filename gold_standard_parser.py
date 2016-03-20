@@ -76,13 +76,13 @@ def findPath(title):
 
 buildMap()
 
-qs = retrieveQues("English_language")
+qs = retrieveQues("Gemini_(constellation)")
 
 for q in qs:
     print q
-    findAns("English_language", q)
+    findAns("Gemini_(constellation)", q)
 
 # findAns("Slumdog_Millionaire", "Did the film gross $12 million in Japan?")
-print findPath("English_language")
+print findPath("Gemini_(constellation)")
 
 
