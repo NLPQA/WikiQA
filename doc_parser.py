@@ -16,11 +16,22 @@ with open('stopwords.txt') as sf:
     stopwords = sf.read().splitlines()
 sf.close()
 
+def clear(article):
+    if article != cur_article:
+        content = doc_to_string(article)
+        vocab = {}
+        idfs = {}
+        sentences = []
+        vects = []
 
 def doc_to_sents(article):
-    global sentences, cur_article
+    global sentences, cur_article, vocab, idfs, vects
     if article != cur_article:
-        doc_to_string(article)
+        content = doc_to_string(article)
+        vocab = {}
+        idfs = {}
+        sentences = []
+        vects = []
     sentences = tokenize.sent_tokenize(content)
     return sentences
 
@@ -118,7 +129,7 @@ def doc_to_idfs(article):
 # import gold_standard_parser
 # test = gold_standard_parser.findPath("Slumdog_Millionaire")
 #print "=== Vocab===="
-#print doc_to_vocab('test_wiki.htm')
+#print doc_to_vocab('a8.htm')
 # print "=== Vects===="
 # print doc_to_vects(test)
 # print "=== IDF===="

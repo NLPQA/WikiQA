@@ -141,7 +141,7 @@ def answer_when(q, s):
         tagged_pp = tagger.tag(nltk.tokenize.word_tokenize(sent_pp))
         for tup in tagged_pp:
             if tup[1] == "DATE" or tup[1] == "TIME":
-                return sent_pp+"."
+                return sent_pp.strip()+"."
     return ""
 
 # def answer_when(q, s):
@@ -167,7 +167,7 @@ def answer_where(q, s):
         tagged_pp = tagger.tag(nltk.tokenize.word_tokenize(sent_pp))
         for tup in tagged_pp:
             if tup[1] == "LOCATION" or tup[1] == "ORGANIZATION":
-                return sent_pp+"."
+                return sent_pp.strip()+"."
     return ""
 
 
