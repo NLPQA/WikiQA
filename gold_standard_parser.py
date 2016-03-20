@@ -27,7 +27,7 @@ def buildMap():
         if values[6] == "True" or values[7] == "True":
             i += 2
             continue
-        if values[8] == "too hard":
+        if values[9] == "too hard":
             i += 2
             continue
 
@@ -76,13 +76,13 @@ def findPath(title):
 
 buildMap()
 
-qs = retrieveQues("Cancer_(constellation)")
+qs = retrieveQues("English_language")
 
 for q in qs:
     print q
-    findAns("Cancer_(constellation)", q)
+    findAns("English_language", q)
 
 # findAns("Slumdog_Millionaire", "Did the film gross $12 million in Japan?")
-print findPath("Cancer_(constellation)")
+print findPath("English_language")
 
 

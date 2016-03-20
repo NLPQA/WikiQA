@@ -21,8 +21,8 @@ Byteme	10	English_language	data/set3/a1	hard	What hypothesis exist concerning En
 Byteme	10	English_language	data/set3/a1	hard	What hypothesis exist concerning English?	False	False	English can be considered a mixed language or a creole	too hard
 Byteme	11	English_language	data/set3/a1	hard	Did the conquest of England occur before the year 1065?	False	False	No	hard
 Byteme	11	English_language	data/set3/a1	hard	Did the conquest of England occur before the year 1065?	False	False	Yes.	too hard
-Byteme	12	English_language	data/set3/a1	hard	Did William Caxton introduce the printing press before 1477?	False	False	Yes	hard
-Byteme	12	English_language	data/set3/a1	hard	Did William Caxton introduce the printing press before 1477?	False	False	Yes.	hard
+Byteme	12	English_language	data/set3/a1	hard	Did William Caxton introduce the printing press before 1477?	False	False	Yes	too hard
+Byteme	12	English_language	data/set3/a1	hard	Did William Caxton introduce the printing press before 1477?	False	False	Yes.	too hard
 Byteme	13	English_language	data/set3/a1	medium	How can new nouns be formed?	False	False	New nouns can be formed through derivation or compounding	medium
 Byteme	13	English_language	data/set3/a1	medium	How can new nouns be formed?	False	False	Through derivation or compounding.	medium
 Byteme	14	English_language	data/set3/a1	medium	How many consonant sounds can a syllable start with?	False	False	Three	medium
@@ -31,8 +31,8 @@ Byteme	15	English_language	data/set3/a1	medium	What do adjectives do to a noun?	
 Byteme	15	English_language	data/set3/a1	medium	What do adjectives do to a noun?	False	False	They modify a noun.	too hard
 Byteme	16	English_language	data/set3/a1	easy	Do adjectives come before nouns?	False	False	Yes	easy
 Byteme	16	English_language	data/set3/a1	easy	Do adjectives come before nouns?	False	False	Yes.	easy
-Byteme	17	English_language	data/set3/a1	easy	English is classified as what kind of language?	False	False	A Germanic language	medium
-Byteme	17	English_language	data/set3/a1	easy	English is classified as what kind of language?	False	False	Germanic language	medium
+Byteme	17	English_language	data/set3/a1	easy	English is classified as what kind of language?	False	False	A Germanic language	too hard
+Byteme	17	English_language	data/set3/a1	easy	English is classified as what kind of language?	False	False	Germanic language	too hard
 Byteme	18	English_language	data/set3/a1	easy	When was English first spoken?	False	False	In early medieval England	medium
 Byteme	18	English_language	data/set3/a1	easy	When was English first spoken?	False	False	In early medieval England	medium
 Byteme	19	Orion_(constellation)	data/set2/a6	hard	Where is the earliest depiction linked to constellation of Orion found?	False	False	In a cave in the Ach valley	medium
