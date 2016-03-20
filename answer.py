@@ -25,7 +25,7 @@ def answer_binary(q, s):
             return "No."
     negs = ["not", "no", "never"]
     for neg in negs:
-        if neg in q:
+        if neg in s_vect:
             return "No."
     return "Yes"
 
@@ -33,54 +33,68 @@ def answer_how_many(q, s):
     num = filter(str.isdigit, s)
     return num if len(num) > 0 else "0"
 
-def answer_what(q, s):
-    print s
-    s = s.lower()
-    q = q.replace("What", "Dog").replace("?", ".")
-    parsed_q = tree_parser.sent_to_tree(q)
-    if "is" in s :
-        main_vp = tree_parser.get_phrases(parsed_q, "VP",True, True)
-        nps = tree_parser.get_phrases(main_vp[0], "NP", True, True)
-        if len(nps)>0:
-            candidates = s.split("is")
-            if tree_parser.tree_to_sent(nps[0]) in candidates[0]:
-                return candidates[1]
-            else:
-                return candidates[0]
-    elif "are" in s :
-        main_vp = tree_parser.get_phrases(parsed_q, "VP",True, True)
-        nps = tree_parser.get_phrases(main_vp[0], "NP", True, True)
-        if len(nps)>0:
-            candidates = s.split("are")
-            if tree_parser.tree_to_sent(nps[0]) in candidates[0]:
-                return candidates[1]
-            else:
-                return candidates[0]
-    else:
-        main_vp = tree_parser.get_phrases(parsed_q, "VP",True, True)
-        parsed_s = tree_parser.sent_to_tree(s)
-        vps = tree_parser.get_phrases(parsed_s,"VP",  True, True)
-        if main_vp in vps:
-            nps = tree_parser.get_phrases(main_vp, "NP", True, True)
+def answer_definitions(main_vp, s, verb):
+    nps = tree_parser.get_phrases(main_vp, "NP", True, True)
+    if len(nps)>0:
+        candidates = s.split(" "+verb)
+        if tree_parser.tree_to_sent(nps[0]) in candidates[0]:
+            ans_tree = tree_parser.sent_to_tree(candidates[1])
         else:
-            nps = tree_parser.get_phrases(parsed_s, "NP", True, False)
-    if len(nps) > 0:
-        return tree_parser.tree_to_sent(nps[0])
-    return ""
+            ans_tree = tree_parser.sent_to_tree(candidates[0])
+        s_nps = tree_parser.get_phrases(ans_tree, "NP", True, True)
+        if len(s_nps) > 0:
+            return tree_parser.tree_to_sent(s_nps[0])
+        else:
+            return ""
+
+def get_main_verb(vp):
+    leaves = vp.leaves()
+    return leaves[0]
+
+def quest_to_state(q):
+   q = q.replace("?", "")
+   tokens = q.split(" ")
+   if tokens[0].startswith("Wh"):
+       return ' '.join(tokens[2:])
+   if tokens[0] == "How" and tokens[1] == "many":
+       return ' '.join(tokens[3:])
+   return ' '. join(tokens[1:])
+
+def is_definition(q):
+    bes = ["is", "are", "am", "were", "was"]
+    for be in bes:
+        if be in q:
+            return True
+    return False
+
+def answer_what(q, s):
+    ans = ""
+    if not is_definition(q):
+        qbody = quest_to_state(q)+"Dog"
+    else:
+        qbody = q.replace("What", "Dog").replace("?", "")
+    s = s.lower()
+    parsed_q = tree_parser.sent_to_tree(qbody)
+    vps = tree_parser.get_phrases(parsed_q, "VP",True, True)
+    main_vp = vps[0]
+    main_vb = get_main_verb(main_vp)
+    ans = answer_definitions(main_vp, s, main_vb)
+    return ans
+
+# what_s = "Tom studies computer science at CMU."
+# what_q = "What does Tom study at cmu?"
+# print answer_what(what_q, what_s)
 
 def answer_who(q, s):
-    q = q.replace("What", "Doug")
-    parsed_q = tree_parser.sent_to_tree(q)
-    main_vp = tree_parser.get_phrases( parsed_q, "VP",True, True)
-    parsed_s = tree_parser.sent_to_tree(s)
-    vps = tree_parser.get_phrases(parsed_s,"VP",  True, True)
-    if main_vp in vps:
-        nps = tree_parser.get_phrases(main_vp, "NP", True, True)
-    else:
-        nps = tree_parser.get_phrases(parsed_s, "NP", True, False)
-    if len(nps)>0:
-        return tree_parser.tree_to_sent(nps[0])
-    return ""
+    ans = ""
+    qbody = q.replace("Who", "Doug").replace("?", "")
+    s = s.lower()
+    parsed_q = tree_parser.sent_to_tree(qbody)
+    vps = tree_parser.get_phrases(parsed_q, "VP",True, True)
+    main_vp = vps[0]
+    main_vb = get_main_verb(main_vp)
+    ans = answer_definitions(main_vp, s, main_vb)
+    return ans
     # tagged_s = tagger.tag(s.split(" "))
     #
     # persons = []

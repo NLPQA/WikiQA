@@ -24,7 +24,9 @@ def get_cosine(q_vect, s_vect):
     for key in q_vect:
         if key in s_vect:
             cosine += q_vect[key]*s_vect[key]
-    cosine /= (get_vect_size(q_vect)*get_vect_size(s_vect))
+    if get_vect_size(s_vect)==0:
+        a = 1
+    cosine /= ((get_vect_size(q_vect)+1)*(get_vect_size(s_vect)+1))
     return cosine
 
 def get_vect_size(vect):
@@ -42,7 +44,7 @@ def rank_sents(q_vect, sents, sent_vects, sent_idfs):
             filtered_sents.append((sents[i], sent_vects[i]))
     for (sent, sent_v) in filtered_sents:
         rank.append((sent, get_tfidf(q_vect, sent_v, sent_idfs)))
-        # rank.append((sent, get_cosine(q_vect, sent_v)))
+        #rank.append((sent, get_cosine(q_vect, sent_v)))
 
         # rank.append((sents[i], get_boolean(q_vect, sent_vects[i], sent_idfs)))
 

@@ -9,6 +9,7 @@ import answer
 # wiki_path, question_path = sys.argv[1], sys.argv[2]
 
 def quest_to_state(q):
+   q = q.replace("?", ".")
    tokens = q.split(" ")
    if tokens[0].startswith("Wh"):
        return ' '.join(tokens[2:])
@@ -17,7 +18,7 @@ def quest_to_state(q):
    return ' '. join(tokens[1:])
 
 # wiki_path, question_path = "test_wiki.htm", "test_quests.txt"
-wiki_path, question_path = "test/a5.htm", "test/a5q.txt"
+wiki_path, question_path = "test/a7.htm", "test/a7q.txt"
 
 sents = doc_parser.doc_to_sents(wiki_path)
 sent_vects = doc_parser.doc_to_vects(wiki_path)
@@ -46,13 +47,13 @@ for q in quests:
         ans = answer.answer_why(q, best)
     elif q_tokens[0] == 'How' and q_tokens[1] == 'many':
         ans = ""
-        # for sent in ranked_sents:
-        #     num = filter(str.isdigit, sent[0])
-        #     if len(num) > 0:
-        #         ans = answer.answer_how_many(q, sent[0])
-        #         break
-        for s in ranked_sents[:5]:
-            print s[0]
+        for sent in ranked_sents:
+            num = filter(str.isdigit, sent[0])
+            if len(num) > 0:
+                ans = answer.answer_how_many(q, sent[0])
+                break
+        # for s in ranked_sents[:5]:
+        #     print s[0]
     elif q_tokens[0] == 'Where':
         ans = answer.answer_where(q, best)
     elif q_tokens[0] == 'When':
@@ -60,9 +61,12 @@ for q in quests:
         #ans = answer.ans_when(q2, ranked_sents)
     elif q_tokens[0] == "Which":
         ans = answer.answer_which(q, best)
+    elif q_tokens[0] == "How":
+        ans = ""
     else:
         ans = answer.answer_binary(q, best)
     answers.append(ans)
+    #print best
     sys.stdout.write("A: " + (ans if len(ans)>0 else best) + '\n')
     sys.stdout.write("----------\n")
 
