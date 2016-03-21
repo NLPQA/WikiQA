@@ -6,15 +6,17 @@ import nltk.tag
 import nltk.stem
 
 import stanford_utils
+from nltk.corpus import wordnet as wn
+from random import randint
 stemmer = nltk.stem.PorterStemmer()
 
 def get_binary(sentence):
+    question = ""
     sent = nltk.word_tokenize(sentence)
     tagged = nltk.pos_tag(sent)
-    question = ""
-
+    if randint(0,9) < 4:
+        tagged = twist_statement(tagged)
     for i in xrange(len(tagged)):
-
         if tagged[i][1] == 'MD' or tagged[i][0] == 'have' or (tagged[i][0] == 'has' and tagged[i][1] == 'VBZ') or tagged[i][0] == 'am'  or tagged[i][0] == 'are' or (tagged[i][0] == 'is' and tagged[i][1] == 'VBZ'):
             if tagged[0][1] != 'NNP' or tagged[0][1] != 'NNPS':
                 tagged[0] = (tagged[0][0].lower(), tagged[0][1])
@@ -40,7 +42,33 @@ def get_binary(sentence):
             question += tagged[j][0]
         else:
             question += '?'
-    return question
+    return question.capitalize()
+
+def twist_statement(tagged_sent):
+    twisted = []
+    for tagged_token in tagged_sent:
+        if tagged_token[1] == 'JJ':
+            synsets = wn.synset(tagged_token[0]+".a.01").lemmas()
+            con = [word.name() for word in synsets]+[word.name() for word in synsets[0].antonyms()]
+            rd = randint(0,len(con)-1)
+            if randint(0,9) < 4:
+                twisted.append(tagged_token)
+            else:
+                twisted.append((con[rd],tagged_token[1]))
+        elif tagged_token[1] == 'CD':
+            num = int(tagged_token[0])+randint(0,9)
+            if randint(0,9) < 4:
+                twisted.append(tagged_token)
+            else:
+                twisted.append((str(num),tagged_token[1]))
+        else:
+            twisted.append(tagged_token)
+    return twisted
+sent = 'Tom is a talented student at CMU, which is rich since 1990. '
+# tokenized_sent = nltk.word_tokenize(sent)
+# tagged = nltk.pos_tag(tokenized_sent)
+for i in xrange(0, 5):
+    print get_binary(sent)
 
 def get_who(sentence):
     # tokenize into words for each sentence
@@ -217,10 +245,10 @@ tests = ['Clinton Drew, born March 9, 1983, is an American soccer player who pla
              'Dempsey first represented the United States at the 2003 FIFA World Youth Championship in the United Arab Emirates. He made his first appearance with the senior team on November 17, 2004, against Jamaica; he was then named to the squad for the 2006 World Cup and scored the team\'s only goal of the tournament. ',
              'In the 2010 FIFA World Cup, Dempsey scored against England, becoming the second American, after Brian McBride, to score goals in multiple World Cup tournaments.']
 
-for test in tests:
-    print "========================\n"
-    print test
-    print get_binary(test)
+# for test in tests:
+#     print "========================\n"
+#     print test
+#     print get_binary(test)
     # print get_what(test)
     # print get_who(test)
     # print get_howmany(test)
