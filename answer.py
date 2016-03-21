@@ -30,8 +30,18 @@ def answer_binary(q, s):
     return "Yes"
 
 def answer_how_many(q, s):
-    num = filter(str.isdigit, s)
-    return num if len(num) > 0 else "0"
+    q_tokens = nltk.tokenize.word_tokenize(q)
+    s_tokens = nltk.tokenize.word_tokenize(s)
+    target = q_tokens[2]
+
+    t_index = s_tokens.index(target)
+    n_index = t_index-1
+    while n_index >= 0 and (not str.isdigit( s_tokens[n_index])):
+        n_index -= 1
+
+    return s_tokens[n_index] if n_index>=0 else ""
+    # num = filter(str.isdigit, s)
+    # return num if len(num) > 0 else "0"
 
 def answer_definitions(main_vp, s, verb):
     nps = tree_parser.get_phrases(main_vp, "NP", True, True)
