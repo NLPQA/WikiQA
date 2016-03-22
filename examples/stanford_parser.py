@@ -4,7 +4,6 @@ parser_path ='/Users/laceyliu/Documents/workspace/WikiQA/stanford-parser-full'
 which_java = '/Library/Java/JavaVirtualMachines/jdk1.8.0_11.jdk/Contents/HOME/bin/java'
 import os
 from nltk.parse.stanford import StanfordParser
-import parser
 os.environ['JAVAHOME'] =  which_java
 os.environ['CLASSPATH'] = parser_path
 os.environ['STANFORD_MODELS'] = parser_path
