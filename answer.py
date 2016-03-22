@@ -7,21 +7,23 @@ from nltk import Tree
 import ans_ranker
 import nltk
 mds = ["did", "do", "does", "di", "do", "doe"]
+reps = ["it", "they", "he", "she"]
 tagger = stanford_utils.new_NERtagger()
 # stemmer = doc_parser.stemmer
 from nltk.corpus import wordnet as wn
 def answer_which(q, s):
     return ""
 
-def answer_binary(q, s):
+def answer_binary(q, s, title):
     # print q
     # print s
+    title = title.lower().split(" ")
     q_vect = doc_parser.sent_to_vect(q.lower())
     s_vect = doc_parser.sent_to_vect(s.lower())
     # print q_vect
     # print s_vect
     for token, cnt in q_vect.items():
-        if token not in s_vect and token not in mds:
+        if token not in s_vect and (token not in mds) and (token not in title):
             return "No."
     negs = ["not", "no", "never"]
     for neg in negs:

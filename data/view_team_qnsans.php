@@ -1,8 +1,8 @@
 ﻿team_id	qn_id	article_title	base_path	qn_difficulty_by_questioner	qn_text	is_disfluent?	is_bad_qn?	answer	qn_difficulty_by_answerer
 Byteme	1	Gemini_(constellation)	data/set2/a2	hard	Do Epsilon Geminid meteors have higher velocity than Orionids?	False	False	Yes	easy
 Byteme	1	Gemini_(constellation)	data/set2/a2	hard	Do Epsilon Geminid meteors have higher velocity than Orionids?	False	False	Yes.	easy
-Byteme	2	Gemini_(constellation)	data/set2/a2	hard	Was "U Gem" discovered before the year 1900?	False	False	No	easy
-Byteme	2	Gemini_(constellation)	data/set2/a2	hard	Was "U Gem" discovered before the year 1900?	False	False	1855.	hard
+Byteme	2	Gemini_(constellation)	data/set2/a2	hard	Was "U Gem" discovered before the year 1900?	False	False	No	too hard
+Byteme	2	Gemini_(constellation)	data/set2/a2	hard	Was "U Gem" discovered before the year 1900?	False	False	1855.	too hard
 Byteme	3	Gemini_(constellation)	data/set2/a2	hard	What is the magnitude of the brightest star in Gemini?	False	False	1.2	medium
 Byteme	3	Gemini_(constellation)	data/set2/a2	hard	What is the magnitude of the brightest star in Gemini?	False	False	1.2	hard
 Byteme	4	Gemini_(constellation)	data/set2/a2	medium	What is the maximum rate of Geminids meteor showers?	False	False	100 meteors per hour	medium
@@ -107,8 +107,8 @@ Byteme	53	David_Beckham	data/set1/a6	easy	Was Beckham born at Whipps Cross Unive
 Byteme	53	David_Beckham	data/set1/a6	easy	Was Beckham born at Whipps Cross University Hospital?	False	False	Yes	easy
 Byteme	54	David_Beckham	data/set1/a6	easy	Did Beckham attend Chase Lane Primary School?	False	False	Yes.	medium
 Byteme	54	David_Beckham	data/set1/a6	easy	Did Beckham attend Chase Lane Primary School?	False	False	Yes	easy
-Byteme	55	Alex_Morgan	data/set1/a3	hard	Is there any female player to make the cover of FIFA video games before Morgan?	False	False	No.	hard
-Byteme	55	Alex_Morgan	data/set1/a3	hard	Is there any female player to make the cover of FIFA video games before Morgan?	False	False	No.	hard
+Byteme	55	Alex_Morgan	data/set1/a3	hard	Is there any female player to make the cover of FIFA video games before Morgan?	False	False	No.	too hard
+Byteme	55	Alex_Morgan	data/set1/a3	hard	Is there any female player to make the cover of FIFA video games before Morgan?	False	False	No.	too hard
 Byteme	55	Alex_Morgan	data/set1/a3	hard	Is there any female player to make the cover of FIFA video games before Morgan?	False	False		
 Byteme	55	Alex_Morgan	data/set1/a3	hard	Is there any female player to make the cover of FIFA video games before Morgan?	False	False		
 Byteme	56	Alex_Morgan	data/set1/a3	hard	Did Morgan score four goals in the tournament against France in the 2008 FIFA U-20 Women's World Cup in Chile?	False	False	Yes.	medium
@@ -137,12 +137,12 @@ Byteme	61	Alex_Morgan	data/set1/a3	easy	Did U.S. Soccer announced Morgan as the 
 Byteme	61	Alex_Morgan	data/set1/a3	easy	Did U.S. Soccer announced Morgan as the 2012 Female Athlete of the Year?	False	False	Yes	easy
 Byteme	62	Alex_Morgan	data/set1/a3	easy	Did Alex married Servando Carrasco?	False	False		
 Byteme	62	Alex_Morgan	data/set1/a3	easy	Did Alex married Servando Carrasco?	False	False		
-Byteme	62	Alex_Morgan	data/set1/a3	easy	Did Alex married Servando Carrasco?	False	False	Yes.	easy
-Byteme	62	Alex_Morgan	data/set1/a3	easy	Did Alex married Servando Carrasco?	False	False	Yes	easy
-Byteme	63	Alex_Morgan	data/set1/a3	easy	Did Alex attend University of California, Berkeley?	False	False		
-Byteme	63	Alex_Morgan	data/set1/a3	easy	Did Alex attend University of California, Berkeley?	False	False		
-Byteme	63	Alex_Morgan	data/set1/a3	easy	Did Alex attend University of California, Berkeley?	False	False	Yes.	hard
-Byteme	63	Alex_Morgan	data/set1/a3	easy	Did Alex attend University of California, Berkeley?	False	False	Yes	easy
+Byteme	62	Alex_Morgan	data/set1/a3	easy	Did Alex married Servando Carrasco?	False	False	Yes.	hard
+Byteme	62	Alex_Morgan	data/set1/a3	easy	Did Alex married Servando Carrasco?	False	False	Yes	hard
+Byteme	63	Alex_Morgan	data/set1/a3	easy	Did Alex attend University of California, Berkeley?	False	False		too hard
+Byteme	63	Alex_Morgan	data/set1/a3	easy	Did Alex attend University of California, Berkeley?	False	False		too hard
+Byteme	63	Alex_Morgan	data/set1/a3	easy	Did Alex attend University of California, Berkeley?	False	False	Yes.	too hard
+Byteme	63	Alex_Morgan	data/set1/a3	easy	Did Alex attend University of California, Berkeley?	False	False	Yes	too hard
 Byteme	64	Perl	data/set3/a8	hard	Does the trend of rising hardware costs lead to the design of Perl?	False	False		
 Byteme	64	Perl	data/set3/a8	hard	Does the trend of rising hardware costs lead to the design of Perl?	False	False		
 Byteme	64	Perl	data/set3/a8	hard	Does the trend of rising hardware costs lead to the design of Perl?	False	False	No.	hard

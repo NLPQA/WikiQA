@@ -20,7 +20,7 @@ def quest_to_state(q):
 # wiki_path, question_path = "a8.htm", "a8q.txt"
 
 def main(wiki, qpath):
-    sents = doc_parser.doc_to_sents(wiki_path)
+    title, sents = doc_parser.doc_to_sents(wiki_path)
     sent_vects = doc_parser.doc_to_vects(wiki_path)
     sent_idfs = doc_parser.doc_to_idfs(wiki_path)
     quests = []
@@ -64,7 +64,7 @@ def main(wiki, qpath):
         elif q_tokens[0] == "How":
             ans = ""
         else:
-            ans = answer.answer_binary(q, best)
+            ans = answer.answer_binary(q, best, title)
         answers.append(ans)
         print best
         sys.stdout.write("A: " + (ans.capitalize() if len(ans)>0 else best) + '\n')

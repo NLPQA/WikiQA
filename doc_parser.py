@@ -27,13 +27,13 @@ def clear(article):
 def doc_to_sents(article):
     global sentences, cur_article, vocab, idfs, vects
     if article != cur_article:
-        content = doc_to_string(article)
+        titile, content = doc_to_string(article)
         vocab = {}
         idfs = {}
         sentences = []
         vects = []
     sentences = tokenize.sent_tokenize(content)
-    return sentences
+    return titile, sentences
 
 def doc_to_string(article):
     global content, cur_article
@@ -50,7 +50,10 @@ def doc_to_string(article):
     content = ' '.join(paragraphs_text)
     content = content.encode('ascii', 'ignore')
     cur_article = article
-    return content
+    headings = soup.find_all('h1')
+    hs = [h.get_text() for h in headings]
+    title = ' '.join(hs)
+    return  title, content
 
 def doc_to_vocab(article):
     global vocab
