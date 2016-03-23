@@ -81,3 +81,4 @@ def pre_process_sentence(input_sentence):
 			elif(vp_re_counter >= 3):
 				vp_repeated = True
 			pass
+	return good_sentences
