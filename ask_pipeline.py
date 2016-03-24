@@ -95,7 +95,7 @@ tests1 =['Starbucks is doing very well lately.',
                'Given the dry weather, coffee farmers have amped up production, to take as much of an advantage as possible with the dry weather.',
                'Increase in supply... well you know the rules...',]
 
-tests2 = ['Alan Black, the math professor, is a certified gangster.',
+tests2 = ['Alan Black, the language professor, is a certified gangster.',
             'Clinton Drew, born March 9, 1983, is an American soccer player who plays for Tottenham Hotspur and the United States national team.',
              'Growing up in Nacogdoches, Texas, Dempsey played for one of the top youth soccer clubs in the state, the Dallas Texans, before playing for Furman University\'s men\'s soccer team. ',
              'In 2004, Dempsey was drafted by Major League Soccer club New England Revolution, where he quickly integrated himself into the starting lineup. ',
