@@ -95,7 +95,7 @@ tests1 =['Starbucks is doing very well lately.',
                'Given the dry weather, coffee farmers have amped up production, to take as much of an advantage as possible with the dry weather.',
                'Increase in supply... well you know the rules...',]
 
-tests2 = ['Clinton Drew was born March 9, 1983.',
+tests2 = ['Alan Black, the math professor, is a certified gangster.',
             'Clinton Drew, born March 9, 1983, is an American soccer player who plays for Tottenham Hotspur and the United States national team.',
              'Growing up in Nacogdoches, Texas, Dempsey played for one of the top youth soccer clubs in the state, the Dallas Texans, before playing for Furman University\'s men\'s soccer team. ',
              'In 2004, Dempsey was drafted by Major League Soccer club New England Revolution, where he quickly integrated himself into the starting lineup. ',
@@ -114,8 +114,9 @@ def get_final_sentences(input_sentence_list):
 			if (sentence[-1] != '.'):
 				sentence = sentence + '.'
 			if (sentence[0].isupper() != True):
-				sentence[0].upper()
+				sentence = ' '.join(word[0].upper() + word[1:] for word in sentence.split())
 			output.append(sentence)
 	return output
 
-#print get_final_sentences(tests)
+#print get_final_sentences(tests2)
+
