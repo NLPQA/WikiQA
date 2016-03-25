@@ -21,7 +21,7 @@ def pre_process_sentence(input_sentence):
 
     #english_parser = StanfordParser("stanford-parser.jar", "stanford-parser-3.4.1-models.jar")
     english_parser = stanford_utils.new_parser()
-    sentences = english_parser.raw_parse((input_sentence))
+    sentences = english_parser.raw_parse(input_sentence)
 
     #check if sentence is in the form S -> NP VP .
     for t in sentences:
@@ -124,7 +124,7 @@ def get_final_sentences(input_sentence_list):
             print
             output.append(sentence)
     return output
-wiki_path = "test/a8.htm"
+wiki_path = "test/a6.htm"
 title, sents = doc_parser.doc_to_sents(wiki_path)
 
 
