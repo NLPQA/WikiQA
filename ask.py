@@ -14,24 +14,27 @@ def get_binary(sentence):
     question = ""
     sent = nltk.word_tokenize(sentence)
     tagged = nltk.pos_tag(sent)
-    if randint(0,9) < 4:
-        tagged = twist_statement(tagged)
+    # if randint(0,9) < 4:
+    #     tagged = twist_statement(tagged)
     for i in xrange(len(tagged)):
-        if tagged[i][1] == 'MD' or tagged[i][0] == 'have' or (tagged[i][0] == 'has' and tagged[i][1] == 'VBZ') or tagged[i][0] == 'am'  or tagged[i][0] == 'are' or (tagged[i][0] == 'is' and tagged[i][1] == 'VBZ'):
+        if tagged[i][0] == "was":
+            a = 1
+
+        if tagged[i][1] == 'MD' or tagged[i][0] == 'have' or (tagged[i][0] == 'has' and tagged[i][1] == 'VBZ') or tagged[i][0] == 'am'  or tagged[i][0] == 'are' or tagged[i][0] == 'was' or(tagged[i][0] == 'is' and tagged[i][1] == 'VBZ'):
             if tagged[0][1] != 'NNP' or tagged[0][1] != 'NNPS':
-                tagged[0] = (tagged[0][0].lower(), tagged[0][1])
+                tagged[0] = (tagged[0][0], tagged[0][1])
             tagged.insert(0, tagged.pop(i))
             break
         elif tagged[i][1] == 'VBD':
             tagged[i] = (stemmer.stem(tagged[i][0]), 'VB')
             if tagged[0][1] != 'NNP' or tagged[0][1] != 'NNPS':
-                tagged[0] = (tagged[0][0].lower(), tagged[0][1])
+                tagged[0] = (tagged[0][0], tagged[0][1])
             tagged.insert(0, ('did', 'MD'))
             break
         elif tagged[i][1] == 'VBZ':
             tagged[i] = (stemmer.stem(tagged[i][0]), 'VB')
             if tagged[0][1] != 'NNP' or tagged[0][1] != 'NNPS':
-                tagged[0] = (tagged[0][0].lower(), tagged[0][1])
+                tagged[0] = (tagged[0][0], tagged[0][1])
             tagged.insert(0, ('Does', 'MD'))
             break
 
@@ -42,7 +45,7 @@ def get_binary(sentence):
             question += tagged[j][0]
         else:
             question += '?'
-    return question.capitalize()
+    return question
 
 def twist_statement(tagged_sent):
     twisted = []
@@ -55,7 +58,7 @@ def twist_statement(tagged_sent):
                 twisted.append(tagged_token)
             else:
                 twisted.append((con[rd],tagged_token[1]))
-        elif tagged_token[1] == 'CD':
+        elif str.isdigit(tagged_token[0]) :
             num = int(tagged_token[0])+randint(0,9)
             if randint(0,9) < 4:
                 twisted.append(tagged_token)
@@ -64,11 +67,11 @@ def twist_statement(tagged_sent):
         else:
             twisted.append(tagged_token)
     return twisted
-sent = 'Tom is a talented student at CMU, which is rich since 1990. '
-# tokenized_sent = nltk.word_tokenize(sent)
-# tagged = nltk.pos_tag(tokenized_sent)
-for i in xrange(0, 5):
-    print get_binary(sent)
+# sent = 'Tom is a talented student at CMU, which is rich since 1990. '
+# # tokenized_sent = nltk.word_tokenize(sent)
+# # tagged = nltk.pos_tag(tokenized_sent)
+# for i in xrange(0, 5):
+#     print get_binary(sent)
 
 def get_who(sentence):
     # tokenize into words for each sentence
@@ -117,7 +120,7 @@ def get_what(sentence):
     NN = []
     start = 0
     for i in range(0, len(tagged)):
-        if tagged[i][0] == 'is' or tagged[i][0] == 'are':
+        if tagged[i][0] == 'is' or tagged[i][0] == 'are' or tagged[i][0] == 'was':
             start = i
             break;
         if tagged[i][1][0:2] == 'NN':
@@ -182,6 +185,7 @@ def get_where(sentence):
 
     for i in range(0, len(ners)):
         if tagged[i][0] == 'where':
+            j = i+1
             while j < len(ners) and (ners[j][0] != ',' or ners[j][0] != '?'):
                 j+=1
             if j > i+1:
@@ -210,7 +214,7 @@ def get_when(sentence):
 
     for i in range(0, len(ners)):
         if tagged[i][0] == 'during':
-
+            j = i+1
             while j < len(ners) and (ners[j][0] == '~' or ners[j][0] == '-' or ners[j][0] != ',' or ners[j][0] != '?'):
                 j+=1
             if j > i+1:
@@ -219,6 +223,7 @@ def get_when(sentence):
                 break
 
         if tagged[i][0] == 'since' or tagged[i][0] == 'when' or tagged[i][0] == 'before' or tagged[i][0] == 'after':
+            j = i+1
             while j < len(ners) and (ners[j][0] != ',' or ners[j][0] != '?'):
                 j+=1
             if j > i+1:
@@ -226,6 +231,15 @@ def get_when(sentence):
                     ners.pop(i)
                 break
         if tagged[i][1] == 'IN':
+            j = i+1
+            while j < len(ners) and (ners[j][1] == 'DATE' or ners[j][1] == 'TIME'):
+                j+=1
+
+            if j > i+1:
+                for k in xrange(0, j-i):
+                    ners.pop(i)
+                break
+        if ners[i][1] == 'DATE' or ners[i][1] == 'TIME':
             j = i+1
             while j < len(ners) and (ners[j][1] == 'DATE' or ners[j][1] == 'TIME'):
                 j+=1
