@@ -8,7 +8,10 @@ import nltk.stem
 import stanford_utils
 from nltk.corpus import wordnet as wn
 from random import randint
-stemmer = nltk.stem.PorterStemmer()
+from nltk.corpus import wordnet as wn
+
+def stem(word):
+    return wn.morphy(word).encode('ascii', 'ignore')
 
 def get_binary(sentence):
     question = ""
@@ -26,13 +29,13 @@ def get_binary(sentence):
             tagged.insert(0, tagged.pop(i))
             break
         elif tagged[i][1] == 'VBD':
-            tagged[i] = (stemmer.stem(tagged[i][0]), 'VB')
+            tagged[i] = (stem(tagged[i][0]), 'VB')
             if tagged[0][1] != 'NNP' or tagged[0][1] != 'NNPS':
                 tagged[0] = (tagged[0][0], tagged[0][1])
             tagged.insert(0, ('did', 'MD'))
             break
         elif tagged[i][1] == 'VBZ':
-            tagged[i] = (stemmer.stem(tagged[i][0]), 'VB')
+            tagged[i] = (stem(tagged[i][0]), 'VB')
             if tagged[0][1] != 'NNP' or tagged[0][1] != 'NNPS':
                 tagged[0] = (tagged[0][0], tagged[0][1])
             tagged.insert(0, ('Does', 'MD'))
@@ -82,7 +85,7 @@ def get_who(sentence):
     for i in range(0,len(tagged)):
         question = ''
         start = 0
-        if (tagged[i][1] == 'MD' or tagged[i][1] == 'VBD' or tagged[i][1] == 'VBZ' or tagged[i][0] == 'has' or tagged[i][1] == 'is'):
+        if (tagged[i][1] == 'MD' or tagged[i][1] == 'VBD' or tagged[i][1] == 'VBZ' or tagged[i][0] == 'has' or tagged[i][1] == 'is' or tagged[i][1] == 'was'or tagged[i][1] == 'are'):
             if tagged[i][1] == 'MD':
                 start = 1
                 question += 'Who '
@@ -96,12 +99,18 @@ def get_who(sentence):
             elif tagged[i][0] == 'is':
                 question += 'Who is '
                 start = i + 1
+            elif tagged[i][0] == 'was':
+                question += 'Who was '
+                start = i + 1
+            elif tagged[i][0] == 'are':
+                question += 'Who are '
+                start = i + 1
             elif tagged[i][1] == 'VBD':
-                verb = stemmer.stem(tagged[i][0])
+                verb = stem(tagged[i][0])
                 question += 'Who did ' + verb + ' '
                 start = i + 1
             elif tagged[i][1] == 'VBZ':
-                verb = stemmer.stem(tagged[i][0])
+                verb = stem(tagged[i][0])
                 question += 'Who does ' + verb + ' '
                 start = i + 1
             for j in range(start,len(tagged)):

@@ -77,6 +77,14 @@ def main(wiki_path, n):
             # deductions for errors
             questions.append((question, score-errs+5))
 
+        # how-many
+        if contains_quant(sent, tagged_sent):
+            question = ask.get_howmany(sent).capitalize()
+            # correct grammar and find errors
+            question, errs = grammar_checker.correct_sent(question)
+            # deductions for errors
+            questions.append((question, score-errs+5))
+
         # when
         if contains_time(tagged_sent):
             question = ask.get_when(sent).capitalize()
@@ -91,14 +99,6 @@ def main(wiki_path, n):
             question, errs = grammar_checker.correct_sent(question)
             # deductions for errors
             questions.append((question, score-errs+4))
-
-        # how-many
-        if contains_quant(sent, tagged_sent):
-            question = ask.get_howmany(sent).capitalize()
-            # correct grammar and find errors
-            question, errs = grammar_checker.correct_sent(question)
-            # deductions for errors
-            questions.append((question, score-errs+3))
 
         # who/what
         if contains_name(tagged_sent):
