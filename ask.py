@@ -6,7 +6,6 @@ import nltk.tag
 import nltk.stem
 
 import stanford_utils
-from nltk.corpus import wordnet as wn
 from random import randint
 from nltk.corpus import wordnet as wn
 
@@ -20,9 +19,6 @@ def get_binary(sentence):
     # if randint(0,9) < 4:
     #     tagged = twist_statement(tagged)
     for i in xrange(len(tagged)):
-        if tagged[i][0] == "was":
-            a = 1
-
         if tagged[i][1] == 'MD' or tagged[i][0] == 'have' or (tagged[i][0] == 'has' and tagged[i][1] == 'VBZ') or tagged[i][0] == 'am'  or tagged[i][0] == 'are' or tagged[i][0] == 'was' or(tagged[i][0] == 'is' and tagged[i][1] == 'VBZ'):
             if tagged[0][1] != 'NNP' or tagged[0][1] != 'NNPS':
                 tagged[0] = (tagged[0][0], tagged[0][1])
@@ -39,6 +35,12 @@ def get_binary(sentence):
             if tagged[0][1] != 'NNP' or tagged[0][1] != 'NNPS':
                 tagged[0] = (tagged[0][0], tagged[0][1])
             tagged.insert(0, ('Does', 'MD'))
+            break
+        elif tagged[i][1] == 'VBP':
+            tagged[i] = (stem(tagged[i][0]), 'VB')
+            if tagged[0][1] != 'NNP' or tagged[0][1] != 'NNPS':
+                tagged[0] = (tagged[0][0], tagged[0][1])
+            tagged.insert(0, ('Do', 'MD'))
             break
 
     for j in xrange(len(tagged)):

@@ -32,12 +32,14 @@ def contains_name(tagged_sent):
     for tup in tagged_sent:
         if tup[1] == "PERSON":
             return True
+        elif tup[0].lower() == "he" or tup[0].lower() == "she":
+            return True
     return False
 
 def contains_quant(sent, tagged_sent):
     tokens = nltk.tokenize.word_tokenize(sent)
     for i in xrange(0, len(tokens)):
-        if str.isdigit(tokens[i]):
+        if str.isdigit(str(tokens[i])):
             if i + 1 < len(tokens) and tagged_sent[i+1][1].endswith('s'):
                 return True
     return False
@@ -46,14 +48,20 @@ def contains_quant(sent, tagged_sent):
 def main(wiki_path, n):
     title, sents = doc_parser.doc_to_sents(wiki_path)
     sents = [sent for sent in sents if 10 <= sent.count(" ") <= 30]
-    sents = sents[:2*n]
+    sents = sents[:3*n]
     questions = []
 
+    preds = []
     for sent in sents:
         parsed_sent = tree_parser.sent_to_tree(sent)
-        pps = tree_parser.get_phrases(parsed_sent, "PP", reversed=False, sort=False)
-        vps = tree_parser.get_phrases(parsed_sent, "VP", reversed=False, sort=False)
-        nps = tree_parser.get_phrases(parsed_sent, "NP", reversed=False, sort=False)
+        pps = tree_parser.get_phrases(parsed_sent, "PP", False, False)
+    #     if tree_parser.contains_appos(parsed_sent):
+    #         preds += tree_parser.appps_to_sents(parsed_sent)
+    #     else:
+    #         pred = tree_parser.sent_to_predicate(parsed_sent)
+    #         preds.append(pred)
+    #
+    # for sent in preds:
         tagged_sent = tagger.tag(nltk.tokenize.word_tokenize(sent))
 
         # bonus for average len
@@ -63,11 +71,6 @@ def main(wiki_path, n):
 
         # bonus for question difficulties
         # distribute sents to generators
-        # binary question
-        binary_q = ask.get_binary(sent).capitalize()
-        binary_q, errs = grammar_checker.correct_sent(binary_q)
-        # deductions for errors
-        questions.append((binary_q, score-errs+2))
 
         # why
         if contains_reason(tagged_sent):
@@ -78,7 +81,7 @@ def main(wiki_path, n):
             questions.append((question, score-errs+5))
 
         # how-many
-        if contains_quant(sent, tagged_sent):
+        elif contains_quant(sent, tagged_sent):
             question = ask.get_howmany(sent).capitalize()
             # correct grammar and find errors
             question, errs = grammar_checker.correct_sent(question)
@@ -86,22 +89,22 @@ def main(wiki_path, n):
             questions.append((question, score-errs+5))
 
         # when
-        if contains_time(tagged_sent):
+        elif contains_time(tagged_sent):
             question = ask.get_when(sent).capitalize()
             # correct grammar and find errors
             question, errs = grammar_checker.correct_sent(question)
             # deductions for errors
-            questions.append((question, score-errs+4))
+            questions.append((question, score-errs+3))
         # where
-        if contains_loc(tagged_sent):
+        elif contains_loc(tagged_sent):
             question = ask.get_where(sent).capitalize()
             # correct grammar and find errors
             question, errs = grammar_checker.correct_sent(question)
             # deductions for errors
-            questions.append((question, score-errs+4))
+            questions.append((question, score-errs+3))
 
         # who/what
-        if contains_name(tagged_sent):
+        elif contains_name(tagged_sent):
             question = ask.get_who(sent).capitalize()
             # correct grammar and find errors
             question, errs = grammar_checker.correct_sent(question)
@@ -114,10 +117,16 @@ def main(wiki_path, n):
             # deductions for errors
             questions.append((question, score-errs+3))
 
+        # binary question
+        binary_q = ask.get_binary(sent).capitalize()
+        binary_q, errs = grammar_checker.correct_sent(binary_q)
+        # deductions for errors
+        questions.append((binary_q, score-errs+2))
+
     ranked_questions = sorted(questions, key=lambda x:(-x[1],x[0]))[:n]
 
     for question in ranked_questions:
         sys.stdout.write(question[0]+"\n")
 
-main("test/a6.htm", 30)
+main("test/a5.htm", 10)
 # main(sys.argv[1], int(sys.argv[2]))
