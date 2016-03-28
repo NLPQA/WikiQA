@@ -121,31 +121,34 @@ def correct_sent(sent):
     results = get_ginger_result(original_text)
 
     # Correct grammar
-    if(not results["LightGingerTheTextResult"]):
-        print("Good English :)")
-        quit()
+    if len(results["LightGingerTheTextResult"]) == 0:
+        return fixed_text, 0
 
     # Incorrect grammar
-    color_gap, fixed_gap = 0, 0
+    fixed_gap = 0
     for result in results["LightGingerTheTextResult"]:
         if(result["Suggestions"]):
-            from_index = result["From"] + color_gap
-            to_index = result["To"] + 1 + color_gap
+            from_index = result["From"]
+            to_index = result["To"] + 1
             suggest = result["Suggestions"][0]["Text"]
 
             # Colorize text
             colored_incorrect = ColoredText.colorize(original_text[from_index:to_index], 'red')[0]
             colored_suggest, gap = ColoredText.colorize(suggest, 'green')
 
-            original_text = original_text[:from_index] + colored_incorrect + original_text[to_index:]
-            fixed_text = fixed_text[:from_index-fixed_gap] + colored_suggest + fixed_text[to_index-fixed_gap:]
+            incorrect = original_text[from_index:to_index]
 
-            color_gap += gap
+            original_text = original_text[:from_index] + incorrect + original_text[to_index:]
+            fixed_text = fixed_text[:from_index-fixed_gap] + suggest + fixed_text[to_index-fixed_gap:]
+
+            # original_text = original_text[:from_index] + colored_incorrect + original_text[to_index:]
+            # fixed_text = fixed_text[:from_index-fixed_gap] + colored_suggest + fixed_text[to_index-fixed_gap:]
+
             fixed_gap += to_index-from_index-len(suggest)
 
     # print("from: " + original_text)
     # print("to:   " + fixed_text)
-    return fixed_text, len(result["Suggestions"])
+    return fixed_text, len(results["LightGingerTheTextResult"])
 
 #
 # if __name__ == '__main__':
