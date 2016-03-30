@@ -4,7 +4,6 @@ import nltk
 import nltk.tokenize
 import nltk.tag
 import nltk.stem
-
 import stanford_utils
 from random import randint
 from nltk.corpus import wordnet as wn
@@ -110,12 +109,12 @@ def get_who(sentence):
                 question += 'Who are '
                 start = i + 1
             elif tagged[i][1] == 'VBD':
-                verb = stem(tagged[i][0])
-                question += 'Who did ' + verb + ' '
+                verb = tagged[i][0]
+                question += 'Who ' + verb + ' '
                 start = i + 1
             elif tagged[i][1] == 'VBZ':
-                verb = stem(tagged[i][0])
-                question += 'Who does ' + verb + ' '
+                verb = tagged[i][0]
+                question += 'Who ' + verb + ' '
                 start = i + 1
             for j in range(start,len(tagged)):
                 if j < len(tagged) - 2:
@@ -157,12 +156,12 @@ def get_what(sentence):
                 question += 'What are '
                 start = i + 1
             elif tagged[i][1] == 'VBD':
-                verb = stem(tagged[i][0])
-                question += 'What did ' + verb + ' '
+                verb = tagged[i][0]
+                question += 'What ' + verb + ' '
                 start = i + 1
             elif tagged[i][1] == 'VBZ':
-                verb = stem(tagged[i][0])
-                question += 'What does ' + verb + ' '
+                verb = tagged[i][0]
+                question += 'What ' + verb + ' '
                 start = i + 1
             for j in range(start,len(tagged)):
                 if j < len(tagged) - 2:
@@ -173,6 +172,10 @@ def get_what(sentence):
                     question += '?'
             break
     return question
+# test = 'I can attest that my own expenditure when going to Starbucks has increased, in lieu of these food products.'
+# print get_what(test)
+# test_2 = "Beckham played in central midfield in United's win over Bayern Munich in the 1999 UEFA Champions League Final"
+# print get_what(test_2)
 
 # def get_what(sentence):
 #     words = nltk.word_tokenize(sentence)
