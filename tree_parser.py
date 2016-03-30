@@ -36,6 +36,7 @@ def sent_to_predicate(tree):
     for subtree in tree:
         if subtree.label() == "NP":
             np = tree_to_sent(subtree)
+            NP_found = True
         elif subtree.label() == "VP" and NP_found:
             vp = tree_to_sent(subtree)
             break
@@ -69,32 +70,27 @@ def appps_to_sents(tree):
         sent = tree_to_sent(appo)+" "+vp
         appos.append(sent)
     return appos
-
-# test = 'In the USA, Perl, a scripting language, was originally named "Pearl".'
-# tree = sent_to_tree(test)
-# print sent_to_predicate(tree)
-# print contains_appos(tree)
-# print appps_to_sents(tree)
-
-
-# # test = 'Perl was originally named "Pearl".'
-# # test_tree = sent_to_tree(test)
-# # # traverse(test_tree)
-# # # test_sent = tree_to_sent(test_tree)
-# # # print test_tree
-# # # print test_sent
-# #
-# # test = "Clinton Drew, born on March 9, 1983, is an American soccer player who plays for Tottenham Hotspur and the United States national team."
-# # tree = sent_to_tree(test)
-# # vplist = get_phrases(tree, "VP")
-# # pplist = get_phrases(tree, "PP")
-# # nplist = get_phrases(tree, "NP")
-#
-# # for vp in vplist:
-# #     print vp
-# for np in nplist:
-#     print np
-#
+tests =['Starbucks is doing very well lately.',
+               'Overall, while it may seem there is already a Starbucks on every corner, Starbucks still has a lot of room to grow.',
+               'They just began expansion into food products, which has been going quite well so far for them.',
+               'I can attest that my own expenditure when going to Starbucks has increased, in lieu of these food products.',
+               'Starbucks is also indeed expanding their number of stores as well.',
+               'Starbucks still sees strong sales growth here in the united states, and intends to actually continue increasing this.',
+               'Starbucks also has one of the more successful loyalty programs, which accounts for 30%  of all transactions being loyalty-program-based.',
+               'As if news could not get any more positive for the company, Brazilian weather has become ideal for producing coffee beans.',
+               'Brazil is the world\'s #1 coffee producer, the source of about 1/3rd of the entire world\'s supply!',
+               'Given the dry weather, coffee farmers have amped up production, to take as much of an advantage as possible with the dry weather.',
+               'Increase in supply... well you know the rules...',]
+# preds = []
+# for sent in tests:
+#     tree = sent_to_tree(sent)
+#     if contains_appos(tree):
+#         preds += appps_to_sents(tree)
+#     else:
+#         pred = sent_to_predicate(tree)
+#         preds.append(pred)
+# for pred in preds:
+#     print pred
 # def pre_process_sentence(input_sentence):
 #     simple_predicate_check = False
 #     apposition_check = False

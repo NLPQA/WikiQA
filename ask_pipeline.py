@@ -44,41 +44,55 @@ def contains_quant(sent, tagged_sent):
                 return True
     return False
 
+def preprocess_sents(sents):
+    preds = []
+    for sent in sents:
+        tree = tree_parser.sent_to_tree(sent)
+    if tree_parser.contains_appos(tree):
+        preds += tree_parser.appps_to_sents(tree)
+    else:
+        pred = tree_parser.sent_to_predicate(tree)
+        preds.append(pred)
+    return preds
 
 def main(wiki_path, n):
     title, sents = doc_parser.doc_to_sents(wiki_path)
-    sents = [sent for sent in sents if 10 <= sent.count(" ") <= 30]
-    sents = sents[:3*n]
     questions = []
 
+    # sents = [sent for sent in sents if 10 <= sent.count(" ") <= 30]
+    sents = sents[:3*n]
     preds = []
+    # for sent in sents:
+    #     tree = tree_parser.sent_to_tree(sent)
+    #     if tree_parser.contains_appos(tree):
+    #         preds += tree_parser.appps_to_sents(tree)
+    #     else:
+    #         pred = tree_parser.sent_to_predicate(tree)
+    #         if 10 <= pred.count(" ") <= 30:
+    #             preds.append(pred)
+    #         if len(preds) > 2*n:
+    #             break
+
     for sent in sents:
         parsed_sent = tree_parser.sent_to_tree(sent)
         pps = tree_parser.get_phrases(parsed_sent, "PP", False, False)
-    #     if tree_parser.contains_appos(parsed_sent):
-    #         preds += tree_parser.appps_to_sents(parsed_sent)
-    #     else:
-    #         pred = tree_parser.sent_to_predicate(parsed_sent)
-    #         preds.append(pred)
-    #
-    # for sent in preds:
+
         tagged_sent = tagger.tag(nltk.tokenize.word_tokenize(sent))
 
         # bonus for average len
-        score = 20 - math.fabs(sent.count(" ")-10)
+        score = (20 - math.fabs(sent.count(" ")-10))*0.5
         # bonus for more pps
         score += len(pps)-1
 
         # bonus for question difficulties
         # distribute sents to generators
-
         # why
         if contains_reason(tagged_sent):
             question = ask.get_why(sent).capitalize()
             # correct grammar and find errors
             question, errs = grammar_checker.correct_sent(question)
             # deductions for errors
-            questions.append((question, score-errs+5))
+            questions.append((question, score-errs+6))
 
         # how-many
         elif contains_quant(sent, tagged_sent):
@@ -89,36 +103,36 @@ def main(wiki_path, n):
             questions.append((question, score-errs+5))
 
         # when
-        elif contains_time(tagged_sent):
+        if contains_time(tagged_sent):
             question = ask.get_when(sent).capitalize()
             # correct grammar and find errors
             question, errs = grammar_checker.correct_sent(question)
             # deductions for errors
-            questions.append((question, score-errs+3))
+            questions.append((question, score-errs+4))
         # where
-        elif contains_loc(tagged_sent):
+        if contains_loc(tagged_sent):
             question = ask.get_where(sent).capitalize()
             # correct grammar and find errors
             question, errs = grammar_checker.correct_sent(question)
             # deductions for errors
-            questions.append((question, score-errs+3))
+            questions.append((question, score-errs+4))
 
         # who/what
-        elif contains_name(tagged_sent):
+        if contains_name(tagged_sent):
             question = ask.get_who(sent).capitalize()
             # correct grammar and find errors
             question, errs = grammar_checker.correct_sent(question)
             # deductions for errors
-            questions.append((question, score-errs+4))
+            questions.append((question, score-errs+3))
         else:
             question = ask.get_what(sent).capitalize()
             # correct grammar and find errors
             question, errs = grammar_checker.correct_sent(question)
             # deductions for errors
-            questions.append((question, score-errs+3))
+            questions.append((question, score-errs+2))
 
         # binary question
-        binary_q = ask.get_binary(sent).capitalize()
+        binary_q = ask.get_binary(sent, twist=True).capitalize()
         binary_q, errs = grammar_checker.correct_sent(binary_q)
         # deductions for errors
         questions.append((binary_q, score-errs+2))
@@ -128,5 +142,5 @@ def main(wiki_path, n):
     for question in ranked_questions:
         sys.stdout.write(question[0]+"\n")
 
-main("test/a5.htm", 10)
+main("test/a6.htm", 10)
 # main(sys.argv[1], int(sys.argv[2]))

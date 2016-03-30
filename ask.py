@@ -12,12 +12,12 @@ from nltk.corpus import wordnet as wn
 def stem(word):
     return wn.morphy(word).encode('ascii', 'ignore')
 
-def get_binary(sentence):
+def get_binary(sentence, twist):
     question = ""
     sent = nltk.word_tokenize(sentence)
     tagged = nltk.pos_tag(sent)
-    # if randint(0,9) < 4:
-    #     tagged = twist_statement(tagged)
+    if randint(0,9) < 4 and twist:
+        tagged = twist_statement(tagged)
     for i in xrange(len(tagged)):
         if tagged[i][1] == 'MD' or tagged[i][0] == 'have' or (tagged[i][0] == 'has' and tagged[i][1] == 'VBZ') or tagged[i][0] == 'am'  or tagged[i][0] == 'are' or tagged[i][0] == 'was' or(tagged[i][0] == 'is' and tagged[i][1] == 'VBZ'):
             if tagged[0][1] != 'NNP' or tagged[0][1] != 'NNPS':
@@ -48,22 +48,24 @@ def get_binary(sentence):
             question += tagged[j][0] + ' '
         elif j >= len(tagged) - 2 and tagged[j][0] != '.':
             question += tagged[j][0]
-        else:
+        elif twist:
             question += '?'
     return question
 
 def twist_statement(tagged_sent):
     twisted = []
     for tagged_token in tagged_sent:
-        if tagged_token[1] == 'JJ':
-            synsets = wn.synset(tagged_token[0]+".a.01").lemmas()
-            con = [word.name() for word in synsets]+[word.name() for word in synsets[0].antonyms()]
-            rd = randint(0,len(con)-1)
-            if randint(0,9) < 4:
-                twisted.append(tagged_token)
-            else:
-                twisted.append((con[rd],tagged_token[1]))
-        elif str.isdigit(tagged_token[0]) :
+        # if tagged_token[1] == 'JJ' and ('-' not in tagged_token[0]):
+        #     synsets = wn.synset(tagged_token[0]+".a.01").lemmas()
+        #     con = [word.name() for word in synsets]+[word.name() for word in synsets[0].antonyms()]
+        #     rd = randint(0,len(con)-1)
+        #     if randint(0,9) < 4:
+        #         twisted.append(tagged_token)
+        #     else:
+        #         twisted.append((con[rd],tagged_token[1]))
+        if str.isdigit(tagged_token[0]):
+
+        #elif str.isdigit(tagged_token[0]):
             num = int(tagged_token[0])+randint(0,9)
             if randint(0,9) < 4:
                 twisted.append(tagged_token)
@@ -126,25 +128,72 @@ def get_who(sentence):
     return question
 
 def get_what(sentence):
-    words = nltk.word_tokenize(sentence)
-    tagged = nltk.pos_tag(words)
-    NN = []
-    start = 0
-    for i in range(0, len(tagged)):
-        if tagged[i][0] == 'is' or tagged[i][0] == 'are' or tagged[i][0] == 'was':
-            start = i
-            break;
-        if tagged[i][1][0:2] == 'NN':
-            NN.append(tagged[i][0])
-    question = 'What '
-    for j in range(start, len(tagged)):
-        if j < len(tagged) - 2:
-            question += tagged[j][0] + ' '
-        elif j >= len(tagged) - 2 and tagged[j][0] != '.':
-            question += tagged[j][0]
-        else:
-            question += '?'
+    # tokenize into words for each sentence
+    sent = nltk.word_tokenize(sentence)
+    # tag for words in each sentence
+    tagged = nltk.pos_tag(sent)
+    question = ""
+    for i in range(0,len(tagged)):
+        question = ''
+        start = 0
+        if (tagged[i][1] == 'MD' or tagged[i][1] == 'VBD' or tagged[i][1] == 'VBZ' or tagged[i][0] == 'has' or tagged[i][1] == 'is' or tagged[i][1] == 'was'or tagged[i][1] == 'are'):
+            if tagged[i][1] == 'MD':
+                start = 1
+                question += 'What '
+            elif tagged[i][0] == 'has':
+                if tagged[i+1][1][0:1] == 'V':
+                    question += 'What has '
+                    start = i + 1
+                else:
+                    question += 'What does have '
+                    start = i + 1
+            elif tagged[i][0] == 'is':
+                question += 'What is '
+                start = i + 1
+            elif tagged[i][0] == 'was':
+                question += 'What was '
+                start = i + 1
+            elif tagged[i][0] == 'are':
+                question += 'What are '
+                start = i + 1
+            elif tagged[i][1] == 'VBD':
+                verb = stem(tagged[i][0])
+                question += 'What did ' + verb + ' '
+                start = i + 1
+            elif tagged[i][1] == 'VBZ':
+                verb = stem(tagged[i][0])
+                question += 'What does ' + verb + ' '
+                start = i + 1
+            for j in range(start,len(tagged)):
+                if j < len(tagged) - 2:
+                    question += tagged[j][0] + ' '
+                elif j >= len(tagged) - 2 and tagged[j][0] != '.':
+                    question += tagged[j][0]
+                else:
+                    question += '?'
+            break
     return question
+
+# def get_what(sentence):
+#     words = nltk.word_tokenize(sentence)
+#     tagged = nltk.pos_tag(words)
+#     NN = []
+#     start = 0
+#     for i in range(0, len(tagged)):
+#         if tagged[i][0] == 'is' or tagged[i][0] == 'are' or tagged[i][0] == 'was':
+#             start = i
+#             break;
+#         if tagged[i][1][0:2] == 'NN':
+#             NN.append(tagged[i][0])
+#     question = 'What '
+#     for j in range(start, len(tagged)):
+#         if j < len(tagged) - 2:
+#             question += tagged[j][0] + ' '
+#         elif j >= len(tagged) - 2 and tagged[j][0] != '.':
+#             question += tagged[j][0]
+#         else:
+#             question += '?'
+#     return question
 
 def concat(l):
     return reduce(lambda a, b: a+" "+b, l)
@@ -179,15 +228,15 @@ def get_why(sentence):
             consequence = reduce(lambda a, b: a+" "+b, d[d.index(",")+1:])
             break
         # other cases: due to ...
-    question = get_binary(consequence+"?")
-    question = "Why "+question
+    question = get_binary(consequence, twist=False)
+    question = "Why "+question+"?"
     return question
 
 
 
 def get_where(sentence):
 
-    binary_q = get_binary(sentence)
+    binary_q = get_binary(sentence, twist=False)
 
     words = nltk.word_tokenize(binary_q)
     tagger = stanford_utils.new_NERtagger()
@@ -214,10 +263,10 @@ def get_where(sentence):
                 break
 
     question = "Where " + ' '.join([w for (w, t) in ners])
-    return question
+    return question.strip()+"?"
 
 def get_when(sentence):
-    binary_q = get_binary(sentence)
+    binary_q = get_binary(sentence, twist=False)
     words = nltk.word_tokenize(binary_q)
     tagger = stanford_utils.new_NERtagger()
     ners = tagger.tag(words)
