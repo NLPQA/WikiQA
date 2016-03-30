@@ -137,10 +137,16 @@ def main(wiki_path, n):
         # deductions for errors
         questions.append((binary_q, score-errs+2))
 
-    ranked_questions = sorted(questions, key=lambda x:(-x[1],x[0]))[:n]
-
+    ranked_questions = sorted(questions, key=lambda x:(-x[1],x[0]))
+    ranked_questions = [q for q in ranked_questions if len(q[0]) > 0][:n]
     for question in ranked_questions:
         sys.stdout.write(question[0]+"\n")
 
+# for i in xrange(1, 9):
+#     if i == 4:
+#         continue
+#     print i
+#     wiki_path = "test/a"+str(i)+".htm"
+#     main(wiki_path, 10)
 main("test/a6.htm", 10)
 # main(sys.argv[1], int(sys.argv[2]))
