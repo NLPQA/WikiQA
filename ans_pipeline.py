@@ -70,9 +70,11 @@ def main(wiki, qpath):
         sys.stdout.write("A: " + (ans.capitalize() if len(ans)>0 else best) + '\n')
         sys.stdout.write("----------\n")
 
-for i in xrange(1, 8):
+for i in xrange(1, 9):
     if i == 4:
         continue
+    print i
+
     wiki_path, question_path = "test/a"+str(i)+".htm", "test/a"+str(i)+"q.txt"
     main(wiki_path, question_path)
 # for quest, ans in zip(quests, answers):
