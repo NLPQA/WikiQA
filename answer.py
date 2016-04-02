@@ -14,7 +14,19 @@ from nltk.corpus import wordnet as wn
 def answer_which(q, s):
     return ""
 
+<<<<<<< Updated upstream
 def answer_binary(q, sents, title):
+=======
+<<<<<<< HEAD
+
+
+def answer_binary(q, s, title):
+    # print q
+    # print s
+=======
+def answer_binary(q, sents, title):
+>>>>>>> origin/master
+>>>>>>> Stashed changes
     title = title.lower().split(" ")
     q_vect = doc_parser.sent_to_vect(q.lower())
     mis_matched_num = []

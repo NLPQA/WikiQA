@@ -59,10 +59,10 @@ Byteme	29	Harry_Potter_and_the_Prisoner_of_Azkaban_(film)	data/set4/a7	hard	What
 Byteme	29	Harry_Potter_and_the_Prisoner_of_Azkaban_(film)	data/set4/a7	hard	What is the length of production cycle of Prisoner of Azkaban?	False	False	eighteen-month	too hard
 Byteme	30	Harry_Potter_and_the_Prisoner_of_Azkaban_(film)	data/set4/a7	hard	Which is the best-reviewed film of franchise on Rotten Tomatoes?	False	False	Harry Potter and the Deathly Hallows - Part 2	too hard
 Byteme	30	Harry_Potter_and_the_Prisoner_of_Azkaban_(film)	data/set4/a7	hard	Which is the best-reviewed film of franchise on Rotten Tomatoes?	False	False	Harry Potter and the Deathly Hallows Part 2	too hard
-Byteme	31	Harry_Potter_and_the_Prisoner_of_Azkaban_(film)	data/set4/a7	medium	Who is the director of Harry Potter and the Prisoner of Azkaban?	False	False	Alfonso Cuarón	medium
-Byteme	31	Harry_Potter_and_the_Prisoner_of_Azkaban_(film)	data/set4/a7	medium	Who is the director of Harry Potter and the Prisoner of Azkaban?	False	False	Alfonso Cuarón	medium
-Byteme	32	Harry_Potter_and_the_Prisoner_of_Azkaban_(film)	data/set4/a7	medium	Which is the best-reviewed film of the Harry Potter series on Rotten Tomatoes?	False	False	Harry Potter and the Deathly Hallows -Part 2	hard
-Byteme	32	Harry_Potter_and_the_Prisoner_of_Azkaban_(film)	data/set4/a7	medium	Which is the best-reviewed film of the Harry Potter series on Rotten Tomatoes?	False	False	Harry Potter and the Deathly Hallows – Part 2	hard
+Byteme	31	Harry_Potter_and_the_Prisoner_of_Azkaban_(film)	data/set4/a7	medium	Who is the director of Harry Potter and the Prisoner of Azkaban?	False	False	Alfonso Cuarón	too hard
+Byteme	31	Harry_Potter_and_the_Prisoner_of_Azkaban_(film)	data/set4/a7	medium	Who is the director of Harry Potter and the Prisoner of Azkaban?	False	False	Alfonso Cuarón	too hard
+Byteme	32	Harry_Potter_and_the_Prisoner_of_Azkaban_(film)	data/set4/a7	medium	Which is the best-reviewed film of the Harry Potter series on Rotten Tomatoes?	False	False	Harry Potter and the Deathly Hallows -Part 2	too hard
+Byteme	32	Harry_Potter_and_the_Prisoner_of_Azkaban_(film)	data/set4/a7	medium	Which is the best-reviewed film of the Harry Potter series on Rotten Tomatoes?	False	False	Harry Potter and the Deathly Hallows – Part 2	too hard
 Byteme	33	Harry_Potter_and_the_Prisoner_of_Azkaban_(film)	data/set4/a7	medium	Why did Chris Columbus decline to helm the third instalment?	False	False	He hadn't seen [his] own kids for supper in the week for about two and a half years	medium
 Byteme	33	Harry_Potter_and_the_Prisoner_of_Azkaban_(film)	data/set4/a7	medium	Why did Chris Columbus decline to helm the third instalment?	False	False	he "hadn't seen [his] own kids for supper in the week for about two and a half years.	too hard
 Byteme	34	Harry_Potter_and_the_Prisoner_of_Azkaban_(film)	data/set4/a7	easy	When was Harry Potter and the Prisoner of Azkaban released in the United Kingdom?	False	False	On 31 May 2004	medium
@@ -91,8 +91,8 @@ Byteme	45	Cancer_(constellation)	data/set2/a5	easy	Is Cancer the dimmest of the 
 Byteme	45	Cancer_(constellation)	data/set2/a5	easy	Is Cancer the dimmest of the zodiacal constellations?	False	False	Yes	easy
 Byteme	46	David_Beckham	data/set1/a6	hard	How many sisters does Beckham have?	False	False	2	too hard
 Byteme	46	David_Beckham	data/set1/a6	hard	How many sisters does Beckham have?	False	False	2	too hard
-Byteme	47	David_Beckham	data/set1/a6	hard	Which team did Beckham's parents support?	False	False	Manchester United 	hard
-Byteme	47	David_Beckham	data/set1/a6	hard	Which team did Beckham's parents support?	False	False	Manchester United	hard
+Byteme	47	David_Beckham	data/set1/a6	hard	Which team did Beckham's parents support?	False	False	Manchester United 	too hard
+Byteme	47	David_Beckham	data/set1/a6	hard	Which team did Beckham's parents support?	False	False	Manchester United	too hard
 Byteme	48	David_Beckham	data/set1/a6	hard	When did Beckham's contract with Major League Soccer club LA Galaxy end?	False	False	2012	too hard
 Byteme	48	David_Beckham	data/set1/a6	hard	When did Beckham's contract with Major League Soccer club LA Galaxy end?	False	False	July 2007	too hard
 Byteme	49	David_Beckham	data/set1/a6	medium	Which four countries did Beckham win league titles?	False	False	England, Spain, United States, France	medium
@@ -131,10 +131,10 @@ Byteme	60	Alex_Morgan	data/set1/a3	medium	When was Morgan born?	False	False
 Byteme	60	Alex_Morgan	data/set1/a3	medium	When was Morgan born?	False	False		
 Byteme	60	Alex_Morgan	data/set1/a3	medium	When was Morgan born?	False	False	July 2, 1989	easy
 Byteme	60	Alex_Morgan	data/set1/a3	medium	When was Morgan born?	False	False	 San Dimas	easy
-Byteme	61	Alex_Morgan	data/set1/a3	easy	Did U.S. Soccer announced Morgan as the 2012 Female Athlete of the Year?	False	False		
-Byteme	61	Alex_Morgan	data/set1/a3	easy	Did U.S. Soccer announced Morgan as the 2012 Female Athlete of the Year?	False	False		
-Byteme	61	Alex_Morgan	data/set1/a3	easy	Did U.S. Soccer announced Morgan as the 2012 Female Athlete of the Year?	False	False	Yes.	hard
-Byteme	61	Alex_Morgan	data/set1/a3	easy	Did U.S. Soccer announced Morgan as the 2012 Female Athlete of the Year?	False	False	Yes	easy
+Byteme	61	Alex_Morgan	data/set1/a3	easy	Did U.S. Soccer announced Morgan as the 2012 Female Athlete of the Year?	False	False		too hard
+Byteme	61	Alex_Morgan	data/set1/a3	easy	Did U.S. Soccer announced Morgan as the 2012 Female Athlete of the Year?	False	False		too hard
+Byteme	61	Alex_Morgan	data/set1/a3	easy	Did U.S. Soccer announced Morgan as the 2012 Female Athlete of the Year?	False	False	Yes.	too hard
+Byteme	61	Alex_Morgan	data/set1/a3	easy	Did U.S. Soccer announced Morgan as the 2012 Female Athlete of the Year?	False	False	Yes	too easy
 Byteme	62	Alex_Morgan	data/set1/a3	easy	Did Alex married Servando Carrasco?	False	False		
 Byteme	62	Alex_Morgan	data/set1/a3	easy	Did Alex married Servando Carrasco?	False	False		
 Byteme	62	Alex_Morgan	data/set1/a3	easy	Did Alex married Servando Carrasco?	False	False	Yes.	hard
