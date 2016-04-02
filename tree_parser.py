@@ -4,7 +4,10 @@ from nltk import Tree
 parser = stanford_utils.new_parser()
 
 def sents_to_trees(sentences):
-    return parser.raw_parse_sents(sentences)
+    trees = []
+    for sent in sentences:
+        trees.append(parser.raw_parse(sent))
+    return trees
 
 def sent_to_tree(sentence):
     t = parser.raw_parse(sentence)
