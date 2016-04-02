@@ -94,7 +94,7 @@ Byteme	46	David_Beckham	data/set1/a6	hard	How many sisters does Beckham have?	Fa
 Byteme	47	David_Beckham	data/set1/a6	hard	Which team did Beckham's parents support?	False	False	Manchester United 	hard
 Byteme	47	David_Beckham	data/set1/a6	hard	Which team did Beckham's parents support?	False	False	Manchester United	hard
 Byteme	48	David_Beckham	data/set1/a6	hard	When did Beckham's contract with Major League Soccer club LA Galaxy end?	False	False	2012	too hard
-Byteme	48	David_Beckham	data/set1/a6	hard	When did Beckham's contract with Major League Soccer club LA Galaxy end?	False	False	July 2007	hard
+Byteme	48	David_Beckham	data/set1/a6	hard	When did Beckham's contract with Major League Soccer club LA Galaxy end?	False	False	July 2007	too hard
 Byteme	49	David_Beckham	data/set1/a6	medium	Which four countries did Beckham win league titles?	False	False	England, Spain, United States, France	medium
 Byteme	49	David_Beckham	data/set1/a6	medium	Which four countries did Beckham win league titles?	False	False	England, Spain, the United States and France	medium
 Byteme	50	David_Beckham	data/set1/a6	medium	When was Beckham listed as the highest-paid player in the world?	False	False	2002	hard

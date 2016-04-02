@@ -1,3 +1,4 @@
+Wrong sentence:
 +Q: What is the magnitude of the brightest star in Gemini?
  +The brightest star in Gemini is Pollux, and the second brightest is Castor.
  +A: The brightest star
@@ -6,43 +7,17 @@
  +On October 26, 2015, it was announced that Thorns had traded Morgan, along with teammate Kaylyn Kyle, to the expansion Orlando Pride in exchange for the Pride's #1 picks in the 2015 NWSL Expansion Draft and 2016 NWSL College Draft as well as an international roster spot for the 2016 and 2017 seasons.
  +A: No.
 
-
- +Q: What is Delta Cancri also known as?
- +At magnitude 3.9 is Delta Cancri, also known as Asellus Australis.
- +A: Magnitude 3.9
-
-
- +Q: What did Manilius and Ovid call the constellation in Ancient Rome?
- +In Ancient Rome, Manilius and Ovid called the constellation Litoreus (shore-inhabiting).
- +A: Ancient rome , manilius and ovid
-
- +Q: Is Cancer a medium-sized constellation?
++Q: Is Cancer a medium-sized constellation?
  +In Babylonia the constellation was known as MUL.AL.LUL, a name which can refer to both a crab and a snapping turtle.
  +A: No.
 
- +Q: Which team did Beckham's parents support?
++Q: Which team did Beckham's parents support?
  +And they'd say, 'No, what do you really want to do, for a job?'
  +A: And they'd say, 'No, what do you really want to do, for a job?'
-
-+Q: When did Beckham's contract with Major League Soccer club LA Galaxy end?
- +In July 2007 Beckham signed a five-year contract with Major League Soccer club LA Galaxy.
- +A: In july 2007.
-
- +Q: When was Beckham listed as the highest-paid player in the world?
- +One of the most marketable athletes in sport, Beckham has consistently ranked among the highest earners in football, and in 2013 he was listed as the highest-paid player in the world, earning over $50million in the previous 12 months.
- +A: In 2013.
 
  +Q: Did Beckham attend Chase Lane Primary School?
  +In 1997, Beckham started dating Victoria Adams, after she attended a Manchester United match.
  +A: No.
-
- Q: What was Perl originally named?
-Perl was originally named "Pearl".
-A: Perl was originally named "Pearl".
-
-Q: When was Harry Potter and the Prisoner of Azkaban released in the United Kingdom?
-The film was released on 31 May 2004 in the United Kingdom and on 4 June 2004 in North America, as the first Harry Potter film released into IMAX theatres and to be using IMAX Technology.
-A: On 4 june 2004 in north america , as the first harry potter film released into imax theatres and to be using imax technology.
 
 Q: Which is the best-reviewed film of the Harry Potter series on Rotten Tomatoes?
 After reading the series, he changed his mind and signed on to direct, as he had immediately connected to the story.
@@ -56,6 +31,52 @@ Q: Which is the best-reviewed film of franchise on Rotten Tomatoes?
 The film was released on 31 May 2004 in the United Kingdom and on 4 June 2004 in North America, as the first Harry Potter film released into IMAX theatres and to be using IMAX Technology.
 A: The film was released on 31 May 2004 in the United Kingdom and on 4 June 2004 in North America, as the first Harry Potter film released into IMAX theatres and to be using IMAX Technology.
 
+
+Wrong extraction:
+ +Q: What is Delta Cancri also known as?
+ +At magnitude 3.9 is Delta Cancri, also known as Asellus Australis.
+ +A: Magnitude 3.9
+ +Q: What did Manilius and Ovid call the constellation in Ancient Rome?
+ +In Ancient Rome, Manilius and Ovid called the constellation Litoreus (shore-inhabiting).
+ +A: Ancient rome , manilius and ovid
+
+ Q: What was Perl originally named?
+Perl was originally named "Pearl".
+A: Perl was originally named "Pearl".
+
+Q: When was Harry Potter and the Prisoner of Azkaban released in the United Kingdom?
+The film was released on 31 May 2004 in the United Kingdom and on 4 June 2004 in North America, as the first Harry Potter film released into IMAX theatres and to be using IMAX Technology.
+A: On 4 june 2004 in north america , as the first harry potter film released into imax theatres and to be using imax technology.
+
 Q: What is the length of production cycle of Prisoner of Azkaban?
 With Prisoner of Azkaban, production of the Harry Potter films switched to an eighteen-month cycle, which producer David Heyman explained was "to give each [film] the time it required."
 A: Production of the harry potter films switched to an eighteen-month cycle , which producer david heyman explained
+
+Too hard:
++Q: When did Beckham's contract with Major League Soccer club LA Galaxy end?
+ +In July 2007 Beckham signed a five-year contract with Major League Soccer club LA Galaxy.
+ +A: In july 2007.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
