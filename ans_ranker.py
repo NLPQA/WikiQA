@@ -2,8 +2,40 @@ __author__ = 'laceyliu'
 
 import doc_parser
 import math
-stopwords = doc_parser.stopwords
+import stanford_utils
+import nltk
 
+stopwords = doc_parser.stopwords
+tagger = stanford_utils.new_NERtagger()
+def rerank_when(sents):
+    for sent in sents:
+        tagged_pp = tagger.tag(nltk.tokenize.word_tokenize(sent[0]))
+        for tup in tagged_pp:
+            if tup[1] == "DATE" or tup[1] == "TIME":
+                return sent[0]
+    return sents[0][0]
+
+def rerank_where(sents):
+    for sent in sents:
+        tagged_pp = tagger.tag(nltk.tokenize.word_tokenize(sent[0]))
+        for tup in tagged_pp:
+            if tup[1] == "LOCATION" or tup[1] == "ORGANIZATION":
+                return sent[0]
+    return sents[0][0]
+
+def rerank_why(sents):
+    keywords = ["because", "therefore", "so", "in order to", "since", "as", "due to"]
+    for sent in sents:
+        for keyword in keywords:
+            if keyword in sent[0]:
+                return sent[0]
+    return sents[0][0]
+def rerank_num(sents):
+    for sent in sents:
+        num = filter(str.isdigit, sent[0])
+        if len(num) > 0:
+            return sent[0]
+    return ""
 
 def get_tfidf(q_vect, s_vect, idfs):
     tfidf = 0.0
