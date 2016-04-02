@@ -41,24 +41,24 @@ def main(wiki, qpath):
 
         ans = ""
         if q_tokens[0] == 'What':
-            ans = answer.answer_what(q, best)
+            ans = answer.answer_what(q, best, title)
         elif q_tokens[0] == 'Who':
-            ans = answer.answer_who(q, best)
+            ans = answer.answer_who(q, best, title)
         elif q_tokens[0] == 'Why':
-            best = ans_ranker.rerank_why(ranked_sents[:5])
+            best = ans_ranker.rerank_why(ranked_sents[:6])
             ans = answer.answer_why(q, best)
         elif q_tokens[0] == 'How' and q_tokens[1] == 'many':
             ans = ""
-            best = ans_ranker.rerank_num(ranked_sents[:5])
+            best = ans_ranker.rerank_num(ranked_sents[:6])
             if len(best) > 0:
                 ans = answer.answer_how_many(q, best)
             else:
                 best = ranked_sents[0][0]
         elif q_tokens[0] == 'Where':
-            best = ans_ranker.rerank_where(ranked_sents[:5])
+            best = ans_ranker.rerank_where(ranked_sents[:6])
             ans = answer.answer_where(q, best)
         elif q_tokens[0] == 'When':
-            best = ans_ranker.rerank_when(ranked_sents[:5])
+            best = ans_ranker.rerank_when(ranked_sents[:6])
             ans = answer.answer_when(q, best)
         elif q_tokens[0] == "Which":
             ans = answer.answer_which(q, best)

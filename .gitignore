@@ -15,3 +15,5 @@ stanford_utils.py
 data/.DS_Store
 
 *.jar
+
+stanford_utils.py
