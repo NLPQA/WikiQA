@@ -55,11 +55,9 @@ def main(wiki, qpath):
             else:
                 best = ranked_sents[0][0]
         elif q_tokens[0] == 'Where':
-            best = ans_ranker.rerank_where(ranked_sents[:6])
-            ans = answer.answer_where(q, best)
+            best = answer.answer_where(q, ranked_sents[:6], title)
         elif q_tokens[0] == 'When':
-            best = ans_ranker.rerank_when(ranked_sents[:6])
-            ans = answer.answer_when(q, best)
+            best = answer.answer_when(q, ranked_sents[:min(6, len(ranked_sents))], title)
         elif q_tokens[0] == "Which":
             ans = answer.answer_which(q, best)
 

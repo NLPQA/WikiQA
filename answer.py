@@ -18,7 +18,6 @@ def answer_binary(q, sents, title):
     title = title.lower().split(" ")
     q_vect = doc_parser.sent_to_vect(q.lower())
     sent = ans_ranker.rerank_match(q_vect, sents, mds+title)
-    print sent
     s_vect = doc_parser.sent_to_vect(sent.lower())
     negs = ["not", "no", "never"]
     for neg in negs:
@@ -146,7 +145,10 @@ def answer_why(q, s):
         ans = " ".join(reason_token)
     return ans
 
-def answer_when(q, s):
+def answer_when(q, sents, title):
+    title = title.lower().split(" ")
+    q_vect = doc_parser.sent_to_vect(q.lower())
+    s = ans_ranker.rerank_match(q_vect, sents, mds+title)
     parsed_s = tree_parser.sent_to_tree(s)
     pps = tree_parser.get_phrases(parsed_s, "PP", False, True)
     for pp in pps:
@@ -172,7 +174,10 @@ def answer_when(q, s):
 #     return ans.capitalize()
 
 
-def answer_where(q, s):
+def answer_where(q, sents, title):
+    title = title.lower().split(" ")
+    q_vect = doc_parser.sent_to_vect(q.lower())
+    s = ans_ranker.rerank_match(q_vect, sents, mds+title)
     parsed_s = tree_parser.sent_to_tree(s)
     pps = tree_parser.get_phrases(parsed_s, "PP", False, True)
     for pp in pps:
