@@ -52,6 +52,8 @@ def main(wiki, qpath):
             best = ans_ranker.rerank_num(ranked_sents[:5])
             if len(best) > 0:
                 ans = answer.answer_how_many(q, best)
+            else:
+                best = ranked_sents[0][0]
         elif q_tokens[0] == 'Where':
             best = ans_ranker.rerank_where(ranked_sents[:5])
             ans = answer.answer_where(q, best)
