@@ -157,7 +157,21 @@ def answer_when(q, sents, title):
         for tup in tagged_pp:
             if tup[1] == "DATE" or tup[1] == "TIME":
                 return sent_pp.strip()+"."
+    tagged_sent = tagger.tag(nltk.tokenize.word_tokenize(s))
+    ans = ""
+    for i in xrange(0, len(tagged_sent)):
+        tup = tagged_sent[i]
+        if tup[1] == "DATE" or tup[1] == "TIME":
+            j = i
+            while tagged_sent[j][1] == "DATE" or tagged_sent[j][1] == "TIME":
+                ans += tagged_sent[j][0] + " "
+                j += 1
+            return ans.strip()+"."
     return ""
+#
+# test_s = "Alexandra \"Alex\" Patricia Morgan Carrasco (born July 2, 1989), ne Alexandra Patricia Morgan, is an American soccer player, Olympic gold medalist, and FIFA Women's World Cup champion."
+# test_q = "When was Morgan born?"
+# print answer_when(test_q, test_s)
 
 # def answer_when(q, s):
 #     # handles the wh-subject-question: S -> Wh- NP VP

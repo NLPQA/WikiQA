@@ -7,8 +7,8 @@ Byteme	3	Gemini_(constellation)	data/set2/a2	hard	What is the magnitude of the b
 Byteme	3	Gemini_(constellation)	data/set2/a2	hard	What is the magnitude of the brightest star in Gemini?	False	False	1.2	hard
 Byteme	4	Gemini_(constellation)	data/set2/a2	medium	What is the maximum rate of Geminids meteor showers?	False	False	100 meteors per hour	medium
 Byteme	4	Gemini_(constellation)	data/set2/a2	medium	What is the maximum rate of Geminids meteor showers?	False	False	100 meteors per hour.	hard
-Byteme	5	Gemini_(constellation)	data/set2/a2	medium	What is the magnitude of M35 (NGC 2168)?	False	False	5	medium
-Byteme	5	Gemini_(constellation)	data/set2/a2	medium	What is the magnitude of M35 (NGC 2168)?	False	False	5.	medium
+Byteme	5	Gemini_(constellation)	data/set2/a2	medium	What is the magnitude of M35 (NGC 2168)?	False	False	5	too hard
+Byteme	5	Gemini_(constellation)	data/set2/a2	medium	What is the magnitude of M35 (NGC 2168)?	False	False	5.	too hard
 Byteme	6	Gemini_(constellation)	data/set2/a2	medium	How long does the sun reside in the astrological sign of Gemini?	False	False	One month	hard
 Byteme	6	Gemini_(constellation)	data/set2/a2	medium	How long does the sun reside in the astrological sign of Gemini?	False	False	30 days.	too hard
 Byteme	7	Gemini_(constellation)	data/set2/a2	easy	How many modern constellations exist today?	False	False	88	medium
