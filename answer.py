@@ -74,7 +74,10 @@ def is_definition(q):
             return True
     return False
 
-def answer_what(q, s):
+def answer_what(q, sents, title):
+    title = title.lower().split(" ")
+    q_vect = doc_parser.sent_to_vect(q.lower())
+    s = ans_ranker.rerank_match(q_vect, sents, mds+title)
     ans = ""
     if not is_definition(q):
         qbody = quest_to_state(q)+"Dog"
@@ -92,7 +95,10 @@ def answer_what(q, s):
 # what_q = "What does Tom study at cmu?"
 # print answer_what(what_q, what_s)
 
-def answer_who(q, s):
+def answer_who(q, sents, title):
+    title = title.lower().split(" ")
+    q_vect = doc_parser.sent_to_vect(q.lower())
+    s = ans_ranker.rerank_match(q_vect, sents, mds+title)
     ans = ""
     qbody = q.replace("Who", "Doug").replace("?", "")
     s = s.lower()
