@@ -14,17 +14,23 @@ from nltk.corpus import wordnet as wn
 def answer_which(q, s):
     return ""
 
-def answer_binary(q, s, title):
-    # print q
-    # print s
+def answer_binary(q, sents, title):
     title = title.lower().split(" ")
     q_vect = doc_parser.sent_to_vect(q.lower())
-    s_vect = doc_parser.sent_to_vect(s.lower())
-    # print q_vect
-    # print s_vect
-    for token, cnt in q_vect.items():
-        if token not in s_vect and (token not in mds) and (token not in title):
-            return "No."
+    mis_matched_num = []
+    for sent in sents:
+        sent = sent[0]
+        s_vect = doc_parser.sent_to_vect(sent.lower())
+        mis_matched = 0
+        for token, cnt in q_vect.items():
+            if token not in s_vect and (token not in mds) and (token not in title):
+                mis_matched += 1
+        mis_matched_num += [mis_matched]
+    best_idx = mis_matched_num.index(min(mis_matched_num))
+
+    sent = sents[best_idx]
+    print sent[0]
+    s_vect = doc_parser.sent_to_vect(sent[0].lower())
     negs = ["not", "no", "never"]
     for neg in negs:
         if neg in s_vect:

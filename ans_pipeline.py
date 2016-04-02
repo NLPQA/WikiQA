@@ -17,7 +17,7 @@ def quest_to_state(q):
        return ' '.join(tokens[3:])
    return ' '. join(tokens[1:])
 
-# wiki_path, question_path = "a8.htm", "a8q.txt"
+wiki_path, question_path = "a6.htm", "a6.txt"
 
 def main(wiki, qpath):
     title, sents = doc_parser.doc_to_sents(wiki_path)
@@ -64,9 +64,10 @@ def main(wiki, qpath):
         elif q_tokens[0] == "How":
             ans = ""
         else:
-            ans = answer.answer_binary(q, best, title)
+            ans = answer.answer_binary(q, ranked_sents[:min(6, len(ranked_sents))], title)
         answers.append(ans)
         #print best
+        print
         for sent in ranked_sents:
             print sent[0]
 
@@ -85,3 +86,5 @@ for i in xrange(1, 9):
 #     sys.stdout.write("A: " + ans + '\n')
 #     sys.stdout.write("----------\n")
 
+# wiki_path, question_path = "test/a6.htm", "test/a6q.txt"
+# main(wiki_path, question_path)
