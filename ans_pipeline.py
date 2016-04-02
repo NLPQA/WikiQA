@@ -66,7 +66,10 @@ def main(wiki, qpath):
         else:
             ans = answer.answer_binary(q, best, title)
         answers.append(ans)
-        print best
+        #print best
+        for sent in ranked_sents:
+            print sent[0]
+
         sys.stdout.write("A: " + (ans.capitalize() if len(ans)>0 else best) + '\n')
         sys.stdout.write("----------\n")
 
