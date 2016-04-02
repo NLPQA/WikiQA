@@ -41,9 +41,9 @@ def main(wiki, qpath):
 
         ans = ""
         if q_tokens[0] == 'What':
-            ans = answer.answer_what(q, best, title)
+            ans = answer.answer_what(q, ranked_sents[:min(6, len(ranked_sents))], title)
         elif q_tokens[0] == 'Who':
-            ans = answer.answer_who(q, best, title)
+            ans = answer.answer_who(q, ranked_sents[:min(6, len(ranked_sents))], title)
         elif q_tokens[0] == 'Why':
             best = ans_ranker.rerank_why(ranked_sents[:6])
             ans = answer.answer_why(q, best)
