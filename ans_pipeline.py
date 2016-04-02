@@ -67,7 +67,6 @@ def main(wiki, qpath):
             ans = answer.answer_binary(q, ranked_sents[:min(6, len(ranked_sents))], title)
         answers.append(ans)
         #print best
-        for sent in ranked_sents[:5]:
         print
         for sent in ranked_sents:
             print sent[0]

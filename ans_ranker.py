@@ -109,3 +109,14 @@ def rank_sents(q_vect, sents, sent_vects, sent_idfs):
             i+=1
     return rank[:size]
 
+def rerank_match(q_vect, sents, stop_words):
+    mis_matched_num = []
+    for sent in sents:
+        s_vect = doc_parser.sent_to_vect(sent[0].lower())
+        mis_matched = 0
+        for token, cnt in q_vect.items():
+            if token not in s_vect and (token not in stop_words):
+                mis_matched += 1
+        mis_matched_num += [mis_matched]
+    best_idx = mis_matched_num.index(min(mis_matched_num))
+    return sents[best_idx][0]
