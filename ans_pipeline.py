@@ -41,9 +41,9 @@ def main(wiki, qpath):
 
         ans = ""
         if q_tokens[0] == 'What':
-            ans = answer.answer_what(q, ranked_sents[:min(6, len(ranked_sents))], title)
+            ans, best = answer.answer_what(q, ranked_sents[:min(6, len(ranked_sents))], title)
         elif q_tokens[0] == 'Who':
-            ans = answer.answer_who(q, ranked_sents[:min(6, len(ranked_sents))], title)
+            ans, best = answer.answer_who(q, ranked_sents[:min(6, len(ranked_sents))], title)
         elif q_tokens[0] == 'Why':
             best = ans_ranker.rerank_why(ranked_sents[:6])
             ans = answer.answer_why(q, best)
@@ -55,16 +55,16 @@ def main(wiki, qpath):
             else:
                 best = ranked_sents[0][0]
         elif q_tokens[0] == 'Where':
-            best = answer.answer_where(q, ranked_sents[:6], title)
+            ans, best = answer.answer_where(q, ranked_sents[:6], title)
         elif q_tokens[0] == 'When':
-            best = answer.answer_when(q, ranked_sents[:min(6, len(ranked_sents))], title)
+            ans, best = answer.answer_when(q, ranked_sents[:min(6, len(ranked_sents))], title)
         elif q_tokens[0] == "Which":
             ans = answer.answer_which(q, best)
 
         elif q_tokens[0] == "How":
             ans = ""
         else:
-            ans = answer.answer_binary(q, ranked_sents[:min(6, len(ranked_sents))], title)
+            ans, best = answer.answer_binary(q, ranked_sents[:min(6, len(ranked_sents))], title)
         answers.append(ans)
         #print best
         print

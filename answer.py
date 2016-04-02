@@ -22,8 +22,8 @@ def answer_binary(q, sents, title):
     negs = ["not", "no", "never"]
     for neg in negs:
         if neg in s_vect:
-            return "No."
-    return "Yes"
+            return "No.", sent
+    return "Yes", sent
 
 def answer_how_many(q, s):
     q_tokens = nltk.tokenize.word_tokenize(q)
@@ -88,7 +88,7 @@ def answer_what(q, sents, title):
     main_vp = vps[0]
     main_vb = get_main_verb(main_vp)
     ans = answer_definitions(main_vp, s, main_vb)
-    return ans
+    return ans, s
 
 # what_s = "Tom studies computer science at CMU."
 # what_q = "What does Tom study at cmu?"
@@ -106,7 +106,7 @@ def answer_who(q, sents, title):
     main_vp = vps[0]
     main_vb = get_main_verb(main_vp)
     ans = answer_definitions(main_vp, s, main_vb)
-    return ans
+    return ans, s
     # tagged_s = tagger.tag(s.split(" "))
     #
     # persons = []
@@ -156,7 +156,7 @@ def answer_when(q, sents, title):
         tagged_pp = tagger.tag(nltk.tokenize.word_tokenize(sent_pp))
         for tup in tagged_pp:
             if tup[1] == "DATE" or tup[1] == "TIME":
-                return sent_pp.strip()+"."
+                return sent_pp.strip()+".", s
     tagged_sent = tagger.tag(nltk.tokenize.word_tokenize(s))
     ans = ""
     for i in xrange(0, len(tagged_sent)):
@@ -166,8 +166,8 @@ def answer_when(q, sents, title):
             while tagged_sent[j][1] == "DATE" or tagged_sent[j][1] == "TIME":
                 ans += tagged_sent[j][0] + " "
                 j += 1
-            return ans.strip()+"."
-    return ""
+            return ans.strip()+".", s
+    return "", s
 #
 # test_s = "Alexandra \"Alex\" Patricia Morgan Carrasco (born July 2, 1989), ne Alexandra Patricia Morgan, is an American soccer player, Olympic gold medalist, and FIFA Women's World Cup champion."
 # test_q = "When was Morgan born?"
@@ -199,8 +199,8 @@ def answer_where(q, sents, title):
         tagged_pp = tagger.tag(nltk.tokenize.word_tokenize(sent_pp))
         for tup in tagged_pp:
             if tup[1] == "LOCATION" or tup[1] == "ORGANIZATION":
-                return sent_pp.strip()+"."
-    return ""
+                return sent_pp.strip()+".", s
+    return "", s
 
 
 # helper functions:
