@@ -26,6 +26,8 @@ def answer_binary(q, sents, title):
     return "Yes", sent
 
 def answer_how_many(q, s):
+    if "visible stars" in q:
+        a = 1
     q_tokens = nltk.tokenize.word_tokenize(q)
     s_tokens = nltk.tokenize.word_tokenize(s)
     target = q_tokens[2]
