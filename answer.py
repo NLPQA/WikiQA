@@ -13,27 +13,22 @@ from nltk.corpus import wordnet as wn
 def answer_which(q, s):
     return ""
 
-def answer_binary(q, sents, title):
-    title = title.lower().split(" ")
-    q_vect = doc_parser.sent_to_vect(q.lower())
-    sent = ans_ranker.rerank_match(q_vect, sents, mds+title)
+def answer_binary(sent):
     s_vect = doc_parser.sent_to_vect(sent.lower())
     negs = ["not", "no", "never"]
     for neg in negs:
         if neg in s_vect:
-            return "No.", sent
-    return "Yes", sent
+            return "No."
+    return "Yes"
 
 def answer_how_many(q, s):
-    if "visible stars" in q:
-        a = 1
     q_tokens = nltk.tokenize.word_tokenize(q)
     s_tokens = nltk.tokenize.word_tokenize(s)
     target = q_tokens[2]
 
     t_index = s_tokens.index(target)
     n_index = t_index-1
-    while n_index >= 0 and (not str.isdigit( s_tokens[n_index])):
+    while n_index >= 0 and (not str.isdigit(s_tokens[n_index])):
         n_index -= 1
 
     return s_tokens[n_index] if n_index>=0 else ""
@@ -120,12 +115,9 @@ def is_definition(q):
             return True
     return False
 
-def answer_what(q, sents, title):
+def answer_what(q, s):
     if "three-letter abbreviation" in q:
         a = 1
-    title_l = title.lower().split(" ")
-    q_vect = doc_parser.sent_to_vect(q.lower())
-    s = ans_ranker.rerank_match(q_vect, sents, mds+title_l)
     ans = ""
 
     if is_definition(q):
@@ -150,16 +142,13 @@ def answer_what(q, sents, title):
     #     main_vp = vps[0]
     #     main_vb = get_main_verb(main_vp)
     #     ans = answer_non_definitions(main_vp, s, main_vb)
-    return ans, s
+    return ans
 
 # what_s = "Tom studies computer science at CMU."
 # what_q = "What does Tom study at cmu?"
 # print answer_what(what_q, what_s)
 
-def answer_who(q, sents, title):
-    title = title.lower().split(" ")
-    q_vect = doc_parser.sent_to_vect(q.lower())
-    s = ans_ranker.rerank_match(q_vect, sents, mds+title)
+def answer_who(q, s):
     ans = ""
     qbody = q.replace("Who", "Doug").replace("?", "")
     s = s.lower()
@@ -168,7 +157,7 @@ def answer_who(q, sents, title):
     main_vp = vps[0]
     main_vb = get_main_verb(main_vp)
     ans = answer_non_definitions(main_vp, s, main_vb)
-    return ans, s
+    return ans
     # tagged_s = tagger.tag(s.split(" "))
     #
     # persons = []
@@ -207,10 +196,7 @@ def answer_why(q, s):
         ans = " ".join(reason_token)
     return ans
 
-def answer_when(q, sents, title):
-    title = title.lower().split(" ")
-    q_vect = doc_parser.sent_to_vect(q.lower())
-    s = ans_ranker.rerank_match(q_vect, sents, mds+title)
+def answer_when(s):
     parsed_s = tree_parser.sent_to_tree(s)
     pps = tree_parser.get_phrases(parsed_s, "PP", False, True)
     for pp in pps:
@@ -218,7 +204,7 @@ def answer_when(q, sents, title):
         tagged_pp = tagger.tag(nltk.tokenize.word_tokenize(sent_pp))
         for tup in tagged_pp:
             if tup[1] == "DATE" or tup[1] == "TIME":
-                return sent_pp.strip()+".", s
+                return sent_pp.strip()+"."
     tagged_sent = tagger.tag(nltk.tokenize.word_tokenize(s))
     ans = ""
     for i in xrange(0, len(tagged_sent)):
@@ -228,8 +214,8 @@ def answer_when(q, sents, title):
             while tagged_sent[j][1] == "DATE" or tagged_sent[j][1] == "TIME":
                 ans += tagged_sent[j][0] + " "
                 j += 1
-            return ans.strip()+".", s
-    return "", s
+            return ans.strip()+"."
+    return ""
 #
 # test_s = "Alexandra \"Alex\" Patricia Morgan Carrasco (born July 2, 1989), ne Alexandra Patricia Morgan, is an American soccer player, Olympic gold medalist, and FIFA Women's World Cup champion."
 # test_q = "When was Morgan born?"
@@ -250,10 +236,7 @@ def answer_when(q, sents, title):
 #     return ans.capitalize()
 
 
-def answer_where(q, sents, title):
-    title = title.lower().split(" ")
-    q_vect = doc_parser.sent_to_vect(q.lower())
-    s = ans_ranker.rerank_match(q_vect, sents, mds+title)
+def answer_where(s):
     parsed_s = tree_parser.sent_to_tree(s)
     pps = tree_parser.get_phrases(parsed_s, "PP", False, True)
     for pp in pps:
@@ -261,8 +244,8 @@ def answer_where(q, sents, title):
         tagged_pp = tagger.tag(nltk.tokenize.word_tokenize(sent_pp))
         for tup in tagged_pp:
             if tup[1] == "LOCATION" or tup[1] == "ORGANIZATION":
-                return sent_pp.strip()+".", s
-    return "", s
+                return sent_pp.strip()+"."
+    return ""
 
 
 # helper functions:
