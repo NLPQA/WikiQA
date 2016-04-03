@@ -1,8 +1,7 @@
 __author__ = 'laceyliu'
 import doc_parser
-import stanford_utils
+import stanfor_utils
 import tree_parser
-import stanford_utils
 from nltk import Tree
 import ans_ranker
 import nltk
@@ -76,6 +75,8 @@ def is_definition(q):
     return False
 
 def answer_what(q, sents, title):
+    if "three-letter abbreviation" in q:
+        a = 1
     title = title.lower().split(" ")
     q_vect = doc_parser.sent_to_vect(q.lower())
     s = ans_ranker.rerank_match(q_vect, sents, mds+title)
