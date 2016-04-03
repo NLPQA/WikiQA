@@ -17,7 +17,7 @@ def sent_to_tree(sentence):
     subs = []
     for sub in tree:
         subs.append(sub)
-    return Tree(tree, sub)
+    return Tree(tree.label(), sub)
 
 def tree_to_sent(tree):
     if tree == None:
@@ -26,8 +26,13 @@ def tree_to_sent(tree):
 
 def get_phrases(tree, pattern, reversed, sort):
     phrases = []
+    label = tree.label()
+    if tree.label() == pattern:
+        phrases.append(tree)
     for t in tree.subtrees():
         if t.label() == pattern:
+            phrases.append(t)
+        if pattern == "NP" and t.label() == "NNP":
             phrases.append(t)
     if sort == True:
         phrases = sorted(phrases, key=lambda x:len(x.leaves()), reverse=reversed)

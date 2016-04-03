@@ -1,6 +1,6 @@
 __author__ = 'laceyliu'
 import doc_parser
-import stanfor_utils
+import stanford_utils
 import tree_parser
 from nltk import Tree
 import ans_ranker
@@ -38,19 +38,65 @@ def answer_how_many(q, s):
     # num = filter(str.isdigit, s)
     # return num if len(num) > 0 else "0"
 
-def answer_definitions(main_vp, s, verb):
-    nps = tree_parser.get_phrases(main_vp, "NP", True, True)
+def answer_non_definitions(main_vp, s, verb):
+    nps = tree_parser.get_phrases(main_vp, "NP", False, False)
     if len(nps)>0:
         candidates = s.split(" "+verb)
         if tree_parser.tree_to_sent(nps[0]) in candidates[0]:
             ans_tree = tree_parser.sent_to_tree(candidates[1])
         else:
             ans_tree = tree_parser.sent_to_tree(candidates[0])
-        s_nps = tree_parser.get_phrases(ans_tree, "NP", True, True)
+        s_nps = tree_parser.get_phrases(ans_tree, "NP", False, False)
         if len(s_nps) > 0:
             return tree_parser.tree_to_sent(s_nps[0])
         else:
             return ""
+
+def is_overlap(s1, s2):
+    t1 = s1.split(" ")
+    t2 = s2.split(" ")
+    if len(t2) < len(t1):
+        return False
+
+    overlap = 0
+    for t in t1:
+        if t in t2:
+            overlap += 1
+    return overlap >= len(t1)-2
+
+def answer_definitions(s, main_nps):
+    if len(main_nps) == 0:
+        return ""
+    main_np = tree_parser.tree_to_sent(main_nps[0])
+    parsed_s = tree_parser.sent_to_tree(s)
+    vps = tree_parser.get_phrases(parsed_s, "VP", True, True)
+    if len(vps) > 0:
+        main_vp = vps[0]
+    else:
+        return ""
+
+    verb = get_main_verb(main_vp)
+
+    candidates = s.split(" "+verb)
+
+    if len(candidates) > 1:
+        # if main_np in candidates[1]:
+        if is_overlap(main_np, candidates[1]):
+            ans_tree = tree_parser.sent_to_tree(candidates[0])
+            s_nps = tree_parser.get_phrases(ans_tree, "NP", True, False)
+            if len(s_nps) > 0:
+                return tree_parser.tree_to_sent(s_nps[0])
+            else:
+                return candidates[0]
+        else:
+            ans_tree = tree_parser.sent_to_tree(candidates[1])
+            s_nps = tree_parser.get_phrases(ans_tree, "NP", True, False)
+            if len(s_nps) > 0:
+                return tree_parser.tree_to_sent(s_nps[0])
+            else:
+                return candidates[1]
+    else:
+        return ""
 
 def get_main_verb(vp):
     leaves = vp.leaves()
@@ -66,7 +112,7 @@ def quest_to_state(q):
    return ' '. join(tokens[1:])
 
 def is_definition(q):
-    bes = ["is", "are", "am", "were", "was"]
+    bes = [" is", " are", " am", " were", " was"]
     for be in bes:
         if be in q:
             return True
@@ -75,20 +121,33 @@ def is_definition(q):
 def answer_what(q, sents, title):
     if "three-letter abbreviation" in q:
         a = 1
-    title = title.lower().split(" ")
+    title_l = title.lower().split(" ")
     q_vect = doc_parser.sent_to_vect(q.lower())
-    s = ans_ranker.rerank_match(q_vect, sents, mds+title)
+    s = ans_ranker.rerank_match(q_vect, sents, mds+title_l)
     ans = ""
-    if not is_definition(q):
-        qbody = quest_to_state(q)+"Dog"
+
+    if is_definition(q):
+        qbody = quest_to_state(q)+" is dog"
     else:
         qbody = q.replace("What", "Dog").replace("?", "")
     s = s.lower()
     parsed_q = tree_parser.sent_to_tree(qbody)
-    vps = tree_parser.get_phrases(parsed_q, "VP",True, True)
-    main_vp = vps[0]
-    main_vb = get_main_verb(main_vp)
-    ans = answer_definitions(main_vp, s, main_vb)
+    main_nps = tree_parser.get_phrases(parsed_q, "NP", True, True)
+    ans = answer_definitions(s, main_nps)
+    # if is_definition(q):
+    #     qbody = quest_to_state(q)+" is dog"
+    #     s = s.lower()
+    #     parsed_q = tree_parser.sent_to_tree(qbody)
+    #     main_nps = tree_parser.get_phrases(parsed_q, "NP", True, True)
+    #     ans = answer_definitions(s, main_nps)
+    # else:
+    #     qbody = q.replace("What", "Dog").replace("?", "")
+    #     s = s.lower()
+    #     parsed_q = tree_parser.sent_to_tree(qbody)
+    #     vps = tree_parser.get_phrases(parsed_q, "VP",True, True)
+    #     main_vp = vps[0]
+    #     main_vb = get_main_verb(main_vp)
+    #     ans = answer_non_definitions(main_vp, s, main_vb)
     return ans, s
 
 # what_s = "Tom studies computer science at CMU."
@@ -106,7 +165,7 @@ def answer_who(q, sents, title):
     vps = tree_parser.get_phrases(parsed_q, "VP",True, True)
     main_vp = vps[0]
     main_vb = get_main_verb(main_vp)
-    ans = answer_definitions(main_vp, s, main_vb)
+    ans = answer_non_definitions(main_vp, s, main_vb)
     return ans, s
     # tagged_s = tagger.tag(s.split(" "))
     #
