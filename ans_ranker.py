@@ -36,6 +36,9 @@ def rerank_num(sents, keyword):
         num = filter(str.isdigit, sent[0])
         if len(num) > 0 and keyword in sent[0]:
             return sent[0]
+    for sent in sents:
+        if keyword in sent[0]:
+            return sent[0]
     return ""
 
 def get_tfidf(q_vect, s_vect, idfs):
