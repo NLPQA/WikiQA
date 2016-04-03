@@ -35,7 +35,7 @@ def main(wiki, qpath):
         ranked_sents = ans_ranker.rank_sents(q_vect, sents, sent_vects, sent_idfs)
         best = ranked_sents[0][0]
         title_tokens = title.lower().split(" ")
-        reranked_best = ans_ranker.rerank_match(q_vect, ranked_sents[:6], mds+title_tokens)
+        reranked_best, miss = ans_ranker.rerank_match(q_vect, ranked_sents[:6], mds+title_tokens)
         q_tokens = tokenize.word_tokenize(q)
         sys.stdout.write("Q: " + (q.capitalize() +'\n'))
         for sent in ranked_sents[:6]:
@@ -67,7 +67,7 @@ def main(wiki, qpath):
         elif q_tokens[0] == "How":
             ans = ""
         else:
-            ans = answer.answer_binary(reranked_best)
+            ans = answer.answer_binary(reranked_best, miss)
             best = reranked_best
         answers.append(ans.capitalize() if ans != None and len(ans)>0 else best)
         #print best
@@ -85,12 +85,12 @@ def main(wiki, qpath):
 
 
 
-for i in xrange(1, 9):
-    if i == 4:
+for i in xrange(1, 10):
+    if i == 5 or i == 6:
         continue
     print i
 
-    wiki_path, question_path = "test/a"+str(i)+".htm", "test/a"+str(i)+"q.txt"
+    wiki_path, question_path = "test_sw/a"+str(i)+".htm", "test_sw/a"+str(i)+"q.txt"
     main(wiki_path, question_path)
 # for quest, ans in zip(quests, answers):
 #     sys.stdout.write("Q: " + quest + '\n')

@@ -2,8 +2,8 @@ __author__ = 'laceyliu'
 # team_id	qns_id	article_title	path	qns_difficulty_by_questioner	qns_text	is_disfluent?	is_bad_qns?	answer	qns_difficulty_by_answerer
 import sys, collections
 
-gold_path = "./data/view_team_qnsans.php"
-data_path = "./data/"
+gold_path = "./data_sw/view_team_qnsans.php"
+data_path = "./data_sw/"
 
 
 def buildMap():
@@ -76,13 +76,20 @@ def findPath(title):
 
 buildMap()
 
-qs = retrieveQues("Gemini_(constellation)")
-
-for q in qs:
-    print q
-    findAns("Gemini_(constellation)", q)
-
-# findAns("Slumdog_Millionaire", "Did the film gross $12 million in Japan?")
-print findPath("Gemini_(constellation)")
+titles = ["Slumdog_Millionaire",
+          "Taurus_(constellation)",
+          "Lionel_Messi",
+          "My_Fair_Lady_(film)",
+          "Gemini_(constellation)",
+          "Harry_Potter_and_the_Prisoner_of_Azkaban",
+          "Taurus_(constellation)",
+          "Cristiano_Ronaldo"
+          ]
+for t in titles:
+    qs = retrieveQues(t)
+    for q in qs:
+        print q
+        findAns(t, q)
+    print findPath(t)
 
 

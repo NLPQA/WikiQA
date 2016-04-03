@@ -124,4 +124,4 @@ def rerank_match(q_vect, sents, stop_words):
         mis_matched_num += [mis_matched]
     print q_vect, mis_matched_num
     best_idx = mis_matched_num.index(min(mis_matched_num))
-    return sents[best_idx][0]
+    return sents[best_idx][0], min(mis_matched_num)

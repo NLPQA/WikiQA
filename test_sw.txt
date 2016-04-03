@@ -1,0 +1,558 @@
+1
+{'filming': 1, 'in': 1, 'any': 1, 'do': 1} [2, 2, 2, 2, 2]
+Q: Was any filming done in london?
+Some parts were also filmed in and around Borough Market and Lambeth Bridge in London.
+Also in the book, there is no shrunken head in the Knight bus, while in the film, a rude shrunken head talks through most of the Knight bus scene.
+It was the first film in the series to be released in both conventional and IMAX theatres.
+The film then opened in the United Kingdom on 31 May 2004 and on 4 June 2004 in the United States.
+The video game version, designed by EA UK, was released 25 May 2004 in North America and 29 May 2004 in Europe.
+A: No.
+----------
+{'all': 1, 'series': 1, 'make': 1, 'in': 1, 'film': 1, 'more': 1} [2, 3, 3, 3, 3]
+Q: Did the film make more than all the others in the series?
+The embryonic romantic connection between Ron and Hermione is more prominent in the film than the book; in response to criticism of the first two films for sacrificing character development for mystery and adventure, the emotional development of all three lead characters is given more attention in the third film.
+It was the first film in the series to be released in both conventional and IMAX theatres.
+Mick LaSalle of the San Francisco Chronicle lauded the film's more mature tone and said it was "darker, more complex, rooted in character.
+This was the second film in the series to be nominated for an Oscar.
+Some of the criticism came from The Washington Post: "Put delicately, this is one long sit, made all the more so by a turgid story, a dour visual palette and uninspiring action."
+A: No.
+----------
+{'summer': 1} [0, 1, 1, 1, 1]
+Q: Where was harry during the summer?
+Now 13 years old, Harry Potter has been spending the summer at Privet Drive, absorbing most of his time studying new spells.
+"Chris Columbus, the director of the previous two films, decided not to return and helm the third instalment as he "hadn't seen [his] own kids for supper in the week for about two and a half years."
+"Marc Forster turned down the film because he had made Finding Neverland and did not want to direct child actors again.
+"Roger Ebert gave the film three-and-a-half out of four stars, saying that the film was not quite as good as the first two, but still called it "delightful, amusing and sophisticated" Claudia Puig from USA Today found the film to be "a visual delight," and added that "Cuaron is not afraid to make a darker film and tackle painful emotions."
+"The Hollywood Reporter called the film "a deeper, darker, visually arresting and more emotionally satisfying adaptation of the J.K. Rowling literary phenomenon," especially compared to the first two instalments.Peter Travers of Rolling Stone gave the film three-and-a-half out of four stars: "Not only is this dazzler by far the best and most thrilling of the three Harry Potter movies to date, it's a film that can stand on its own even if you never heard of author J.K. Rowling and her young wizard hero."
+A: At privet drive.
+----------
+{'a': 1, 'figure': 1, 'mother': 1} [1, 2, 2, 2, 2]
+Q: Who is a mother figure to harry?
+As Dementors are preparing to suck out their souls and perform the Dementor's Kiss, Harry sees a distant figure cast a powerful stag-shaped Patronus that scatters the Dementors, and sends them away.
+Harry believes the mysterious figure is his dead father.
+After a class of Divination, Professor Trelawney enters a trance and predicts that the Dark Lord's servant will return that night.
+Scabbers suddenly bites Ron, escaping, and as the trio chase him a large dog appears and drags both Ron and Scabbers into a hole at the Whomping Willow's base.
+She allowed him to place a sundial on Hogwarts' grounds, but rejected a graveyard, as that would play an important part in the then unreleased sixth book.
+A: Dementors
+----------
+{'nominate': 1, 'film': 1, 'wa': 1} [0, 0, 1, 1, 1]
+Q: Which academy awards was the film nominated for?
+The film was nominated for two Academy AwardsOriginal Music Score and Visual Effectsat the 77th Academy Awards in 2005.
+This was the second film in the series to be nominated for an Oscar.
+The Hogwarts Lake was filmed from Loch Shiel, Loch Eilt and Loch Morar in the Scottish Highlands.
+Harry Potter and the Prisoner of Azkaban was nominated for Best Original Music Score (John Williams) and Best Visual Effects at the 77th Academy Awards held in 2005.
+With Prisoner of Azkaban, production of the Harry Potter films switched to an eighteen-month cycle, which producer David Heyman explained was "to give each [film] the time it required.
+A: The film was nominated for two Academy AwardsOriginal Music Score and Visual Effectsat the 77th Academy Awards in 2005.
+----------
+{'convict': 1, 'wa': 1, 'crime': 1} [0, 2, 2, 2, 2]
+Q: Who committed the crime for which black was convicted?
+Lupin and Black explain that Scabbers is actually Peter Pettigrew, an Animagus who committed the crime for which Black was convicted.
+After reuniting with Ron, and Hermione, Harry learns that Sirius Black, a convicted supporter of Lord Voldemort, has escaped Azkaban prison and is likely intending to kill Harry.
+That was the most important piece of acting work that we did on Prisoner of Azkaban, because it was very clear that everything they put in those essays was going to be the pillars they were going to hold on to for the rest of the process."
+Incidentally, the train bridge, which was also featured in the Chamber of Secrets, is opposite Loch Shiel and was used to film the sequences when the Dementor boarded the train.
+The Hogwarts Lake was filmed from Loch Shiel, Loch Eilt and Loch Morar in the Scottish Highlands.
+A: Scabbers
+----------
+{'on': 1, 'head': 1, 'back': 1, 'school': 1} [0, 3, 3, 3, 3]
+Q: Did harry head back to school on the underground?
+Harry, Ron and Hermione head back to school on the Hogwarts Express.
+It was released on CD on 25 May 2004.
+The film then opened in the United Kingdom on 31 May 2004 and on 4 June 2004 in the United States.
+Also in the book, there is no shrunken head in the Knight bus, while in the film, a rude shrunken head talks through most of the Knight bus scene.
+Harry Potter and the Prisoner of Azkaban held its New York premiere at Radio City Music Hall on 23 May 2004, followed by its London premiere at Leicester Square on 30 May 2004.
+A: Yes
+----------
+{'use': 1, 'bullet': 1, 'technique': 1, 'as': 1, 'know': 1, 'time': 1, 'segment': 1} [0]
+Q: Does the knight bus segment use the technique known as bullet time?
+The Knight Bus segment when Harry is being taken to The Leaky Cauldron uses the technique known as bullet time, popularised in The Matrix series of films.
+A: Yes
+----------
+2
+{'fast': 1, 'meteor': 1} [1, 1, 1, 2, 2]
+Q: Are epsilon geminid meteors faster than orionids?
+It has a maximum rate of approximately 100 meteors per hour, making it one of the richest meteor showers.
+Epsilon Geminid meteors have a higher velocity than Orionids.
+The Geminids are a prominent, bright meteor shower that peaks on December 1314.
+350 light-years away, it has a period of 500 years and is only divisible in large amateur telescopes.
+38 Geminorum is a binary star divisible in small amateur telescopes, 91 light-years from Earth.
+A: Yes
+----------
+{'main': 1, 'star': 1, 'two': 1} [0, 1, 1, 1, 2]
+Q: What are the two main stars of gemini?
+Furthermore, the other stars can be visualized as two parallel lines descending from the two main stars, making it look like two figures.
+The easiest way to locate the constellation is to find its two brightest stars Castor and Pollux eastward from the familiar V shaped asterism of Taurus and the three stars of Orions belt.
+Gemini is dominated by Castor and Pollux, two bright stars that appear relatively close together, encouraging the mythological link between the constellation and twinship.
+In Chinese astronomy, the stars that correspond to Gemini are located in two areas: the White Tiger of the West (, X Fng Bi H) and the Vermillion Bird of the South (, Nn Fng Zh Qu).
+There are several other bright stars, including multiple stars, in Gemini.
+A: Two parallel lines descending from the two main stars , making it look like two figures
+----------
+{'a': 1, 'bright': 1, 'star': 1} [0, 1, 1, 1, 1]
+Q: Is gamma geminorum a bright star?
+Another way is to mentally draw a line from the Pleiades star cluster located in Taurus and the brightest star in Leo, Regulus.
+Castor is a sextuple star system 52 light-years from Earth, which appears as a magnitude 1.6 blue-white star to the unaided eye.
+Eta Geminorum is a binary star with a variable component.
+The primary is a white star of magnitude 4.8 and the secondary is a yellow star of magnitude 7.8.
+There are several other bright stars, including multiple stars, in Gemini.
+A: Yes
+----------
+{'planet': 1, 'revolve': 1, 'around': 1} [0, 3, 3, 3, 3]
+Q: What kind of planet revolves around pollux?
+Pollux has an extrasolar planet revolving around it, as do two other stars in Gemini, HD 50554, and HD 59686.
+350 light-years away, it has a period of 500 years and is only divisible in large amateur telescopes.
+38 Geminorum is a binary star divisible in small amateur telescopes, 91 light-years from Earth.
+A study published in 1990 suggests the star involved was 1 Geminorum and the event took place on 5 December 337 BC.
+A wide-set red dwarf star is also a part of the system; this star is an Algol-type eclipsing binary star with a period of 19.5 hours; its minimum magnitude is 9.8 and its maximum magnitude is 9.3.
+A: An extrasolar planet
+----------
+{'there': 1, 'constellation': 1, 'are': 1, 'today': 1} [2, 2, 3, 2, 3]
+Q: How many modern constellations are there today?
+It was one of the 48 constellations described by the 2nd century AD astronomer Ptolemy and it remains one of the 87 modern constellations today.
+To look at Gemini is to look away from the Milky Way; as a result, there are comparatively few deep-sky objects of note.
+Other objects of note are NGC 2129, NGC 2158, NGC 2266, NGC 2331, NGC 2355, and NGC 2395.
+In doing so, you are drawing an imaginary line that is relatively close to the ecliptic, a line which intersects Gemini roughly at the midpoint of the constellation, just below Castor and Pollux.
+Gemini is one of the constellations of the zodiac.
+A: 87
+----------
+{'be': 1, 'describe': 1, 'by': 1} [1, 1, 1, 1, 1]
+Q: How many constellations were described by ptolemy?
+It was one of the 48 constellations described by the 2nd century AD astronomer Ptolemy and it remains one of the 87 modern constellations today.
+Pollux's pelvis is represented by the star  Geminorum, Pollux's right knee by  Geminorum, Pollux's right foot by  Geminorum, Pollux's left knee by  Geminorum, and Pollux's left foot by  Geminorum.
+Castor's pelvis is represented by the star  Geminorum, Castor's left foot by  Geminorum, and Castor's right foot by  Geminorum and  Geminorum; , , and  Geminorum are of the third magnitude.
+Pollux's torso is represented by the star  Geminorum, Pollux's right hand by  Geminorum, Pollux's left hand by  Geminorum; all three of these stars are of the fourth magnitude.
+Castor's torso is represented by the star  Geminorum, Castor's left hand by  Geminorum (which he shares with Pollux), Castor's right hand by  Geminorum; all three of these stars are of the fourth magnitude.
+A: 48
+----------
+{'mean': 1, 'twins': 1, 'in': 1} [1, 2, 2, 2, 2]
+Q: Does gemini in latin mean "twins"?
+Its name is Latin for "twins," and it is associated with the twins Castor and Pollux in Greek mythology.
+In Meteorologica (1 343b30) Aristotle mentions that he observed Jupiter in conjunction with and then occulting a star in Gemini.
+The two are only divisible in larger amateur instruments because of the discrepancy in brightness.
+Another way is to mentally draw a line from the Pleiades star cluster located in Taurus and the brightest star in Leo, Regulus.
+Rey has suggested an alternative to the traditional visualization that connected the stars of Gemini to show twins holding hands.
+A: Yes
+----------
+{'bright': 1, 'star': 1, 'in': 1} [0, 0, 0, 0, 0]
+Q: Are castor and pollux the brightest stars in gemini?
+The brightest stars in Gemini are Castor and Pollux.
+Another way is to mentally draw a line from the Pleiades star cluster located in Taurus and the brightest star in Leo, Regulus.
+The brightest star in this constellation is Pollux.
+There are several other bright stars, including multiple stars, in Gemini.
+Beta Geminorum, named for Pollux, is, despite its designation, the brightest star in Gemini.
+A: Yes
+----------
+{'west': 1} [0, 0, 0, 1, 1]
+Q: Is taurus to the west of gemini?
+By April and May, the constellation will be visible soon after sunset in the west.
+Gemini lies between Taurus to the west and Cancer to the east, with Auriga and Lynx to the north and Monoceros and Canis Minor to the south.
+By April and May, the constellation will be visible soon after sunset in the west.
+350 light-years away, it has a period of 500 years and is only divisible in large amateur telescopes.
+38 Geminorum is a binary star divisible in small amateur telescopes, 91 light-years from Earth.
+A: Yes
+----------
+3
+{'all': 1, 'critic': 1, 'film': 2, 'like': 1} [2, 3, 3, 3, 3]
+Q: Did all the film critics like the film?
+Some film critics have responded positively to the film.
+Worldwide, the film has currently grossed over $377million, becoming Fox Searchlight Pictures's highest-grossing film ever (surpassing Juno).
+Following its success at the 81st Academy Awards, the film's takings increased by 43%, the most for any film since Titanic.
+In Japan, the film grossed $12million, the most the film has grossed in any Asian country.
+Adoor Gopalakrishnan, arguably the most acclaimed film maker in India, a five time Best Director award winner of the Indian National Film Awards- the highest film awards in India- lambasted Slumdog Millionaire, calling it in an interview to NDTV: "A very anti-Indian film.
+A: No.
+----------
+{'telling': 1, 'be': 1, 'inspector': 1, 'think': 1, 'truth': 1} [2]
+Q: Does the inspector think jamal is telling the truth?
+Back in the interrogation room, the police inspector (Irrfan Khan) calls Jamal's explanation "bizarrely plausible", but thinks he is not a liar and allows him to return to the show.
+A: No.
+----------
+{'protagonist': 1, 'raise': 1, 'wealth': 1} [2, 2, 3, 2, 3]
+Q: Was the protagonist raised among wealth?
+Sengupta (2009 and 2010) raises substantial doubts about both the realism of the film's portrayal of urban poverty in India and whether the film will assist those arguing for the poor.
+At Jamal's insistence, they return to Mumbai to find Latika, discovering from one of the singing beggars that she has been raised by Maman to become a prostitute and that her virginity is expected to fetch a high price.
+"Anthony Lane of the New Yorker stated, "There is a mismatch here.
+Sengupta (2009 and 2010) raises substantial doubts about both the realism of the film's portrayal of urban poverty in India and whether the film will assist those arguing for the poor.
+"Anthony Lane of the New Yorker stated, "There is a mismatch here.
+A: No.
+----------
+{'novel': 1} [0, 0, 0, 0, 0]
+Q: Who wrote the novel q & a?
+In addition to Swarup's original novel Q & A, the film was also inspired by Indian cinema.
+It is an adaptation of the novel Q & A (2005) by Indian author and diplomat Vikas Swarup.
+Screenwriter Simon Beaufoy wrote Slumdog Millionaire based on the Boeke Prize-winning and Commonwealth Writers' Prize-nominated novel Q & A by Vikas Swarup.
+It is an adaptation of the novel Q & A (2005) by Indian author and diplomat Vikas Swarup.
+In addition to Swarup's original novel Q & A, the film was also inspired by Indian cinema.
+A: Addition to swarup 's original novel q & a
+----------
+{'release': 1} [0, 0, 0, 0, 0]
+Q: Who produced the australian 2008 release of slumdog millionaire?
+Fox Searchlight released 351 prints of the film across India for its full release there on 23January 2009.
+The Australian 2008 release of Slumdog Millionaire was produced by Icon Film Distribution.
+The soundtrack was released on M.I.A.
+Though not as successful as major Bollywood releases in India during its first week, this was the highest weekend gross for any Fox film and the third highest for any Western release in the country, trailing only Spider-Man 3 and Casino Royale.
+The film also screened at the Toronto International Film Festival on 7September 2008, where it was "the first widely acknowledged popular success" of the festival, winning the People's Choice Award.Slumdog Millionaire debuted with a limited North American release on 12 November 2008, followed by a nationwide release in the United States on 23January 2009.
+A: Fox searchlight
+----------
+{'a': 1, 'job': 1, 'get': 1} [0, 1, 1, 1, 1]
+Q: Who does salim get a job with?
+Salim then manages to get a job with Javed (Mahesh Manjrekar), Maman's rival crime lord.
+How else could Boyle get away with assembling his cast for a Bollywood dance number, at a railroad station, over the closing credits?
+We got a boy from Chembur, Pradeep Motwani to dub for the male lead Dev Patel.
+The song "O... Saya" got a nomination shared with M.I.A., and the song "Jai Ho" won the Oscar, which Rahman shared with lyricist Gulzar.
+We got a boy from Chembur, Pradeep Motwani to dub for the male lead Dev Patel.
+A: Salim
+----------
+{'win': 1, 'eight': 1, 'it': 1, 'award': 1} [1, 1, 2, 0, 2]
+Q: Did it win eight bafta awards?
+In the week ending 1March 2009, following its success at the 81st Academy Awards where it won eight Oscars, the film returned to No.
+On 22February 2009, the film won eight out of ten Academy Awards for which it was nominated, including the Best Picture and Best Director.
+Ann Hornaday of The Washington Post argues that, "this modern-day "rags-to-rajah" fable won the audience award at the Toronto International Film Festival earlier this year, and it's easy to see why.
+It is the eighth film ever to win eight Academy Awards and the eleventh Best Picture Oscar winner without a single acting nomination.
+Adoor Gopalakrishnan, arguably the most acclaimed film maker in India, a five time Best Director award winner of the Indian National Film Awards- the highest film awards in India- lambasted Slumdog Millionaire, calling it in an interview to NDTV: "A very anti-Indian film.
+A: Yes
+----------
+{'gross': 1, '12': 1, 'in': 1, 'film': 1, 'million': 1} [2, 2, 2, 2, 3]
+Q: Did the film gross $12 million in japan?
+In Japan, the film grossed $12million, the most the film has grossed in any Asian country.
+The film grossed 6.1million in its first eleven days of release in the UK.
+During the same week, the film debuted in other European countries with successful openings: in Croatia it grossed $170,419 from 10screens, making it the biggest opening there in the last four months; and in Poland it opened in second place with a gross of $715,677.
+In the People's Republic of China, the film grossed $2.2million in its opening weekend (2729 March).
+Adoor Gopalakrishnan, arguably the most acclaimed film maker in India, a five time Best Director award winner of the Indian National Film Awards- the highest film awards in India- lambasted Slumdog Millionaire, calling it in an interview to NDTV: "A very anti-Indian film.
+A: No.
+----------
+{'on': 1, 'stir': 1, 'one': 1, 'only': 1, 'controversy': 1, 'issue': 1} [2]
+Q: Did slumdog millionaire stir controversy on only one issue?
+Slumdog Millionaire has stirred controversy on a few issues including the welfare and illegal housing of its child actors and its portrayals of Indians and Hinduism.
+A: No.
+----------
+4
+{'become': 1, 'angry': 1, 'at': 1} [2, 1, 2, 2, 2]
+Q: Why did higgins became angry at eliza?
+During a testy exchange, Higgins becomes incensed when Eliza announces that she is going to marry Freddy and become Karpathy's assistant.
+Accompanied by Freddy Eynsford-Hill (Jeremy Brett), a young man she met at Ascot and who has strongly become romantically infatuated and charmed by her, Eliza returns to her old stomping ground at Covent Garden, but finds that she no longer fits in as she a polite lady now.
+Eventually, Eliza ends up visiting Higgins' mother, who is incensed at her son's behavior.
+In the stage play, the intermission comes after the scene at the Embassy Ball where Eliza is seen dancing with Karpathy.
+Bluth and Goldman chose to make the animated film Anastasia, which became the highest-grossing non-Disney animated film, in 1997.
+A: .
+----------
+{'as': 1, 'certify': 1, 'ever': 1} [2, 2, 2, 2, 2]
+Q: Was eliza ever certified as hungarian royalty?
+After a brief conversation with Eliza, he certifies that she is not only Hungarian, but of royal blood.
+As of March 2010, it was reported that Carey Mulligan has replaced Keira Knightley as the role of Eliza Doolittle.
+Less well known is the dubbing of Jeremy Brett's songs (as Freddy) by Bill Shirley.
+In the film, the intermission comes before the ball, as Eliza, Higgins and Pickering are seen departing for the embassy.
+After a brief conversation with Eliza, he certifies that she is not only Hungarian, but of royal blood.
+A: No.
+----------
+{'do': 1, 'win': 1, 'movie': 1} [1, 2, 2, 2, 2]
+Q: How many academy awards did this movie win?
+As a test, Higgins takes her to Ascot Racecourse, where she makes a good impression with her stilted, but genteel manners, only to shock everyone by a sudden and vulgar lapse into Cockney while encouraging a horse to win a race: "C'mon Dover, move your bloomin' arse!"
+Rex Harrison declined to pre-record his musical numbers for the film, explaining that he had never talked his way through the songs the same way twice and thus couldn't convincingly lip-sync to a playback during filming (as musical stars had, according to Jack Warner, been doing for years.
+"We even dubbed Rin-Tin-Tin").
+(Source: "On the Street where I Live" by Alan Jay Lerner, published in 1978.)
+A VHS release by Paramount Pictures in 2001 is currently out of print.
+A: As a test, Higgins takes her to Ascot Racecourse, where she makes a good impression with her stilted, but genteel manners, only to shock everyone by a sudden and vulgar lapse into Cockney while encouraging a horse to win a race: "C'mon Dover, move your bloomin' arse!"
+----------
+{'release': 1, 'movie': 1, 'wa': 1} [1, 1, 1, 1, 1]
+Q: Which year was the movie released?
+In June 2008, it was reported that a remake of My Fair Lady was being planned, starring Colin Firth and Keira Knightley as Eliza Doolittle, for release in 2010.
+The first home video release was by MGM/CBS Home Video in 1981, and was re-released by CBS/Fox Video in 1984, 1986, 1991, 1994, and 1996.
+The Blu-ray version was released by Paramount Pictures on November 15, 2011.
+Some of Hepburn's original vocal performances for the film were released in the 1990s, affording audiences an opportunity to judge whether the dubbing was necessary.
+The Blu-ray version was released by Paramount Pictures on November 15, 2011.
+A: In June 2008, it was reported that a remake of My Fair Lady was being planned, starring Colin Firth and Keira Knightley as Eliza Doolittle, for release in 2010.
+----------
+{} [0, 0, 0, 0, 0]
+Q: Who plays professor henry higgins?
+"We even dubbed Rin-Tin-Tin").
+(Source: "On the Street where I Live" by Alan Jay Lerner, published in 1978.)
+A VHS release by Paramount Pictures in 2001 is currently out of print.
+Accompanied by Freddy Eynsford-Hill (Jeremy Brett), a young man she met at Ascot and who has strongly become romantically infatuated and charmed by her, Eliza returns to her old stomping ground at Covent Garden, but finds that she no longer fits in as she a polite lady now.
+After a brief conversation with Eliza, he certifies that she is not only Hungarian, but of royal blood.
+A: We
+----------
+{'instrumental': 1} [0, 1, 1, 1, 1]
+Q: Is the "busker sequence" instrumental?
+The instrumental "Busker Sequence", which opens the play immediately after the Overture, is the only musical number from the play omitted in the film version.
+"We even dubbed Rin-Tin-Tin").
+(Source: "On the Street where I Live" by Alan Jay Lerner, published in 1978.)
+A VHS release by Paramount Pictures in 2001 is currently out of print.
+Accompanied by Freddy Eynsford-Hill (Jeremy Brett), a young man she met at Ascot and who has strongly become romantically infatuated and charmed by her, Eliza returns to her old stomping ground at Covent Garden, but finds that she no longer fits in as she a polite lady now.
+A: Yes
+----------
+{'win': 1, 'movie': 1, 'an': 1} [2, 2, 2, 2, 2]
+Q: Did cecil beaton win an oscar for this movie?
+As a test, Higgins takes her to Ascot Racecourse, where she makes a good impression with her stilted, but genteel manners, only to shock everyone by a sudden and vulgar lapse into Cockney while encouraging a horse to win a race: "C'mon Dover, move your bloomin' arse!"
+He boasts to a new acquaintance, Colonel Hugh Pickering (Wilfrid Hyde-White), himself an expert in phonetics, that he could teach any woman to speak so "properly" that he could pass her off as a duchess at an embassy ball, citing, as an example, a young flower seller from the slums, Eliza Doolittle (Audrey Hepburn), who has a strong Cockney accent.
+The sound department earned an Academy Award for its efforts.
+The art direction was by Cecil Beaton, who won an Oscar.
+Eliza poses as a mysterious lady at an embassy ball and even dances with a foreign prince.
+A: No.
+----------
+{'movie': 1, 'direct': 1} [1, 2, 2, 2, 2]
+Q: Did george cukor direct the movie?
+However, Cukor insisted that the omitted lyrics be restored for the film version or he would not direct at all, causing Harrison to oblige.
+"We even dubbed Rin-Tin-Tin").
+(Source: "On the Street where I Live" by Alan Jay Lerner, published in 1978.)
+A VHS release by Paramount Pictures in 2001 is currently out of print.
+Accompanied by Freddy Eynsford-Hill (Jeremy Brett), a young man she met at Ascot and who has strongly become romantically infatuated and charmed by her, Eliza returns to her old stomping ground at Covent Garden, but finds that she no longer fits in as she a polite lady now.
+A: No.
+----------
+7
+{'nickname': 1, 'earn': 1, 'ha': 1, 'some': 1} [3, 3, 3, 3, 3]
+Q: What are some nicknames that messi has earned?
+On 10 March, El Clsico saw Messi in top form, scoring a hat-trick to earn 10-man Barcelona a 33 draw, equalising three times, with the final equaliser coming in injury time.
+According to American writer Wright Thompson, Messi has maintained close ties to Rosario and his family since leaving for Spain, and has gone to great lengths to maintain them.
+A counter statement issued by Barcelona said: "Messi has always shown a maximum respect and sportsmanship towards his rivals, something which has been recognized by his fellow professionals many times".
+These ties begin with his speechto this day, Messi speaks Spanish with the distinctive accent of Rosario, even though he has now lived in Spain as long as he has in Rosario.
+He has two older brothers, Rodrigo and Matas, and a sister, Mara Sol.
+A: Messi in top form
+----------
+{'move': 1} [0, 0, 0, 0, 0]
+Q: Why did messi move to barcelona?
+Barcelona offered to pay for Messi's medical bills if he was willing to move to Spain.
+Messi and his father moved to Barcelona where Messi enrolled in the club's youth academy.
+Barcelona offered to pay for Messi's medical bills if he was willing to move to Spain.
+His 77th and 78th goals came against Real Zaragoza at Camp Nou which moved Messi seven goals away from the record.
+Messi continued his scoring run against Levante UD on 25 November with his 81st and 82nd goals of the year which moved him within three goals of Mller.
+A: .
+----------
+{'do': 1, 'score': 1, 'in': 1, 'season': 1, 'he': 1} [0, 1, 0, 1, 1]
+Q: How many hat-tricks did he score in the 2011-2012 season?
+In doing so he became the first player since Ivn Zamorano (for Real Madrid in the 199495 season) to score a hat-trick in El Clsico.
+The overall record of goals scored in a single European Cup Season, is Jos Altafini's record of 14 goals, which Messi did however equal in the following season.
+On 10 January 2010, Messi scored his first hat-trick in 2010 and his first hat-trick of the season against CD Tenerife in the 05 victory, and on 17 January he scored his 100th goal for the club in the 40 victory over Sevilla FC.
+Messi scored a hat-trick against Valencia CF in a 30 home win, and finally he scored another hat-trick against Real Zaragoza in a 42 away win, becoming the first Barcelona player to score back-to-back hat-tricks in La Liga.
+On 2 May, Messi scored a hat-trick against Mlaga CF surpassing Gerd Mller's record (67 goals in 197273) with 68 goals, and thus becoming the best goalscorer in history in one season in Europe.
+A: 42
+----------
+{'ha': 1, 'won': 1, 'award': 1} [1, 1, 1, 2, 1]
+Q: How many sports awards has messi won?
+Messi also won the IFFHS World's Top Goal Scorer award, with 19 goals in 2011.
+The award was won by Messi's Barcelona team mate Andrs Iniesta.
+The following year, in 2009, he won his first Ballon d'Or and FIFA World Player of the Year awards.
+Two days later, he was given the FIFA World Player of the Year award, beating Cristiano Ronaldo, Xavi, Kak and Andrs Iniesta to the award.
+Messi also won the IFFHS World's Top Goal Scorer award, with 19 goals in 2011.
+A: Messi also won the IFFHS World's Top Goal Scorer award, with 19 goals in 2011.
+----------
+{'occupation': 1, 'mother': 1} [1, 2, 2, 2, 2]
+Q: What was his mother's occupation?
+Messi has also kept ownership of his old house in Rosario, although his family no longer lives in it; he maintains a penthouse apartment in an exclusive residential building in which his mother lives, as well as a family compound just outside the city.
+), with Messi scoring as the first penalty taker.
+A counter statement issued by Barcelona said: "Messi has always shown a maximum respect and sportsmanship towards his rivals, something which has been recognized by his fellow professionals many times".
+A poll conducted in the online edition of the Spanish newspaper Marca had him as the best player in the world with 77 percent of the vote.
+According to American writer Wright Thompson, Messi has maintained close ties to Rosario and his family since leaving for Spain, and has gone to great lengths to maintain them.
+A: Ownership of his old house in rosario , although his family no longer lives in it ;
+----------
+{'be': 1, 'old': 1} [1, 1, 1, 1, 1]
+Q: How old is messi?
+Messi has also kept ownership of his old house in Rosario, although his family no longer lives in it; he maintains a penthouse apartment in an exclusive residential building in which his mother lives, as well as a family compound just outside the city.
+When he scored his first senior goal for the club against Albacete Balompi on 1 May 2005, Messi was 17 years, ten months and seven days old, becoming the youngest to ever score in a La Liga game for Barcelona until it was again broken by Bojan Krki in 2007, scoring from a Messi assist.
+Local powerhouse River Plate showed interest in Messi's progress, but were not willing to pay for treatment for his condition, which cost $900 a month.Carles Rexach, the sporting director of FC Barcelona, had been made aware of his talent as Messi had relatives in Lleida, and Messi and his father were able to arrange a trial with the team.
+He is said to have been introduced to her by the girl's father when he returned to Rosario to recover from his injury a few days before the start of the 2006 World Cup.
+Roccuzzo is a fellow native of Rosario.
+A: Messi has also kept ownership of his old house in Rosario, although his family no longer lives in it; he maintains a penthouse apartment in an exclusive residential building in which his mother lives, as well as a family compound just outside the city.
+----------
+{'a': 1, 'ambassador': 1, 'name': 1, 'wa': 1, 'goodwill': 1, 'year': 1} [2, 2, 3]
+Q: In what year was messi named a goodwill ambassador for unicef?
+On 11 March 2010 Messi was announced as a goodwill ambassador for UNICEF.
+He was named La Liga player of the year for the second year in a row on 3 June 2010.
+In 2006, he became the youngest Argentine to play in the FIFA World Cup and he won a runners-up medal at the Copa Amrica tournament the following year, in which he was elected young player of the tournament.
+A: No.
+----------
+8
+{'player': 1, 'compare': 1, 'he': 1, 'often': 1, 'be': 1} [1, 3, 3, 2, 2]
+Q: What other player is he often compared against?
+However, Ronaldo has been criticised for his performance in the national team, on which Maradona has commented: "As good as he is with Real Madrid, he often seems frustrated on the national level, as if he was surrounded by players who do little to assist him."
+However, former great players have criticized the comparison, such as Brazilian legend Pel said: "We can't compare Messi and Ronaldo.
+Former Portuguese international Luis Figo stated: "It is not right to compare them [Ronaldo and Messi].
+For which Jos Mourinho has told: "Cristiano is a player who does not have the culture of the swimming pool, he has no culture of simulation, he is a British-trained player, Ferguson trained.
+And people say that he is the best player in the world.
+A: However, ronaldo
+----------
+{'be': 1, 'pay': 1, 'relative': 1, 'other': 1, 'footballer': 1, 'he': 1} [2, 3, 3, 3]
+Q: How is he paid relative to other footballers?
+In addition, his contract with Real Madrid, in which he is paid 12million per year, makes him one of the highest-paid footballers in the world, and his buyout clause is valued at 1 billion as per his contract.
+Real Madrid president, Florentino Perez, claimed that Ronaldo did not want to leave the club, and that he is unhappy for other reasons.
+Despite rumours circulating in March 2007 that Real Madrid were willing to pay an unprecedented 80million (54million) for Ronaldo, he signed a five-year, 120,000-a-week (31million total) extension with United on 13 April, making him the highest-paid player in team history.
+Many experts have testified to Cristiano Ronaldo's skills and impact as the best modern-day footballer (alongside Lionel Messi), described as a fast, tricky, strong, skillful winger and striker who will take on any defender with his dribbling and pace; he hits his free kicks with power and pace, and is able to beat defenders off the dribble and cross the ball.
+A: In addition, his contract with Real Madrid, in which he is paid 12million per year, makes him one of the highest-paid footballers in the world, and his buyout clause is valued at 1 billion as per his contract.
+----------
+{'do': 1, 'earn': 1, 'in': 1, 'honor': 1, 'he': 1} [2, 2, 3, 2, 2]
+Q: What what honors did he earn in 2007?
+Ronaldo earned his first cap for Portugal in a 10 victory against Kazakhstan on 20 August 2003.
+However he came to the attention of Manchester United manager Alex Ferguson in the summer of 2003, when Sporting defeated United 31 in the inauguration of the Estdio Jos Alvalade in Lisbon.
+In November and December 2006, Ronaldo received consecutive Barclays Player of the Month honours, becoming only the third player in Premier League history to do so after Dennis Bergkamp in 1997 and Robbie Fowler in 1996.
+On 8 January 2009, Ronaldo was uninjured in a single-car accident in which he wrote off his Ferrari 599 GTB Fiorano in a tunnel along the A538 near Manchester Airport.
+However, Ronaldo has been criticised for his performance in the national team, on which Maradona has commented: "As good as he is with Real Madrid, he often seems frustrated on the national level, as if he was surrounded by players who do little to assist him."
+A: His first cap
+----------
+{'as': 1, 'describe': 1} [0, 0, 0, 1, 1]
+Q: What has alex ferguson described him as?
+Real Madrid midfielder Mesut zil described Ronaldo as the "perfect player".
+Manchester United manager Alex Ferguson described Ronaldo as "the complete player".
+Real Madrid defender Sergio Ramos described Ronaldo as "the best player in the world".
+Both Argentinian legend Diego Maradona and Brazilian legends Ronaldo and Ronaldinho, as well as Spanish players Xavi and Andrs Iniesta said that Lionel Messi and Cristiano Ronaldo are the world's finest players.
+On 11 April, Ronaldo scored a hat-trick against Atletico Madrid in a 14 win, as well as assisting the last goal.
+A: Real madrid midfielder
+----------
+{'play': 1, 'doe': 1} [0, 0, 0, 0, 1]
+Q: What position does ronaldo play?
+My ambition was to play for my national team because that's where the footballers I mostly followed played.
+Real Madrid coach Jos Mourinho stated "If Ronaldo is sad but plays like he does, that's perfect for me", and believed that UEFA's decision to elect Iniesta as the best player in Europe in 201112 could have been one of the reasons behind Ronaldo's unhappiness.
+At the age of eight, Ronaldo played for amateur team Andorinha, where his father was the kit man.
+I like watching both of them when they play, why ask which one is the best?
+He does the best things for Barcelona, I do the best things for Madrid.
+A: My ambition
+----------
+9
+{'observe': 1, 'winter': 1, 'best': 1, 'in': 1} [2, 2, 2, 2, 3]
+Q: Is taurus best observed in the winter?
+The most favorable time to observe Taurus in the night sky is during the months of December and January.
+Taurus is a large and prominent constellation in the northern hemisphere's winter sky.
+The Beta Taurid meteor shower occurs during the months of June and July in the daytime, and is normally observed using radio techniques.
+It was bright enough to be observed during the day, and is mentioned in Chinese historical texts.
+Gilgamesh is depicted as the neighboring constellation of Orion, and in the sky they face each other as if engaged in combat.
+A: No.
+----------
+{'a': 1, 'be': 1, 'long': 1, 'identify': 1, 'bull': 1, 'constellation': 1} [3, 3, 3, 2, 3]
+Q: Has the constellation of taurus been identified with a bull for long?
+Its name is a Latin word meaning "bull", and its astrological symbol is a stylized bull's head: [Taurus.svg] (Unicode ).
+In Greek mythology, Taurus was identified with Zeus, who assumed the form of a magnificent white bull to abduct Europa, a legendary Phoenician princess.
+Its name is a Latin word meaning "bull", and its astrological symbol is a stylized bull's head: [Taurus.svg] (Unicode ).
+The identification of the constellation of Taurus with a bull is very old, certainly dating to the Chalcolithic, and perhaps even to the Upper Paleolithic.
+Because a small part of the constellation lies to the south of the celestial equator, this can not be a completely circumpolar constellation at any latitude.
+A: No.
+----------
+{'a': 1, 'in': 1, 'mythology': 1, 'bull': 1} [1, 0, 1, 2, 2]
+Q: Who transformed into a bull in greek mythology?
+Taurus came to symbolize the bull in the mythologies of Ancient Babylon, Egypt and Greece.
+In Greek mythology, Taurus was identified with Zeus, who assumed the form of a magnificent white bull to abduct Europa, a legendary Phoenician princess.
+Taurus came to symbolize the bull in the mythologies of Ancient Babylon, Egypt and Greece.
+Its name is a Latin word meaning "bull", and its astrological symbol is a stylized bull's head: [Taurus.svg] (Unicode ).
+In illustrations of Greek mythology, only the front portion of this constellation are depicted; this was sometimes explained as Taurus being partly submerged as he carried Europa out to sea.
+A: Greek mythology
+----------
+{'symbolize': 1, 'come': 1, 'bull': 1} [0, 2, 1, 2, 2]
+Q: Where did taurus come to symbolize the bull?
+Taurus came to symbolize the bull in the mythologies of Ancient Babylon, Egypt and Greece.
+Its name is a Latin word meaning "bull", and its astrological symbol is a stylized bull's head: [Taurus.svg] (Unicode ).
+Beta is a white, spectral class B7 III giant star known as El Nath, which comes from the Arabic phrase "the butting", as in butting by the horns of the bull.
+Greek mythographer Acusilaus marks the bull Taurus as the same that formed the myth of the Cretan Bull, one of The Twelve Labors of Heracles.
+The identification of the constellation of Taurus with a bull is very old, certainly dating to the Chalcolithic, and perhaps even to the Upper Paleolithic.
+A: Of ancient babylon , egypt and greece.
+----------
+{'lie': 1} [0, 0, 0, 0, 0]
+Q: Where does the crystal ball nebula lie?
+The plane of their orbit lies almost along the line of sight to the Earth.
+In the northern part of the constellation to the northwest of the Pleiades lies the Crystal Ball Nebula, known by its catalogue designation of NGC 1514.
+In the northeastern quadrant of the Taurus constellation lie the Pleiades (M45), one of the best known open clusters, easily visible to the naked eye.
+As the orbital plane of the Moon and the planets lie near the ecliptic, they can usually be found in the constellation Taurus during some part of each year.
+Because a small part of the constellation lies to the south of the celestial equator, this can not be a completely circumpolar constellation at any latitude.
+A: To the earth.
+----------
+{'constellation': 1, 'through': 1, 'structure': 1, 'pass': 1} [0, 1, 3, 3, 3]
+Q: What galactic structure passes through the taurus constellation?
+A ring-like galactic structure known as the Gould's Belt passes through the Taurus constellation.
+Their Tauric religious festival was held while the Sun passed through the constellation.
+It is the second brightest star in the constellation, and shares the border with the neighboring constellation of Auriga.
+As this constellation marked the vernal equinox, it was also the first constellation in the Babylonian zodiac and they described it as "The Bull in Front".
+Because a small part of the constellation lies to the south of the celestial equator, this can not be a completely circumpolar constellation at any latitude.
+A: The gould 's belt
+----------
+{'a': 1, 'binary': 1, 'star': 1} [1, 1, 1, 1, 1]
+Q: Is lambda tauri a binary star?
+The star Lambda () Tauri is an eclipsing binary star.
+Zeta Tauri is an eclipsing binary star that completes an orbit every 133 days.
+The variable star T Tauri is the prototype of a class of pre-main-sequence stars.
+This system consists of a spectral class B3 star being orbited by a less massive class A4 star.
+Forming the profile of a Bull's face is a V or A-shaped asterism of stars.
+A: Yes
+----------
+{'earliest': 1, 'works': 1, 'literature': 1, 'one': 1} [0, 3, 3, 3, 3]
+Q: Is the epic of gilgamesh one of the earliest works of literature?
+In the Mesopotamian Epic of Gilgamesh, one of the earliest works of literature, the goddess Ishtar sends Taurus, the Bull of Heaven, to kill Gilgamesh for spurning her advances.
+At a distance of 490light-years (150 parsecs), this is one of the nearest active star forming regions.
+Greek mythographer Acusilaus marks the bull Taurus as the same that formed the myth of the Cretan Bull, one of The Twelve Labors of Heracles.
+At a distance of 490light-years (150 parsecs), this is one of the nearest active star forming regions.
+In the northeastern quadrant of the Taurus constellation lie the Pleiades (M45), one of the best known open clusters, easily visible to the naked eye.
+A: Yes
+----------
+{'vernal': 1, 'point': 1, 'equinox': 1, 'mark': 1} [0, 1, 2, 2, 3]
+Q: Did taurus mark the point of vernal equinox?
+Taurus marked the point of vernal (spring) equinox in the Chalcolithic and the Early Bronze Age (the "Age of Taurus"), from about 4000 BC to 1700 BC, after which it moved into the neighboring constellation Aries.
+As this constellation marked the vernal equinox, it was also the first constellation in the Babylonian zodiac and they described it as "The Bull in Front".
+The Pleiades were closest to the Sun at vernal equinox around the 23rd century BC.
+It is one of the oldest constellations, dating back to at least the Early Bronze Age when it marked the location of the Sun during the spring equinox.
+This differed from the later Greek depiction where the horns pointed forward.
+A: Yes
+----------
+{'diameter': 1, 'complex': 1} [1, 1, 1, 1, 2]
+Q: What is the diameter of the taurus-auriga complex?
+One of the closest regions of active star location, the Taurus-Auriga complex, crosses into the northern part of the constellation.
+This spans a diameter of 98 light-years (30parsecs) and contains 35,000solar masses of material, which is both larger and less massive than the Orion Nebula.
+One of the closest regions of active star location, the Taurus-Auriga complex, crosses into the northern part of the constellation.
+This constellation includes part of the Taurus-Auriga complex, or Taurus dark clouds, a star forming region of sparse, filamentary clouds.
+A degree to the northwest of  Tauri is the Crab Nebula (M1), a supernova remnant.
+A: The northern part of the constellation
+----------
+{'birthday': 1, 'celebrate': 1} [0, 2, 2, 2, 2]
+Q: When is buddha's birthday celebrated?
+Buddha's birthday is celebrated with the Wesak Festival, or Veskha, which occurs on the first or second Full Moon when the Sun is in Taurus.
+A degree to the northwest of  Tauri is the Crab Nebula (M1), a supernova remnant.
+A ring-like galactic structure known as the Gould's Belt passes through the Taurus constellation.
+A second Greek myth portrays Taurus as Io, a mistress of Zeus.
+As a result, it also bears the designation Gamma Aurigae.
+A: Buddha's birthday is celebrated with the Wesak Festival, or Veskha, which occurs on the first or second Full Moon when the Sun is in Taurus.
+----------
+{'star': 1, 'well': 1, 'large': 1, 'as': 2, 'contain': 1, 'small': 1} [4]
+Q: Do the pleiades contain small as well as large stars?
+The Pleiades themselves are represented by large, bright stars; there are also many small brown dwarfs and white dwarfs.
+A: No.
+----------
+{'cluster': 1, 'near': 1, 'open': 1, 'host': 1, 'doe': 1} [0, 1, 2, 2]
+Q: What two of the nearest open clusters to earth does taurus host?
+Taurus hosts two of the nearest open clusters to Earth, the Pleiades and the Hyades, both of which are visible to the naked eye.
+This outline is created by prominent members of the Hyades, the nearest distinct open star cluster after the Ursa Major Moving Group.
+In the northeastern quadrant of the Taurus constellation lie the Pleiades (M45), one of the best known open clusters, easily visible to the naked eye.
+Located in this region, about 10 to the northeast of Aldebaran, is an open cluster NGC 1746 spanning a width of 45 arcminutes.
+A: Taurus
+----------
+{'abbreviation': 1, 'constellation': 1, 'recommend': 1} [0, 2, 2, 2, 2]
+Q: What is the recommended abbreviation for the constellation?
+The recommended three-letter abbreviation for the constellation, as adopted by the International Astronomical Union in 1922, is "Tau".
+It is the second brightest star in the constellation, and shares the border with the neighboring constellation of Auriga.
+As this constellation marked the vernal equinox, it was also the first constellation in the Babylonian zodiac and they described it as "The Bull in Front".
+Because a small part of the constellation lies to the south of the celestial equator, this can not be a completely circumpolar constellation at any latitude.
+As of 2008, the Sun appears in the constellation Taurus from May 13 to June 21.
+A: The international
+----------
+{'do': 1, 'bull': 1, 'mythology': 1, 'come': 1, 'symbolize': 1} [0, 2, 2]
+Q: In which mythologies did taurus come to symbolize the bull?
+Taurus came to symbolize the bull in the mythologies of Ancient Babylon, Egypt and Greece.
+In Greek mythology, Taurus was identified with Zeus, who assumed the form of a magnificent white bull to abduct Europa, a legendary Phoenician princess.
+Beta is a white, spectral class B7 III giant star known as El Nath, which comes from the Arabic phrase "the butting", as in butting by the horns of the bull.
+A: Yes
+----------
+{'as': 1, 'depict': 1, 'constellation': 1, 'neighbor': 1} [0, 1, 2, 3, 2]
+Q: Is gilgamesh depicted as the neighboring constellation of orion?
+Gilgamesh is depicted as the neighboring constellation of Orion, and in the sky they face each other as if engaged in combat.
+In illustrations of Greek mythology, only the front portion of this constellation are depicted; this was sometimes explained as Taurus being partly submerged as he carried Europa out to sea.
+It is the second brightest star in the constellation, and shares the border with the neighboring constellation of Auriga.
+The same iconic representation of the Heavenly Bull was depicted in the Dendera zodiac, an Egyptian bas-relief carving in a ceiling that depicted the celestial hemisphere using a planisphere.
+It is the second brightest star in the constellation, and shares the border with the neighboring constellation of Auriga.
+A: Yes
+----------
+{'become': 1, 'important': 1, 'worship': 1, 'object': 1, 'an': 1} [0, 3]
+Q: Did taurus become an important object of worship?
+Taurus became an important object of worship among the Druids.
+This is a newly formed stellar object that is just emerging from its envelope of gas and dust, but has not yet become a main sequence star.
+A: Yes
+----------
+{'a': 1, 'naked': 1, 'eye': 1, 'star': 1, 'double': 1} [0, 3, 3, 3, 3]
+Q: Is theta tauri a naked eye double star?
+It includes a naked eye double star, Theta Tauri, with a separation of 5.6arcminutes.
+The variable star T Tauri is the prototype of a class of pre-main-sequence stars.
+This system consists of a spectral class B3 star being orbited by a less massive class A4 star.
+Forming the profile of a Bull's face is a V or A-shaped asterism of stars.
+Located about 1.8 west of Epsilon () Tauri is T Tauri, the prototype of a class of variable stars called T Tauri stars.
+A: Yes
+----------
