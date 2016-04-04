@@ -1,6 +1,6 @@
 __author__ = 'laceyliu'
 
-dir = "/Users/laceyliu/Documents/workspace/"
+dir = "/Users/yitinghao/Desktop/Program/GitHub/"
 parser_path = dir + 'WikiQA/stanford-parser-full/'
 ner_path = dir+'WikiQA/stanford-ner'
 which_java = '/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/HOME/bin/java'
@@ -17,3 +17,4 @@ def new_parser():
 def new_NERtagger():
     os.environ['JAVAHOME'] =  which_java
     return StanfordNERTagger(ner_path+'/classifiers/english.muc.7class.distsim.crf.ser.gz', ner_path+ '/stanford-ner-3.5.2.jar')
+
