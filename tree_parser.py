@@ -32,8 +32,8 @@ def get_phrases(tree, pattern, reversed, sort):
     for t in tree.subtrees():
         if t.label() == pattern:
             phrases.append(t)
-        if pattern == "NP" and t.label() == "NNP":
-            phrases.append(t)
+        # if pattern == "NP" and t.label() == "NNP":
+        #     phrases.append(t)
     if sort == True:
         phrases = sorted(phrases, key=lambda x:len(x.leaves()), reverse=reversed)
     return phrases

@@ -34,19 +34,44 @@ def answer_how_many(q, s):
     # num = filter(str.isdigit, s)
     # return num if len(num) > 0 else "0"
 
-def answer_non_definitions(main_vp, s, verb):
-    nps = tree_parser.get_phrases(main_vp, "NP", False, False)
-    if len(nps)>0:
-        candidates = s.split(" "+verb)
-        if tree_parser.tree_to_sent(nps[0]) in candidates[0]:
+def answer_non_definitions(s, main_nps):
+    if is_definition(s):
+        return answer_definitions(s, main_nps)
+    if len(main_nps) == 0:
+        return ""
+    main_np = tree_parser.tree_to_sent(main_nps[0])
+    parsed_s = tree_parser.sent_to_tree(s)
+    vps = tree_parser.get_phrases(parsed_s, "VP", True, True)
+    if len(vps) > 0:
+        for vp in vps:
+            if vp.label() != "VBN":
+                main_vp = vp
+                break
+    else:
+        return ""
+
+    verb = get_main_verb(main_vp)
+
+    candidates = s.split(" "+verb)
+
+    if len(candidates) > 1:
+        # if main_np in candidates[1]:
+        if is_overlap(main_np, candidates[1]):
             ans_tree = tree_parser.sent_to_tree(candidates[1])
+            s_nps = tree_parser.get_phrases(ans_tree, "NP", True, False)
+            if len(s_nps) > 0:
+                return tree_parser.tree_to_sent(s_nps[0])
+            else:
+                return candidates[0]
         else:
             ans_tree = tree_parser.sent_to_tree(candidates[0])
-        s_nps = tree_parser.get_phrases(ans_tree, "NP", False, False)
-        if len(s_nps) > 0:
-            return tree_parser.tree_to_sent(s_nps[0])
-        else:
-            return ""
+            s_nps = tree_parser.get_phrases(ans_tree, "NP", True, False)
+            if len(s_nps) > 0:
+                return tree_parser.tree_to_sent(s_nps[0])
+            else:
+                return candidates[1]
+    else:
+        return ""
 
 def is_overlap(s1, s2):
     t1 = s1.split(" ")
@@ -58,7 +83,14 @@ def is_overlap(s1, s2):
     for t in t1:
         if t in t2:
             overlap += 1
-    return overlap >= len(t1)-2
+    return overlap > 0 and overlap >= len(t1)-2
+
+def is_definition(s):
+    bes = [" is", " are", " am", " were", " was"]
+    for be in bes:
+        if be in s:
+            return True
+    return False
 
 def answer_definitions(s, main_nps):
     if len(main_nps) == 0:
@@ -67,7 +99,11 @@ def answer_definitions(s, main_nps):
     parsed_s = tree_parser.sent_to_tree(s)
     vps = tree_parser.get_phrases(parsed_s, "VP", True, True)
     if len(vps) > 0:
-        main_vp = vps[0]
+        for vp in vps:
+            if vp.label() != "VBN":
+                main_vp = vp
+                break
+        #main_vp = vps[0]
     else:
         return ""
 
@@ -95,53 +131,65 @@ def answer_definitions(s, main_nps):
         return ""
 
 def get_main_verb(vp):
-    leaves = vp.leaves()
+    VBZ_found = False
+    vb = vp
+    for t in vp:
+        if not VBZ_found and str(t.label()).startswith( "VB") and t.label() != "VBN":
+            VBZ_found = True
+            vb = t
+        elif VBZ_found and t.label() == "VBN":
+            vb = t
+            break
+        elif VBZ_found and t.label() == "VP":
+                return get_main_verb(t)
+
+    leaves = vb.leaves()
     return leaves[0]
 
-def quest_to_state(q):
-   q = q.replace("?", "")
-   tokens = q.split(" ")
-   if tokens[0].startswith("Wh"):
-       return ' '.join(tokens[2:])
-   if tokens[0] == "How" and tokens[1] == "many":
-       return ' '.join(tokens[3:])
-   return ' '. join(tokens[1:])
+def get_what_type(sq):
+    VB_found, NP_found, PP_found, VP_found = False, False, False, False
+    for t in sq:
+        sq_t = t
 
-def is_definition(q):
-    bes = [" is", " are", " am", " were", " was"]
-    for be in bes:
-        if be in q:
-            return True
-    return False
+    for t in sq_t:
+        if t.label() == "VBZ" or t.label() == "VBD" and (not VB_found):
+            VB_found = True
+
+        elif t.label()=="NP" and VB_found and (not NP_found):
+            NP_found = True
+            np_sub = t
+        elif t.label() == "VP" and VB_found and NP_found and (not VP_found):
+            VP_found = True
+        else:
+            return "invalid"
+
+    for sub in np_sub:
+        if sub.label() == "PP":
+            PP_found = True
+            break
+
+    if VB_found and NP_found and VP_found:
+        return "definition"
+    elif VB_found and NP_found and PP_found:
+        return "specific"
+    elif VB_found and NP_found:
+        return "definition"
+    else:
+        return "invalid"
+
 
 def answer_what(q, s):
-    if "three-letter abbreviation" in q:
-        a = 1
-    ans = ""
-
-    if is_definition(q):
-        qbody = quest_to_state(q)+" is dog"
-    else:
-        qbody = q.replace("What", "Dog").replace("?", "")
-    s = s.lower()
-    parsed_q = tree_parser.sent_to_tree(qbody)
+    parsed_q = tree_parser.sent_to_tree(q)
+    sq = tree_parser.get_phrases(parsed_q, "SQ", False, False)
+    what_type = get_what_type(sq)
     main_nps = tree_parser.get_phrases(parsed_q, "NP", True, True)
-    ans = answer_definitions(s, main_nps)
-    # if is_definition(q):
-    #     qbody = quest_to_state(q)+" is dog"
-    #     s = s.lower()
-    #     parsed_q = tree_parser.sent_to_tree(qbody)
-    #     main_nps = tree_parser.get_phrases(parsed_q, "NP", True, True)
-    #     ans = answer_definitions(s, main_nps)
-    # else:
-    #     qbody = q.replace("What", "Dog").replace("?", "")
-    #     s = s.lower()
-    #     parsed_q = tree_parser.sent_to_tree(qbody)
-    #     vps = tree_parser.get_phrases(parsed_q, "VP",True, True)
-    #     main_vp = vps[0]
-    #     main_vb = get_main_verb(main_vp)
-    #     ans = answer_non_definitions(main_vp, s, main_vb)
-    return ans
+
+    if what_type == "definition":
+        return answer_definitions(s, main_nps)
+    elif what_type == "specific":
+        return answer_non_definitions(s, main_nps)
+    else:
+        return ""
 
 # what_s = "Tom studies computer science at CMU."
 # what_q = "What does Tom study at cmu?"
@@ -152,10 +200,8 @@ def answer_who(q, s):
     qbody = q.replace("Who", "Doug").replace("?", "")
     s = s.lower()
     parsed_q = tree_parser.sent_to_tree(qbody)
-    vps = tree_parser.get_phrases(parsed_q, "VP",True, True)
-    main_vp = vps[0]
-    main_vb = get_main_verb(main_vp)
-    ans = answer_non_definitions(main_vp, s, main_vb)
+    main_nps = tree_parser.get_phrases(parsed_q, "NP",True, True)
+    ans = answer_non_definitions(s, main_nps)
     return ans
     # tagged_s = tagger.tag(s.split(" "))
     #
@@ -193,7 +239,10 @@ def answer_why(q, s):
         if "," in reason_token:
             reason_token = reason_token[:s_tokens.index(",")]
         ans = " ".join(reason_token)
-    return ans[:-1].strip()+"."
+    if len(ans) > 0:
+        return ans[:-1].strip()+"."
+    else:
+        return ""
 
 def answer_when(s):
     parsed_s = tree_parser.sent_to_tree(s)

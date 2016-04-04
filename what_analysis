@@ -1,0 +1,147 @@
+1. NP(NP PP)
+(WHNP (WP What))
+(SQ
+  (VBZ is)
+  (NP
+    (NP (DT the) (NN magnitude))
+    (PP
+      (IN of)
+      (NP
+        (NP (DT the) (JJS brightest) (NN star))
+        (PP (IN in) (NP (NNP Gemini)))))))
+(. ?)
+(WHNP (WP What))
+(SQ
+  (VBZ is)
+  (NP
+    (NP (DT the) (JJ maximum) (NN rate))
+    (PP (IN of) (NP (NNP Geminids) (NN meteor) (NNS showers)))))
+(. ?)
+(WHNP (WP What))
+(SQ
+  (VBZ is)
+  (NP
+    (NP (DT the) (NN magnitude))
+    (PP
+      (IN of)
+      (NP
+        (NP (NNP M35))
+        (PRN (-LRB- -LRB-) (NP (NNP NGC) (CD 2168)) (-RRB- -RRB-))))))
+(. ?)
+(WHNP (WP What))
+(SQ
+  (VBZ is)
+  (NP
+    (NP (DT the) (NN length))
+    (PP
+      (IN of)
+      (NP
+        (NP (NN production) (NN cycle))
+        (PP
+          (IN of)
+          (NP (NP (NNP Prisoner)) (PP (IN of) (NP (NNP Azkaban)))))))))
+(. ?)
+
+(WHNP (WP What))
+(SQ
+  (VBZ is)
+  (NP
+    (NP (DT the) (JJ three-letter) (NN abbreviation))
+    (PP (IN for) (NP (DT the) (NN constellation)))))
+(. ?)
+
+2. VBN
+(WHNP (WP What))
+(SQ
+  (VBD was)
+  (NP (NNP Perl))
+  (VP (ADVP (RB originally)) (VBN named)))
+(. ?)
+
+(WHNP (WP What))
+(SQ
+  (VBZ is)
+  (NP (NNP Delta) (NNP Cancri))
+  (VP (ADVP (RB also)) (VBN known) (PP (IN as))))
+(. ?)
+(WHNP (WP What))
+(SQ
+  (VBD was)
+  (NP (DT the) (JJ first) (NN club) (NNP Beckham))
+  (VP (VBN played) (PP (IN for))))
+(. ?)
+
+3. Definition
+(WHNP (WP What))
+(SQ
+  (VBZ is)
+  (NP
+    (NP (DT the) (JJ three-letter) (NN abbreviation))
+    (PP (IN for) (NP (DT the) (NN constellation)))))
+(. ?)
+
+(WHNP (WP What))
+(SQ
+  (VBD was)
+  (NP (DT the) (JJ first) (NN club) (NNP Beckham))
+  (VP (VBN played) (PP (IN for))))
+(. ?)
+
+
+(PP (IN In) (NP (JJ Ancient) (NNP Rome)))
+(, ,)
+(NP (NNP Manilius) (CC and) (NNP Ovid))
+(VP
+  (VBD called)
+  (NP
+    (NP (DT the) (NNP constellation) (NNP Litoreus))
+    (PRN (-LRB- -LRB-) (NP (NN shore-inhabiting)) (-RRB- -RRB-))))
+(. .)
+(PP
+  (IN With)
+  (NP (NP (NNP Prisoner)) (PP (IN of) (NP (NNP Azkaban)))))
+(, ,)
+(NP
+  (NP (NN production))
+  (PP (IN of) (NP (DT the) (NNP Harry) (NNP Potter) (NNS films))))
+(VP
+  (VBD switched)
+  (PP
+    (TO to)
+    (NP
+      (NP (DT an) (JJ eighteen-month) (NN cycle))
+      (, ,)
+      (SBAR
+        (WHNP (WDT which))
+        (S
+          (NP (NN producer) (NNP David) (NNP Heyman))
+          (VP
+            (VBD explained)
+            (SBAR
+              (S
+                (VP
+                  (VBD was)
+                  (VP
+                    (`` ``)
+                    (TO to)
+                    (VP
+                      (VB give)
+                      (NP (DT each) (JJ -LSB-) (NN film) (NN -RSB-))
+                      (NP
+                        (NP (DT the) (NN time))
+                        (SBAR (S (NP (PRP it)) (VP (VBD required))))))))))))))))
+(. .)
+('' '')
+(NP (NNP Perl))
+(VP
+  (VBD was)
+  (ADVP (RB originally))
+  (VP (VBN named) (S (`` ``) (NP (NNP Pearl)) ('' ''))))
+(. .)
+(NP (NNP Tottenham) (NNP Hotspur))
+(VP
+  (VBD was)
+  (NP
+    (NP (DT the) (JJ first) (NN club))
+    (SBAR (S (NP (PRP he)) (VP (VBD played) (PP (IN for)))))))
+(. .)

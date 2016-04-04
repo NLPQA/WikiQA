@@ -1,463 +1,223 @@
 1
-{'new': 1, 'noun': 1, 'can': 1, 'form': 1, 'be': 1} [0, 2, 2, 1, 2]
 Q: How can new nouns be formed?
 New nouns can be formed through derivation or compounding.
-Mass nouns can only be pluralised through the use of a count noun classifier, e.g.
-The use of progressive forms in -ing, appears to be spreading to new constructions, and forms such as had been being built are becoming more common.
-Possessive pronouns exist in dependent and independent forms; the dependent form functions as a determiner specifying a noun (as in my chair), while the independent form can stand alone as if it were a noun (e.g.
-In English questions can be formed either with do-support (do you know her?)
 A: New nouns can be formed through derivation or compounding.
 ----------
-{'sound': 1, 'a': 1, 'syllable': 1, 'can': 1, 'start': 1} [2, 0, 2, 3, 3]
 Q: How many consonant sounds can a syllable start with?
-An English syllable includes a syllable nucleus consisting of a vowel sound.
 A syllable can start with up to three consonant sounds, as in sprint /sprnt/, and end with up to four, as in texts /teksts/.
-An English syllable includes a syllable nucleus consisting of a vowel sound.
-Furthermore, several consonants have limited distributions: /h/ can only occur in syllable initial position, and // only in syllable final position.
-General American and Received Pronunciation vary in their pronunciation of historical /r/ after a vowel at the end of a syllable (in the syllable coda).
-A: An English syllable includes a syllable nucleus consisting of a vowel sound.
+A: A syllable can start with up to three consonant sounds, as in sprint /sprnt/, and end with up to four, as in texts /teksts/.
 ----------
-{'adjective': 1, 'noun': 1, 'come': 1, 'before': 1} [0, 3, 2, 3, 2]
 Q: Do adjectives come before nouns?
 In English, adjectives come before the nouns they modify and after determiners.
-Common nouns are in turn divided into concrete and abstract nouns, and grammatically into count nouns and mass nouns.
-In Modern English, adjectives are not inflected, and they do not agree in form with the noun they modify, as adjectives in most other Indo-European languages do.
-They are semantically divided into proper nouns (names) and common nouns.
-English distinguishes at least seven major word classes: verbs, nouns, adjectives, adverbs, determiners (i.e.
 A: Yes
 ----------
-{'speak': 1, 'first': 1} [0, 0, 0, 0, 1]
 Q: When was english first spoken?
 However English is rarely spoken as a first language, numbering only around a couple hundred-thousand people, and less than 5% of the population speak fluent English in India.
-Today about 9 percent of the South African population speak South African English (SAE) as a first language.
-Since 1788 English has been spoken in Oceania, and the major native dialect of Australian English is spoken as a first language by the vast majority of the inhabitants of the Australian continent, with General Australian serving as the standard accent.
-The words in English learned first by children as they learn to speak, particularly the grammatical words that dominate the word count of both spoken and written texts, are the Germanic words inherited from the earliest periods of the development of Old English.
-Here stress is connected to vowel reduction: in the noun "contract" the first syllable is stressed and has the unreduced vowel //, but in the verb "contract" the first syllable is unstressed and its vowel is reduced to //.
 A: However English is rarely spoken as a first language, numbering only around a couple hundred-thousand people, and less than 5% of the population speak fluent English in India.
 ----------
 2
-{'velocity': 1, 'have': 1, 'meteor': 1, 'higher': 1} [0, 3, 3, 3]
 Q: Do epsilon geminid meteors have higher velocity than orionids?
 Epsilon Geminid meteors have a higher velocity than Orionids.
-It has a maximum rate of approximately 100 meteors per hour, making it one of the richest meteor showers.
-The Geminids are a prominent, bright meteor shower that peaks on December 1314.
-The Epsilon Geminids peak between October 18 and October 29 and have only been recently confirmed.
 A: Yes
 ----------
-{'year': 1, 'discover': 1, 'before': 1} [1, 2, 2, 2, 2]
 Q: Was "u gem" discovered before the year 1900?
 M35 is an open star cluster which was discovered in the year 1745 by Swiss astronomer Philippe Loys de Chseaux.
-When William Herschel discovered Uranus on 13 March 1781 it was located near  Gem.
-In 1930 Clyde Tombaugh exposed a series of photographic plates centred on  Gem and discovered Pluto.
-U Gem: a dwarf nova type cataclysmic variable discovered by J.R. Hind in 1855.
-The Sun resides in the astrological sign of Gemini from June 20 to July 20 each year (though the zodiac dates it May 21 - June 21).
 A: Yes
 ----------
-{'bright': 1, 'magnitude': 1, 'star': 1, 'in': 1} [1, 0, 1, 1, 1]
 Q: What is the magnitude of the brightest star in gemini?
-The brightest star in Gemini is Pollux, and the second brightest is Castor.
 Gem (Pollux): the brightest star in Gemini, it is an orange-hued giant star of magnitude 1.2, 34 light-years from Earth.
-Another way is to mentally draw a line from the Pleiades star cluster located in Taurus and the brightest star in Leo, Regulus.
-The brightest star in this constellation is Pollux.
-The brightest star in Gemini is Pollux, and the second brightest is Castor.
 A: An orange-hued giant star of magnitude 1.2 , 34
 ----------
-{'shower': 1, 'rate': 1, 'maximum': 1, 'meteor': 1} [0, 2, 3, 3, 3]
 Q: What is the maximum rate of geminids meteor showers?
 It has a maximum rate of approximately 100 meteors per hour, making it one of the richest meteor showers.
-The Geminids are a prominent, bright meteor shower that peaks on December 1314.
-Epsilon Geminid meteors have a higher velocity than Orionids.
-The primary is a semi-regular red giant with a period of 233 days; its minimum magnitude is 3.9 and its maximum magnitude is 3.1.
-Gem (Mekbuda): a double star, the primary is a Cepheid variable star with a period of 10.2 days; its minimum magnitude is 4.2 and its maximum magnitude is 3.6.
-A: It
+A: A maximum rate of approximately 100 meteors per hour
 ----------
-{'magnitude': 1} [0, 0, 0, 0, 0]
 Q: What is the magnitude of m35 (ngc 2168)?
 Gem is of the second magnitude, while  and  Gem are of the third magnitude.
-The primary is a yellow giant of magnitude 3.6; the secondary is of magnitude 8.
-The primary is a blue giant of magnitude 4.1, 500 light-years from Earth, and the secondary is of magnitude 8.
-The primary is a white star of magnitude 3.5, and the secondary is an orange dwarf star of magnitude 8.2.
-The primary is a white star of magnitude 4.8 and the secondary is a yellow star of magnitude 7.8.
 A: The second magnitude
 ----------
-{'exist': 1, 'constellation': 1, 'today': 1} [1, 2, 2, 2, 2]
 Q: How many modern constellations exist today?
 It was one of the 48 constellations described by the 2nd century AD astronomer Ptolemy and it remains one of the 88 modern constellations today.
-Gemini is one of the constellations of the zodiac.
-Gem (Castor): the second brightest in the constellation after Pollux.
-The brightest star in this constellation is Pollux.
-As of 2008, the Sun appears in the constellation Gemini from June 20 to July 20.
 A: 88
 ----------
-{'west': 1, 'after': 1, 'visible': 1, 'sunset': 1, 'in': 1, 'constellation': 1} [0, 3]
 Q: When is the constellation visible after sunset in the west?
 By April and May, the constellation will be visible soon after sunset in the west.
-Gem (Castor): the second brightest in the constellation after Pollux.
 A: By april and may.
 ----------
-{'constellation': 1, 'contain': 1, 'star': 1, 'doe': 1} [0, 1, 2, 1, 2]
 Q: How many visible stars does the constellation contain?
 The constellation contains 85 stars visible to observation on Earth without a telescope.
-The brightest star in this constellation is Pollux.
-It was one of the 48 constellations described by the 2nd century AD astronomer Ptolemy and it remains one of the 88 modern constellations today.
-The easiest way to locate the constellation is to find its two brightest stars Castor and Pollux eastward from the familiar V shaped asterism of Taurus and the three stars of Orions belt.
-Gem (Pollux): the brightest star in Gemini, it is an orange-hued giant star of magnitude 1.2, 34 light-years from Earth.
 A: 85
 ----------
 3
-{'make': 1, 'there': 1, 'cover': 1, 'player': 1, 'game': 1, 'video': 1, 'female': 1, 'any': 1, 'before': 1} [3]
 Q: Is there any female player to make the cover of fifa video games before morgan?
 In 2015, Morgan, along with Canada's Christine Sinclair and Australia's Steph Catley, became the first female players to make the cover of FIFA video games.
-A: Yes
+A: No.
 ----------
-{'four': 1, 'score': 1, 'tournament': 1, 'goal': 1, 'in': 3} [5, 1, 4, 2, 2]
 Q: Did morgan score four goals in the tournament against france in the 2008 fifa u-20 women's world cup in chile?
-Morgan's fourth goal of the tournament was a match-winner that gave the U.S. a gold medal, which subsequently voted the best goal of the tournament, and later FIFA's second-best goal of the year.
 Morgan was named to the United States U-20 women's national team that competed in the 2008 FIFA U-20 Women's World Cup in Chile, scoring a total of four goals in the tournament against France, Argentina and North Korea.
-She ended the tournament with 3 goals, and a team-high four assists (tied with Megan Rapinoe) and ten points (tied with Rapinoe and Wambach).
-Morgan and Wambach combined for 55 goals in 2012  matching a 21-year-old record set in 1991 by Michelle Akers (39 goals) and Carin Jennings (16 goals) as the most goals scored by any duo in U.S. WNT history.
-Morgan scored the only goal in a friendly win over England in February upon her return to the international fold.
 A: Yes
 ----------
-{'city': 1, 'raise': 1, 'in': 1} [1, 1, 2, 2, 2]
 Q: Was morgan raised in the city of los angeles?
 Born to Pamela S. and Michael T. Morgan in San Dimas, California, Morgan was raised with her two older sisters, Jeni and Jeri in the nearby suburb of Diamond Bar, located approximately 45 minutes east of Los Angeles.
-Of her signing, Morgan said, "I am excited to play in a city that is so passionate about soccer.
-Morgan did, however, win penalties for the USWNT in the 20 victories against Colombia in the last 16 and Germany in the semi-finals, respectively.
-Morgan was named to the United States U-20 women's national team that competed in the 2008 FIFA U-20 Women's World Cup in Chile, scoring a total of four goals in the tournament against France, Argentina and North Korea.
-She led the Golden Bears in scoring in her first year.
 A: Yes
 ----------
-{'do': 1, 'play': 1, 'throughout': 1, 'season': 1} [0, 2, 2, 2, 2]
 Q: How many matches did she play throughout the 2011 season?
 Throughout the 2011 season, she played in 14 matches and scored 4 goals.
-Morgan attended UC Berkeley, where she played for the California Golden Bears from 2007 to 2010.
-While playing in a scrimmage against the men's junior national team, she endured an anterior cruciate ligament (ACL) injury and did not play for the team again until April 2008.
-Despite continued absences due to U.S. national team commitments (2008 FIFA U-20 Women's World Cup and then the senior team) throughout her collegiate career, she led the Golden Bears in scoring and to the NCAA Tournament in each of her four years, advancing to the second round twice.
-She later credited the program as an integral part of her development as a soccer player: "... programs like ODP helped me especially because I did come into the club scene late and it was important for me to play as much as possible, play with the best players and learn from the best coaches.
 A: 14
 ----------
-{'club': 1, 'begin': 1, 'soccer': 1, 'playing': 1} [0, 1, 3, 3, 3]
 Q: When did she begin playing club soccer?
 However, she did not begin playing club soccer until age 14 when she joined Cypress Elite.
-She was a multi-sport athlete growing up and began playing soccer at an early age.
-She married soccer player Servando Carrasco in December 2014.
-The club finished third during the regular season.
-The two met at UC Berkeley where they both played soccer.
 A: However, she did not begin playing club soccer until age 14 when she joined Cypress Elite.
 ----------
-{'born': 1} [0, 1, 1, 1, 1]
 Q: When was morgan born?
 Alexandra "Alex" Patricia Morgan Carrasco (born July 2, 1989), ne Alexandra Patricia Morgan, is an American soccer player, Olympic gold medalist, and FIFA Women's World Cup champion.
-*Per NWSL "Goal Scoring Leaders" and "Assists Leaders" lists, which contradict "Portland Thorns Stats" table Due to an anterior cruciate ligament injury in a scrimage that slowed her progress in 2007, Morgan was not called up to train with the United States under-20 women's national soccer team until April 2008.
-After being named a candidate for the Hermann Trophy during her junior year, Morgan became the first California player to be named one of the top-three Hermann Trophy finalists.
-After entering the match in the 86th minute, she scored in the fourth minute of added time to give the United States a 10 victory over Italy in the first leg of a playoff to qualify for the final spot for the Women's World Cup.
-After the WPS later suspended operations in early 2012 due to legal and financial difficulties, Morgan joined her national teammates Hope Solo, Sydney Leroux, Megan Rapinoe and Stephanie Cox on the Seattle Sounders Women for the 2012 season.
 A: July 2 , 1989.
 ----------
-{'announce': 1, 'as': 1} [0, 0, 1, 1, 1]
 Q: Did u.s. soccer announced morgan as the 2012 female athlete of the year?
 On October 26, 2015, it was announced that Thorns had traded Morgan, along with teammate Kaylyn Kyle, to the expansion Orlando Pride in exchange for the Pride's #1 picks in the 2015 NWSL Expansion Draft and 2016 NWSL College Draft as well as an international roster spot for the 2016 and 2017 seasons.
-And, by herself, she comfortably out-scored and out-assisted her opponents, who combined for 21 goals and 12 assists in 32 games against the U.S. For her excellence on the field, U.S. Soccer announced Morgan as the 2012 Female Athlete of the Year.
-In April 2015, Morgan joined Abby Wambach on American Idol to announce that the show's season winner would record the official song for Fox's coverage of the 2015 FIFA Women's World Cup.
-She later credited the program as an integral part of her development as a soccer player: "... programs like ODP helped me especially because I did come into the club scene late and it was important for me to play as much as possible, play with the best players and learn from the best coaches.
-She scored the first goal (69') in the FIFA World Cup Final against Japan after coming on as a substitute at the half, as well as assisting on the Abby Wambach header (104') for a goal in extra time.
 A: Yes
 ----------
-{'married': 1} [0, 0, 0, 1, 1]
 Q: Did alex married servando carrasco?
 She married soccer player Servando Carrasco in December 2014.
-Morgan married Servando Carrasco, also a soccer player, on December 31, 2014.
-She married soccer player Servando Carrasco in December 2014.
-*Per NWSL "Goal Scoring Leaders" and "Assists Leaders" lists, which contradict "Portland Thorns Stats" table Due to an anterior cruciate ligament injury in a scrimage that slowed her progress in 2007, Morgan was not called up to train with the United States under-20 women's national soccer team until April 2008.
-After being named a candidate for the Hermann Trophy during her junior year, Morgan became the first California player to be named one of the top-three Hermann Trophy finalists.
 A: Yes
 ----------
-{'attend': 1} [0, 0, 0, 1, 1]
 Q: Did alex attend university of california, berkeley?
 Morgan attended UC Berkeley, where she played for the California Golden Bears from 2007 to 2010.
-Morgan attended Diamond Bar High School, where she was a three-time all-league pick and was named All-American by the National Soccer Coaches Association of America (NSCAA).
-Morgan attended UC Berkeley, where she played for the California Golden Bears from 2007 to 2010.
-*Per NWSL "Goal Scoring Leaders" and "Assists Leaders" lists, which contradict "Portland Thorns Stats" table Due to an anterior cruciate ligament injury in a scrimage that slowed her progress in 2007, Morgan was not called up to train with the United States under-20 women's national soccer team until April 2008.
-After being named a candidate for the Hermann Trophy during her junior year, Morgan became the first California player to be named one of the top-three Hermann Trophy finalists.
 A: Yes
 ----------
 5
-{'larger': 1, 'full': 1} [0, 1, 2, 2, 2]
 Q: Is praesepe larger than the full moon?
 Praesepe is also one of the larger open clusters visible; it has an area of 1.5 square degrees, or three times the size of the full Moon.
-It has an area of approximately 0.5 square degrees, the size of the full Moon.
-55 Cancri A, classified as a rare "super metal-rich" star, is one of the top 100 target stars for NASAs Terrestrial Planet Finder mission, ranked 63rd on the list.
-55 Cancri consists of a yellow dwarf and a smaller red dwarf, with five planets orbiting the primary star; one low-mass planet that may be either a hot, water-rich world or a carbon planet and four gas giants.
-A 1488 Latin translation depicts cancer as a large crayfish, which also is the constellation's name in most Germanic languages.
 A: Yes
 ----------
-{'be': 1, 'star': 1, 'dwarf': 1, '55': 1, 'bound': 1, 'primary': 1, 'gravitationally': 1, 'red': 1, 'appear': 1} [0, 3]
 Q: Why does the red dwarf 55 cancri b appear to be gravitationally bound to the primary star?
 The red dwarf 55 Cancri B, a suspected binary, appears to be gravitationally bound to the primary star, as the two share common proper motion.
-55 Cancri consists of a yellow dwarf and a smaller red dwarf, with five planets orbiting the primary star; one low-mass planet that may be either a hot, water-rich world or a carbon planet and four gas giants.
-A: The two share common proper motion .
+A: The two share common proper motion.
 ----------
-{'a': 1, 'scholar': 1, 'wa': 1, 'addition': 1, 'suggest': 1, 'some': 1, 'late': 1, 'myth': 1} [0]
 Q: Why did some scholars suggest that karkinos was a late addition to the myth of heracles?
 Some scholars have suggested that Karkinos was a late addition to the myth of Heracles in order to make the Twelve Labors correspond to the twelve signs of the Zodiac.
-A: To make the twelve labors correspond to the twelve signs of the zodiac .
+A: To make the twelve labors correspond to the twelve signs of the zodiac.
 ----------
-{'abbreviation': 1, 'constellation': 1} [0, 1, 1, 1, 1]
 Q: What is the three-letter abbreviation for the constellation?
 The three-letter abbreviation for the constellation, as adopted by the International Astronomical Union in 1922, is 'Cnc'.
-In Ancient Rome, Manilius and Ovid called the constellation Litoreus (shore-inhabiting).
-As of 2002, the Sun appears in the constellation Cancer from July 21 to August 9.
-Cancer is one of the twelve constellations of the zodiac.
-In most Germanic and Slavic languages, the constellation is known as "The Crayfish".
-A: Cnc
+A: The international astronomical union
 ----------
-{'also': 1, 'as': 1, 'know': 1} [0, 0, 0, 1, 1]
 Q: What is delta cancri also known as?
 At magnitude 3.9 is Delta Cancri, also known as Asellus Australis.
-This is also the time that the Sun is directly overhead at 23.5N, a parallel now known as the Tropic of Cancer.
-Cancer is best known among stargazers as the home of Praesepe (Messier 44), an open cluster also called the Beehive Cluster, located right in the centre of the constellation.
-In most Germanic and Slavic languages, the constellation is known as "The Crayfish".
-The later Hindus knew it as Kulira, from the Greek  (Koloyros), the term originated by Proclus.
-A: Magnitude
+A: Asellus australis
 ----------
-{'constellation': 1, 'call': 1, 'in': 1} [0, 2, 0, 1, 0]
 Q: What did manilius and ovid call the constellation in ancient rome?
-In Ancient Rome, Manilius and Ovid called the constellation Litoreus (shore-inhabiting).
-In Telugu it is "Karkatakam", in Kannada "Karkataka" or "Kataka", in Tamil Karkatan, and in Sinhalese Kagthaca.
-Cancer is best known among stargazers as the home of Praesepe (Messier 44), an open cluster also called the Beehive Cluster, located right in the centre of the constellation.
-Astacus and Cammarus appear in various classic writers, while it is called Nepa in Cicero's De Finibus and the works of Columella, Plautus, and Varro; all of these words signify crab, lobster, or scorpion.
 In Ancient Rome, Manilius and Ovid called the constellation Litoreus (shore-inhabiting).
 A: The constellation litoreus
 ----------
-{'a': 1, 'constellation': 1} [0, 1, 1, 0, 1]
 Q: Is cancer a medium-sized constellation?
 In Babylonia the constellation was known as MUL.AL.LUL, a name which can refer to both a crab and a snapping turtle.
-55 Cancri consists of a yellow dwarf and a smaller red dwarf, with five planets orbiting the primary star; one low-mass planet that may be either a hot, water-rich world or a carbon planet and four gas giants.
-The ancient Chinese interpreted the object as a ghost or demon riding in a carriage, calling it a "cloud of pollen blown from under willow catkins."
-There also appears to be a strong connection between the Babylonian constellation and ideas of death and a passage to the underworld, which may be the origin of these ideas in later Greek myths associated with Hercules and the Hydra.
-It is a binary star system, its main component an orange giant of spectral type K4III that is varies slightly from a baseline magnitude of 3.53dipping by 0.005 magnitude over a period of 6 days.
 A: Yes
 ----------
-{'star': 1, 'two': 1, 'contain': 1} [1, 1, 0, 1, 1]
 Q: Does cancer contain two stars?
-Zeta Cancri or Tegmine ("the shell") is a multiple star system that contains at least four stars located 83 light-years from Earth.
-It contains approximately 200 stars, the brightest of which are of the tenth magnitude.
 It contains two stars with known planets, including 55 Cancri, which has five: one super-earth and four gas giants, one of which is in the habitable zone and as such has expected temperatures similar to Earth.
-The primary is actually two very similar white main sequence stars that are 5.3 AU distant from each other and the secondary is two small main sequence stars, most likely red dwarfs, that are 600 AU from the main pair.
-Zeta Cancri or Tegmine ("the shell") is a multiple star system that contains at least four stars located 83 light-years from Earth.
 A: Yes
 ----------
-{'dim': 1, 'zodiacal': 1, 'constellation': 1} [0, 2, 2, 2, 2]
 Q: Is cancer the dimmest of the zodiacal constellations?
 Cancer is the dimmest of the zodiacal constellations, having only two stars above the fourth magnitude.
-In Ancient Rome, Manilius and Ovid called the constellation Litoreus (shore-inhabiting).
-As of 2002, the Sun appears in the constellation Cancer from July 21 to August 9.
-Cancer is one of the twelve constellations of the zodiac.
-In most Germanic and Slavic languages, the constellation is known as "The Crayfish".
 A: Yes
 ----------
 6
-{'do': 1, 'support': 1, 'parent': 1} [2, 2, 1, 2, 2]
 Q: Which team did beckham's parents support?
 And they'd say, 'No, what do you really want to do, for a job?'
-In a 2007 interview, Beckham said that, "At school whenever the teachers asked, 'What do you want to do when you're older?'
-Beckham has pledged his support for the Unite for Children, Unite Against AIDS campaign.
-But that was the only thing I ever wanted to do."
-I ended up going to this Dutch guy who'd done all of Jimmy's.
 A: And they'd say, 'No, what do you really want to do, for a job?'
 ----------
-{'club': 1, 'end': 1, 'contract': 1} [1, 1, 1, 1, 2]
 Q: When did beckham's contract with major league soccer club la galaxy end?
 In July 2007 Beckham signed a five-year contract with Major League Soccer club LA Galaxy.
-The season also marked the end of an era for the club as Prez resigned his president post in January 2006 with Vicente Boluda named as replacement on interim basis until the end of the season.
-On 10 January 2007, after prolonged contract negotiations, Real Madrid's sporting director Predrag Mijatovi announced that Beckham would not remain at Real Madrid after the end of the season.
-As a result, he ended up only training with the club as he had done with Arsenal three years earlier.
-In the end they won 20.
 A: In july 2007.
 ----------
-{'country': 1, 'league': 1, 'win': 1, 'title': 1, 'do': 1} [0, 1, 1, 2, 2]
 Q: Which four countries did beckham win league titles?
 He is the first English player to win league titles in four countries: England, Spain, the United States and France.
-On 20 November 2011, he joined an elite group of players to have won three league titles in three different countries, when Los Angeles won their third MLS Cup against Houston Dynamo, winning 10 on a goal by captain Landon Donovan, with assists from Beckham and fellow designated player, Robbie Keane.
-To ensure they would win the Premier League title, United needed to win their final league match of the season, at home to Tottenham Hotspur (with reports suggesting that the opposition would allow themselves to be easily beaten to prevent their deadly local rivals Arsenal from retaining the title), but Tottenham took an early lead in the match.
-He was a key player in United's third successive league title in 200001  only the fourth time that any club had achieved three league titles in a row.
-Real Madrid were runners-up in the Copa del Rey, were knocked out of the UEFA Champions League at the quarter-final stage and finished the league season in fourth place, meaning the team, whose president Prez expected them to win either the Spanish league or the Champions League each season, did not match expectations.
 A: He is the first English player to win league titles in four countries: England, Spain, the United States and France.
 ----------
-{'player': 1, 'as': 1, 'list': 1, 'world': 1, 'in': 1} [0, 1, 3, 3, 2]
 Q: When was beckham listed as the highest-paid player in the world?
 One of the most marketable athletes in sport, Beckham has consistently ranked among the highest earners in football, and in 2013 he was listed as the highest-paid player in the world, earning over $50million in the previous 12 months.
-Known for his range of passing, crossing ability and bending free-kicks, he was twice runner-up for FIFA World Player of the Year and in 2004 he was named in the FIFA 100 list of the world's greatest living players.
-In a UK poll conducted by Channel 4 in 2002, the British public voted the goal No.18 in the list of the 100 Greatest Sporting Moments.
-To maximise the media effect, in the press release they decided to list the potential sum that Beckham could make over the 5-year period from all his revenue sources, which in addition to his Galaxy pay also include his personal endorsements.
-During the 2010 World Cup Qualifier against Belarus in which England won 31 in Minsk, Beckham came off the bench in the 87th minute to earn his 107th cap making him England's third-most-capped player in history, overtaking Bobby Charlton in the process.
 A: In 2013.
 ----------
-{'club': 1, 'play': 1, 'first': 1} [0, 2, 0, 0, 0]
 Q: What was the first club beckham played for?
-Tottenham Hotspur was the first club he played for.
-During this game he had many firsts with the Galaxy; his first start, first yellow card and first game as team captain.
-On 22 August 2007, Beckham played in a friendly for England against Germany, becoming the first to play for England while with a non-European club team.
-On 16 February 2010, Beckham played against Manchester United for the first time since he left the club in 2003.
 Tottenham Hotspur was the first club he played for.
 A: Tottenham hotspur
 ----------
-{'professional': 1, 'footballer': 1, 'former': 1, 'an': 1} [0, 3, 3, 3, 2]
 Q: Is beckham an english former professional footballer?
 David Robert Joseph Beckham, OBE (/bkm/; born 2 May 1975) is an English former professional footballer.
-Beckham's professional club career began with Manchester United, where he made his first-team debut in 1992 aged 17.
-He was the first British footballer to play 100 UEFA Champions League games.
-I'd say, 'I want to be a footballer.'
-In April 2004, the British tabloid News of the World carried claims by Beckham's former personal assistant Rebecca Loos that he and Loos had an extramarital affair.
 A: Yes
 ----------
-{'born': 1, 'at': 1} [0, 1, 0, 1, 1]
 Q: Was beckham born at whipps cross university hospital?
 Beckham was born at Whipps Cross University Hospital in Leytonstone, London, England.
-David and Victoria Beckham have four children: sons Brooklyn Joseph (born 1999 in London), Romeo James (born 2002 in London), and Cruz David (born 2005 in Madrid; the word "cruz" is Spanish for "cross"); and daughter Harper Seven (born 2011, in Los Angeles).
-Beckham was born at Whipps Cross University Hospital in Leytonstone, London, England.
-David Robert Joseph Beckham, OBE (/bkm/; born 2 May 1975) is an English former professional footballer.
-In his autobiography "David Beckham: My Side", he revealed some of his thoughts on tattoos: "The idea came to me much later, a little while after Brooklyn was born.
 A: Yes
 ----------
-{'attend': 1} [0, 0, 0, 0, 0]
 Q: Did beckham attend chase lane primary school?
 In 1997, Beckham started dating Victoria Adams, after she attended a Manchester United match.
-Young Beckham had trials with his local club Leyton Orient, Norwich City and attended Tottenham Hotspur's school of excellence.
-He regularly played football in Ridgeway Park, Chingford, as a child, and attended Chase Lane Primary School and Chingford County High School.
-His parents were fanatical Manchester United supporters who would frequently travel to Old Trafford from London to attend the team's home matches.
-He also attended Bradenton Preparatory Academy, but signed schoolboy forms at Manchester United on his 14th birthday, and subsequently signed a Youth Training Scheme contract on 8 July 1991.
 A: Yes
 ----------
 7
-{'friend': 1, 'best': 1} [0, 0, 0, 1, 1]
 Q: Who starred harry's best friends?
 The film stars Daniel Radcliffe as Harry Potter, alongside Rupert Grint and Emma Watson as Harry's best friends Ron Weasley and Hermione Granger.
-After reuniting with his best friends Ron and Hermione, Harry learns that Sirius Black, a convicted supporter of the dark wizard Voldemort, who murdered Harry's parents, has escaped Azkaban prison, intending to kill Harry.
-At Hogsmeade, Harry is shocked to learn that not only had Sirius Black been his parents' best friend and betrayed them to Voldemort, but that Sirius is also his godfather.
-Additionally, Moviefone designated the film as the tenth best of the decade.
-IGN designated Prisoner of Azkaban as the fifth best fantasy film.
 A: The film
 ----------
-{'length': 1, 'production': 1, 'cycle': 1} [1, 2, 3, 3, 3]
 Q: What is the length of production cycle of prisoner of azkaban?
 With Prisoner of Azkaban, production of the Harry Potter films switched to an eighteen-month cycle, which producer David Heyman explained was "to give each [film] the time it required."
-One of the new themes, "Double Trouble," was written during production so that a children's choir could perform it in Hogwarts's Great Hall in one of the film's earlier scenes.
-1 at the North American box office for two consecutive weekends.
-471 in Empire magazine's 2008 list of the 500 greatest movies of all time.
-A large pumpkin patch was added behind the hut.
-A: To give each -lsb- film
+A: An eighteen-month cycle
 ----------
-{'franchise': 1, 'on': 1, 'film': 1} [1, 1, 2, 1, 1]
 Q: Which is the best-reviewed film of franchise on rotten tomatoes?
 The film was released on 31 May 2004 in the United Kingdom and on 4 June 2004 in North America, as the first Harry Potter film released into IMAX theatres and to be using IMAX Technology.
-The film then opened in the United Kingdom on 31 May 2004 and on 4 June 2004 in the United States.
-It was released on CD on 25 May 2004.
-However, it was, at the time, the best-reviewed film of the series and currently the second-best-reviewed film of the franchise according to review aggregator Rotten Tomatoes; it stands behind Harry Potter and the Deathly Hallows  Part 2.
-It is also the last Harry Potter film to be released on VHS as well as the last film until Harry Potter and the Half-Blood Prince to be rated PG in North America.
 A: The film was released on 31 May 2004 in the United Kingdom and on 4 June 2004 in North America, as the first Harry Potter film released into IMAX theatres and to be using IMAX Technology.
 ----------
-{'director': 1} [0, 0, 0, 0, 1]
 Q: Who is the director of harry potter and the prisoner of azkaban?
 Chris Columbus, the director of the previous two films, decided not to return and helm the third instalment as he "hadn't seen [his] own kids for supper in the week for about two and a half years."
-The film, which is the third instalment in the Harry Potter film series, was written by Steve Kloves and produced by Chris Columbus (director of the first two instalments), David Heyman, and Mark Radcliffe.
-Chris Columbus, the director of the previous two films, decided not to return and helm the third instalment as he "hadn't seen [his] own kids for supper in the week for about two and a half years."
-Sean Smith from Newsweek said: "The Prisoner of Azkaban boasts a brand-new director and a bold new vision," he also called the film "moving," praising the performances by the three main leads, while Entertainment Weekly praised the film for being more mature than its predecessors.
-1 at the North American box office for two consecutive weekends.
-A: Chris columbus , the director of the previous two films ,
+A: Columbus , the director of the previous two films ,
 ----------
-{'series': 1, 'film': 1, 'on': 1} [1, 1, 1, 2, 1]
 Q: Which is the best-reviewed film of the harry potter series on rotten tomatoes?
 After reading the series, he changed his mind and signed on to direct, as he had immediately connected to the story.
-The film was released on 31 May 2004 in the United Kingdom and on 4 June 2004 in North America, as the first Harry Potter film released into IMAX theatres and to be using IMAX Technology.
-The film then opened in the United Kingdom on 31 May 2004 and on 4 June 2004 in the United States.
-It was released on CD on 25 May 2004.
-However, it was, at the time, the best-reviewed film of the series and currently the second-best-reviewed film of the franchise according to review aggregator Rotten Tomatoes; it stands behind Harry Potter and the Deathly Hallows  Part 2.
 A: After reading the series, he changed his mind and signed on to direct, as he had immediately connected to the story.
 ----------
-{'helm': 1, 'decline': 1, 'instalment': 1, 'third': 1} [1, 2, 3, 3, 1]
 Q: Why did chris columbus decline to helm the third instalment?
 Chris Columbus, the director of the previous two films, decided not to return and helm the third instalment as he "hadn't seen [his] own kids for supper in the week for about two and a half years."
-The film, which is the third instalment in the Harry Potter film series, was written by Steve Kloves and produced by Chris Columbus (director of the first two instalments), David Heyman, and Mark Radcliffe.
-As with the series' previous instalments, Prisoner of Azkaban was a large merchandising opportunity.
-Hogwarts grew and expanded significantly with the third film.
-Chris Columbus, the director of the previous two films, decided not to return and helm the third instalment as he "hadn't seen [his] own kids for supper in the week for about two and a half years."
-A: He `` had n't seen [ his ] own kids for supper in the week for about two and a half years . ''
+A: He `` had n't seen [ his ] own kids for supper in the week for about two and a half years . '.
 ----------
-{'release': 1, 'in': 1} [0, 0, 0, 1, 0]
 Q: When was harry potter and the prisoner of azkaban released in the united kingdom?
 The film was released on 31 May 2004 in the United Kingdom and on 4 June 2004 in North America, as the first Harry Potter film released into IMAX theatres and to be using IMAX Technology.
-It was the first film in the series to be released in both conventional and IMAX theatres.
-The video game version, designed by EA UK, was released 25 May 2004 in North America and 29 May 2004 in Europe.
-Some parts were also filmed in and around Borough Market and Lambeth Bridge in London.
-This opening also broke Hulk's record ($62.1 million) for the highest-opening weekend for a film released in June.
 A: On 4 june 2004 in north america , as the first harry potter film released into imax theatres and to be using imax technology.
 ----------
-{'be': 1, 'conventional': 1, 'theatre': 1, 'both': 1, 'series': 1, 'in': 2, 'release': 1, 'film': 1, 'first': 1} [0, 3]
 Q: Was harry potter and the prisoner of azkaban the first film in the series to be released in both conventional and imax theatres?
 It was the first film in the series to be released in both conventional and IMAX theatres.
-The film was released on 31 May 2004 in the United Kingdom and on 4 June 2004 in North America, as the first Harry Potter film released into IMAX theatres and to be using IMAX Technology.
 A: Yes
 ----------
 8
-{'lead': 1, 'trend': 1, 'hardware': 1, 'costs': 1, 'design': 1, 'rising': 1} [1]
 Q: Does the trend of rising hardware costs lead to the design of perl?
 The design of Perl can be understood as a response to three broad trends in the computer industry: falling hardware costs, rising labor costs, and improvements in compiler technology.
 A: Yes
 ----------
-{'binary': 1, 'stream': 1, 'support': 1, '2': 1, 'have': 1, 'data': 1} [2]
 Q: Did perl 2 have support for binary data streams?
 Perl 3, released in 1989, added support for binary data streams.
-A: Yes
+A: No.
 ----------
-{'only': 1, 'borrow': 1, 'feature': 1} [1, 2, 2, 2, 2]
 Q: Does perl only borrow features from c?
 The Perl languages borrow features from other programming languages including C, shell script (sh), AWK, and sed.
-Unlike Java, Python, and Ruby, Perl has only experimental support for pre-compiling.
-Perl also takes features from shell programming.
-Perl 5.002 was released on February 29, 1996 with the new prototypes feature.
-As of 2012, a number of features in the Perl 6 language show similarities to Haskell.
 A: Yes
 ----------
-{'originally': 1, 'name': 1} [0, 1, 1, 1, 1]
 Q: What was perl originally named?
 Perl was originally named "Pearl".
-Indeed, Wall claims that the name was intended to inspire many different expansions.
-State of the Onion is the name for Walls yearly keynote-style summaries on the progress of Perl and its community.
-The name is occasionally expanded as Practical Extraction and Report Language, but this is a backronym.
-Wall discovered the existing PEARL programming language before Perl's official release and changed the spelling of the name.
-A: Perl
+A:  "pearl".
 ----------
-{'originally': 1, 'develop': 1} [0, 1, 1, 1, 1]
 Q: When did perl originally developed?
 Perl was originally developed by Larry Wall in 1987 as a general-purpose Unix scripting language to make report processing easier.
-Perl was originally named "Pearl".
-Graphical user interfaces (GUIs) may be developed using Perl.
-Perl's culture and community has developed alongside the language itself.
-In 2004, work began on the Synopses  documents that originally summarized the Apocalypses, but which became the specification for the Perl 6 language.
 A: In 1987.
 ----------
-{'derive': 1, 'overall': 1, 'broadly': 1, 'structure': 1} [0, 3, 3, 3, 3]
 Q: Does the overall structure of perl derive broadly from c?
 The overall structure of Perl derives broadly from C. Perl is procedural in nature, with variables, expressions, assignment statements, brace-delimited blocks, control structures, and subroutines.
-Perl 5 added features that support complex data structures, first-class functions (that is, closures as values), and an object-oriented programming model.
-The life of a Perl interpreter divides broadly into a compile phase and a run phase.
-Perl 5.004 was released on May 15, 1997, and included among other things the UNIVERSAL package, giving Perl a base object to which all classes were automatically derived and the ability to require versions of modules.
-The life of a Perl interpreter divides broadly into a compile phase and a run phase.
 A: Yes
 ----------
-{'popularity': 1, 'late': 1, '5': 1, 'gain': 1, 'in': 1, '1990s': 1, 'widespread': 1} [0]
 Q: Did perl 5 gain widespread popularity in the late 1990s?
 Perl 5 gained widespread popularity in the late 1990s as a CGI scripting language, in part due to its unsurpassed regular expression and string parsing abilities.
 A: Yes
 ----------
-{'originally': 1, 'develop': 1, 'by': 1} [0, 2, 2, 1, 2]
 Q: Was perl originally developed by larry wall?
 Perl was originally developed by Larry Wall in 1987 as a general-purpose Unix scripting language to make report processing easier.
-In 2004, work began on the Synopses  documents that originally summarized the Apocalypses, but which became the specification for the Perl 6 language.
-Perl was originally named "Pearl".
-Both languages continue to be developed independently by different development teams and liberally borrow ideas from one another.
-Around this same time, development began in earnest on another implementation of Perl 6 known as Rakudo Perl, developed in tandem with the Parrot virtual machine.
 A: Yes
 ----------
