@@ -10,9 +10,6 @@ stanford-parser/*.*
 
 data/.DS_Store
 
-stanford_utils.py
-
-data/.DS_Store
 
 *.jar
 

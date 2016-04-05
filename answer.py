@@ -13,11 +13,11 @@ def answer_which(q, s):
 def answer_binary(sent, miss):
     s_vect = sent.split(" ")
     if miss >= 2:
-        return "No."
+        return "No"
     negs = ["not", "no", "never"]
     for neg in negs:
         if neg in s_vect:
-            return "No."
+            return "No"
     return "Yes"
 
 def answer_how_many(q, s):
@@ -240,7 +240,7 @@ def answer_why(q, s):
             reason_token = reason_token[:s_tokens.index(",")]
         ans = " ".join(reason_token)
     if len(ans) > 0:
-        return ans[:-1].strip()+"."
+        return ans[:-1].strip()
     else:
         return ""
 
@@ -252,7 +252,7 @@ def answer_when(s):
         tagged_pp = tagger.tag(nltk.tokenize.word_tokenize(sent_pp))
         for tup in tagged_pp:
             if tup[1] == "DATE" or tup[1] == "TIME":
-                return sent_pp.strip()+"."
+                return sent_pp.strip()
     tagged_sent = tagger.tag(nltk.tokenize.word_tokenize(s))
     ans = ""
     for i in xrange(0, len(tagged_sent)):
@@ -262,7 +262,7 @@ def answer_when(s):
             while tagged_sent[j][1] == "DATE" or tagged_sent[j][1] == "TIME":
                 ans += tagged_sent[j][0] + " "
                 j += 1
-            return ans.strip()+"."
+            return ans.strip()
     return ""
 
 def answer_where(s):
@@ -273,7 +273,7 @@ def answer_where(s):
         tagged_pp = tagger.tag(nltk.tokenize.word_tokenize(sent_pp))
         for tup in tagged_pp:
             if tup[1] == "LOCATION" or tup[1] == "ORGANIZATION":
-                return sent_pp.strip()+"."
+                return sent_pp.strip()
     return ""
 
 
