@@ -82,17 +82,17 @@ def main(wiki, qpath):
         #     sys.stdout.write("A: " + (ans.capitalize() if ans != None and len(ans)>0 else best) + '\n')
         #     sys.stdout.write("----------\n")
 
-        sys.stdout.write("A: " + (ans.capitalize() if len(ans)>0 else best) + '\n')
+        sys.stdout.write("A: " + (ans.capitalize()+"." if len(ans)>0 else best) + '\n')
         sys.stdout.write("----------\n")
 
 
 
-for i in xrange(1, 9):
-    if i == 4:
+for i in xrange(1, 10):
+    if i == 5 or i == 6:
         continue
     print i
 
-    wiki_path, question_path = "test/a"+str(i)+".htm", "test/a"+str(i)+"q.txt"
+    wiki_path, question_path = "test_sw/a"+str(i)+".htm", "test_sw/a"+str(i)+"q.txt"
     main(wiki_path, question_path)
 # for quest, ans in zip(quests, answers):
 #     sys.stdout.write("Q: " + quest + '\n')
