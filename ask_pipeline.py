@@ -9,7 +9,7 @@ import ginger_python2 as grammar_checker
 
 import sys
 tagger = stanford_utils.new_NERtagger()
-why_keywords = ["because", "therefore", "thus", "so that", "due to", "in order to"]
+why_keywords = ["because", "therefore", "thus", "as", "so that", "due to", "in order to"]
 def contains_reason(sent):
     for why_keyword in why_keywords:
             if why_keyword in sent:
@@ -60,21 +60,21 @@ def main(wiki_path, n):
     questions = []
 
     # sents = [sent for sent in sents if 10 <= sent.count(" ") <= 30]
-    sents = sents[:3*n]
-    preds = []
-    for sent in sents:
-        tree = tree_parser.sent_to_tree(sent)
-        if tree_parser.contains_appos(tree):
-            preds += tree_parser.appps_to_sents(tree)
-        else:
-            pred = tree_parser.sent_to_predicate(tree)
-            if 10 <= pred.count(" ") <= 30:
-                preds.append(pred)
-            if len(preds) > 2*n:
-                break
+    #sents = sents[:3*n]
+    # preds = []
+    # for sent in sents:
+    #     tree = tree_parser.sent_to_tree(sent)
+    #     if tree_parser.contains_appos(tree):
+    #         preds += tree_parser.appps_to_sents(tree)
+    #     else:
+    #         pred = tree_parser.sent_to_predicate(tree)
+    #         if 10 <= pred.count(" ") <= 30:
+    #             preds.append(pred)
+    #         if len(preds) > 2*n:
+    #             break
     # for pred in preds:
     #     print pred
-    for sent in preds:
+    for sent in sents:
         parsed_sent = tree_parser.sent_to_tree(sent)
         pps = tree_parser.get_phrases(parsed_sent, "PP", False, False)
 
@@ -93,7 +93,7 @@ def main(wiki_path, n):
             # correct grammar and find errors
             question, errs = grammar_checker.correct_sent(question)
             # deductions for errors
-            questions.append((question, score-errs+6))
+            questions.append((question, score-errs+1000))
 
         # how-many
         elif contains_quant(sent, tagged_sent):
@@ -143,11 +143,11 @@ def main(wiki_path, n):
     for question in ranked_questions:
         sys.stdout.write(question[0]+" "+str(question[1])+"\n")
 
-# for i in xrange(1, 9):
-#     if i == 4:
-#         continue
-#     print i
-#     wiki_path = "test/a"+str(i)+".htm"
-#     main(wiki_path, 10)
-main("test/a6.htm", 10)
+for i in xrange(1, 9):
+    if i == 4:
+        continue
+    print i
+    wiki_path = "test/a"+str(i)+".htm"
+    main(wiki_path, 10)
+# main("test/a6.htm", 10)
 # main(sys.argv[1], int(sys.argv[2]))

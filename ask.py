@@ -223,11 +223,11 @@ def get_why(sentence):
     consequence = ""
     for i in xrange(len(tagged)):
         # Case: .(consequence).. because (reason).....
-        if tagged[i][0].lower() in ["since", "because"] and ("," not in d[i:]):
+        if tagged[i][0].lower() in ["since", "because", "as"] and ("," not in d[i:]):
             consequence = reduce(lambda a, b: a+" "+b, d[:i-1])
             break
         # Case: because ..(reason).. , .(consequence)
-        elif tagged[i][0].lower() in ["since", "because"] and ("," in d[i:]):
+        elif tagged[i][0].lower() in ["since", "because", "as"] and ("," in d[i:]):
             consequence = reduce(lambda a, b: a+" "+b, d[d.index(",")+1:])
             break
         # other cases: due to ...
@@ -235,7 +235,8 @@ def get_why(sentence):
     question = "Why "+question+"?"
     return question
 
-
+test = "Chris Columbus, the director of the previous two films, decided not to return and helm the third instalment as he \"hadn't seen [his] own kids for supper in the week for about two and a half years.\""
+print get_why(test)
 
 def get_where(sentence):
 
