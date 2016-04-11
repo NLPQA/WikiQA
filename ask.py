@@ -272,12 +272,15 @@ def get_where(sentence):
     return question.strip()+"?"
 
 def get_when(sentence):
+	sentence_too_long = False
 	text = nltk.word_tokenize(sentence)
 	tags = nltk.pos_tag(text)
-	#print tags
+	if len(tags) > 25:
+		sentence_to_long = True
+		return "N/A"
 
-	if tags[0][1] != 'NN' and tags[0][1] != 'NNS' and tags[0][1] != 'NNP' and tags[0][1] != 'NNPS' and tags[0][1] != 'PRP' and tags[0][0] != 'In' and tags[0][0] != 'On' and tags[0][1] != 'DT':
-		#print tags[0][1]
+	if tags[0][1] != 'NN' and tags[0][1] != 'NNS' and tags[0][1] != 'NNP' and tags[0][1] != 'NNPS' and tags[0][1] != 'PRP' and tags[0][0] != 'In' and tags[0][0] != 'On':
+		#print "HERE"
 		while tags[0][1] != ',':
 			tags.pop(0)
 		tags.pop(0)
@@ -354,14 +357,13 @@ def get_when(sentence):
 			sentence_ners.append(ners[k])
 		elif (ners[k][1] == 'DATE'):
 			delete_words = True
-
-	if (sentence_ners[-1][0] == 'In' or sentence_ners[-1][0] == 'On' or sentence_ners[-1][0] == 'on' or sentence_ners[-1][0] == 'in' or sentence_ners[-1][0] == 'and'):
+	print tags
+	while (nltk.tag.pos_tag([sentence_ners[-1][0]])[0][1] == 'IN' or nltk.tag.pos_tag([sentence_ners[-1][0]])[0][1] == 'CC' or nltk.tag.pos_tag([sentence_ners[-1][0]])[0][1] == 'DT'):
 		sentence_ners.pop(-1)
 	question = "When " + ' '.join([w for (w, t) in sentence_ners])+"?"
 
 	#correct question
 	question, errs = grammar_checker.correct_sent(question)
-
 	return question
 
 tests = ['Clinton Drew, born March 9, 1983, is an American soccer player who plays for Tottenham Hotspur and the United States national team.',
