@@ -7,6 +7,7 @@ import nltk.stem
 import stanford_utils
 from random import randint
 from nltk.corpus import wordnet as wn
+import ginger_python2 as grammar_checker
 
 def stem(word):
     return wn.morphy(word).encode('ascii', 'ignore')
