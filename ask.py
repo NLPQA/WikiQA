@@ -334,7 +334,9 @@ def get_when(sentence):
 
 			if j > i+1:
 				for k in xrange(0, j-i):
-					ners.pop(i)
+					ners = ners[0:i-1]
+					#ners.pop(i)
+					#print ners
 				break
 	#print ners
 	if (ners[1][0] == 'In' or ners[1][0] == 'On') and (ners[2][1] == 'DATE' and ners[3][1] == 'DATE'):
@@ -354,10 +356,13 @@ def get_when(sentence):
 			ners[k] = (lowered, ners[k][1])
 		first_word += 1
 		if (ners[k][1] != 'DATE' and delete_words == False):
+			#print ners[k]
+			#print delete_words
 			sentence_ners.append(ners[k])
 		elif (ners[k][1] == 'DATE'):
+			#print delete_words
 			delete_words = True
-	print tags
+	#print tags
 	while (nltk.tag.pos_tag([sentence_ners[-1][0]])[0][1] == 'IN' or nltk.tag.pos_tag([sentence_ners[-1][0]])[0][1] == 'CC' or nltk.tag.pos_tag([sentence_ners[-1][0]])[0][1] == 'DT'):
 		sentence_ners.pop(-1)
 	question = "When " + ' '.join([w for (w, t) in sentence_ners])+"?"
