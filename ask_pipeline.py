@@ -109,7 +109,8 @@ def main(wiki_path, n):
             # correct grammar and find errors
             question, errs = grammar_checker.correct_sent(question)
             # deductions for errors
-            questions.append((question, score-errs+4))
+            if (len(question) > 30):
+                questions.append((question, score-errs+4))
         # where
         if contains_loc(tagged_sent):
             question = ask.get_where(sent).capitalize()
