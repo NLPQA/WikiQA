@@ -272,104 +272,104 @@ def get_where(sentence):
     return question.strip()+"?"
 
 def get_when(sentence):
-	sentence_too_long = False
-	text = nltk.word_tokenize(sentence)
-	tags = nltk.pos_tag(text)
-	if len(tags) > 25:
-		sentence_to_long = True
-		return "N/A"
+    sentence_too_long = False
+    text = nltk.word_tokenize(sentence)
+    tags = nltk.pos_tag(text)
+    if len(tags) > 25:
+        sentence_to_long = True
+        return "N/A"
 
-	if tags[0][1] != 'NN' and tags[0][1] != 'NNS' and tags[0][1] != 'NNP' and tags[0][1] != 'NNPS' and tags[0][1] != 'PRP' and tags[0][0] != 'In' and tags[0][0] != 'On':
-		#print "HERE"
-		while tags[0][1] != ',':
-			tags.pop(0)
-		tags.pop(0)
+    if tags[0][1] != 'NN' and tags[0][1] != 'NNS' and tags[0][1] != 'NNP' and tags[0][1] != 'NNPS' and tags[0][1] != 'PRP' and tags[0][1] != 'PRP$' and tags[0][0] != 'The' and tags[0][0] != 'In' and tags[0][0] != 'On':
+        #print "HERE"
+        while tags[0][1] != ',':
+            tags.pop(0)
+        tags.pop(0)
 
-		sentence = ''
-		for w in tags:
-			sentence += w[0]
-			sentence += ' '
-		#print sentence
+        sentence = ''
+        for w in tags:
+            sentence += w[0]
+            sentence += ' '
+        #print sentence
 
-	binary_q = get_binary(sentence, twist=False)
-	words = nltk.word_tokenize(binary_q)
-	tagger = stanford_utils.new_NERtagger()
-	ners = tagger.tag(words)
-	tagged = nltk.pos_tag(words)
-	first_word = 0
-	delete_words = False
-	sentence_ners = []
-	found_verb = False
+    binary_q = get_binary(sentence, twist=False)
+    words = nltk.word_tokenize(binary_q)
+    tagger = stanford_utils.new_NERtagger()
+    ners = tagger.tag(words)
+    tagged = nltk.pos_tag(words)
+    first_word = 0
+    delete_words = False
+    sentence_ners = []
+    found_verb = False
 
 
-	for i in range(0, len(ners)):
-		if tagged[i][0] == 'during':
-			j = i+1
-			while j < len(ners) and (ners[j][0] == '~' or ners[j][0] == '-' or ners[j][0] != ',' or ners[j][0] != '?'):
-				j+=1
-			if j > i+1:
-				for k in xrange(0, j-i):
-					ners.pop(i)
-				break
-		if tagged[i][0] == 'since' or tagged[i][0] == 'when' or tagged[i][0] == 'before' or tagged[i][0] == 'after':
-			j = i+1
-			while j < len(ners) and (ners[j][0] != ',' or ners[j][0] != '?'):
-				j+=1
-			if j > i+1:
-				for k in xrange(0, j-i):
-					ners.pop(i)
-				break
-		if tagged[i][1] == 'IN':
-			j = i+1
-			while j < len(ners) and (ners[j][1] == 'DATE' or ners[j][1] == 'TIME'):
-				j+=1
-			if j > i+1:
-				for k in xrange(0, j-i):
-					ners.pop(i)
-				break
-		if ners[i][1] == 'DATE' or ners[i][1] == 'TIME':
-			j = i+1
-			while j < len(ners) and (ners[j][1] == 'DATE' or ners[j][1] == 'TIME'):
-				j+=1
+    for i in range(0, len(ners)):
+        if tagged[i][0] == 'during':
+            j = i+1
+            while j < len(ners) and (ners[j][0] == '~' or ners[j][0] == '-' or ners[j][0] != ',' or ners[j][0] != '?'):
+                j+=1
+            if j > i+1:
+                for k in xrange(0, j-i):
+                    ners.pop(i)
+                break
+        if tagged[i][0] == 'since' or tagged[i][0] == 'when' or tagged[i][0] == 'before' or tagged[i][0] == 'after':
+            j = i+1
+            while j < len(ners) and (ners[j][0] != ',' or ners[j][0] != '?'):
+                j+=1
+            if j > i+1:
+                for k in xrange(0, j-i):
+                    ners.pop(i)
+                break
+        if tagged[i][1] == 'IN':
+            j = i+1
+            while j < len(ners) and (ners[j][1] == 'DATE' or ners[j][1] == 'TIME'):
+                j+=1
+            if j > i+1:
+                for k in xrange(0, j-i):
+                    ners.pop(i)
+                break
+        if ners[i][1] == 'DATE' or ners[i][1] == 'TIME':
+            j = i+1
+            while j < len(ners) and (ners[j][1] == 'DATE' or ners[j][1] == 'TIME'):
+                j+=1
 
-			if j > i+1:
-				for k in xrange(0, j-i):
-					ners = ners[0:i-1]
-					#ners.pop(i)
-					#print ners
-				break
-	#print ners
-	if (ners[1][0] == 'In' or ners[1][0] == 'On') and (ners[2][1] == 'DATE' and ners[3][1] == 'DATE'):
-		ners.pop(1)
-		ners.pop(1)
-		ners.pop(1)
+            if j > i+1:
+                for k in xrange(0, j-i):
+                    ners = ners[0:i-1]
+                    #ners.pop(i)
+                    #print ners
+                break
+    #print ners
+    if (ners[1][0] == 'In' or ners[1][0] == 'On') and (ners[2][1] == 'DATE' and ners[3][1] == 'DATE'):
+        ners.pop(1)
+        ners.pop(1)
+        ners.pop(1)
 
-	elif (ners[1][0] == 'In' or ners[1][0] == 'On') and (ners[2][1] == 'DATE'):
-		ners.pop(1)
-		ners.pop(1)
-	if (ners[1][0] == ','):
-		ners.pop(1)
+    elif (ners[1][0] == 'In' or ners[1][0] == 'On') and (ners[2][1] == 'DATE'):
+        ners.pop(1)
+        ners.pop(1)
+    if (ners[1][0] == ','):
+        ners.pop(1)
 
-	for k in xrange(len(ners)):
-		if first_word == 1 and ners[k][0] != 'PERSON':
-			lowered = ners[k][0].lower()
-			ners[k] = (lowered, ners[k][1])
-		first_word += 1
-		if (ners[k][1] != 'DATE' and delete_words == False):
-			#print ners[k]
-			#print delete_words
-			sentence_ners.append(ners[k])
-		elif (ners[k][1] == 'DATE'):
-			#print delete_words
-			delete_words = True
-	#print tags
-	while (nltk.tag.pos_tag([sentence_ners[-1][0]])[0][1] == 'IN' or nltk.tag.pos_tag([sentence_ners[-1][0]])[0][1] == 'CC' or nltk.tag.pos_tag([sentence_ners[-1][0]])[0][1] == 'DT'):
-		sentence_ners.pop(-1)
-	question = "When " + ' '.join([w for (w, t) in sentence_ners])+"?"
+    for k in xrange(len(ners)):
+        if first_word == 1 and ners[k][0] != 'PERSON':
+            lowered = ners[k][0].lower()
+            ners[k] = (lowered, ners[k][1])
+        first_word += 1
+        if (ners[k][1] != 'DATE' and delete_words == False):
+            #print ners[k]
+            #print delete_words
+            sentence_ners.append(ners[k])
+        elif (ners[k][1] == 'DATE'):
+            #print delete_words
+            delete_words = True
+    #print tags
+    while (nltk.tag.pos_tag([sentence_ners[-1][0]])[0][1] == 'IN' or nltk.tag.pos_tag([sentence_ners[-1][0]])[0][1] == 'CC' or nltk.tag.pos_tag([sentence_ners[-1][0]])[0][1] == 'DT'):
+        sentence_ners.pop(-1)
+    question = "When " + ' '.join([w for (w, t) in sentence_ners])+"?"
 
-	#correct question
-	question, errs = grammar_checker.correct_sent(question)
-	return question
+    #correct question
+    question, errs = grammar_checker.correct_sent(question)
+    return question
 
 tests = ['Clinton Drew, born March 9, 1983, is an American soccer player who plays for Tottenham Hotspur and the United States national team.',
              'Growing up in Nacogdoches, Texas, Dempsey played for one of the top youth soccer clubs in the state, the Dallas Texans, before playing for Furman University\'s men\'s soccer team. ',
