@@ -237,8 +237,8 @@ def get_why(sentence):
     question = "Why "+question+"?"
     return question
 
-test = "Chris Columbus, the director of the previous two films, decided not to return and helm the third instalment as he \"hadn't seen [his] own kids for supper in the week for about two and a half years.\""
-print get_why(test)
+# test = "Chris Columbus, the director of the previous two films, decided not to return and helm the third instalment as he \"hadn't seen [his] own kids for supper in the week for about two and a half years.\""
+# print get_why(test)
 
 def get_where(sentence):
 

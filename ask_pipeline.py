@@ -9,7 +9,7 @@ import ginger_python2 as grammar_checker
 
 import sys
 tagger = stanford_utils.new_NERtagger()
-why_keywords = ["because", "therefore", "thus", "as", "so that", "due to", "in order to"]
+why_keywords = ["because"]
 def contains_reason(sent):
     for why_keyword in why_keywords:
             if why_keyword in sent:
@@ -93,7 +93,7 @@ def main(wiki_path, n):
             # correct grammar and find errors
             question, errs = grammar_checker.correct_sent(question)
             # deductions for errors
-            questions.append((question, score-errs+1000))
+            questions.append((question, score-errs+5))
 
         # how-many
         elif contains_quant(sent, tagged_sent):
@@ -144,11 +144,14 @@ def main(wiki_path, n):
     for question in ranked_questions:
         sys.stdout.write(question[0]+" "+str(question[1])+"\n")
 
+import time
 for i in xrange(1, 9):
+    start = time.time()
     if i == 4:
         continue
     print i
     wiki_path = "test/a"+str(i)+".htm"
-    main(wiki_path, 10)
+    main(wiki_path, i)
+    print time.time() - start
 # main("test/a6.htm", 10)
 # main(sys.argv[1], int(sys.argv[2]))
