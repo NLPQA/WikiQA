@@ -59,8 +59,8 @@ def main(wiki_path, n):
     title, sents = doc_parser.doc_to_sents(wiki_path)
     questions = []
 
-    # sents = [sent for sent in sents if 10 <= sent.count(" ") <= 30]
-    #sents = sents[:3*n]
+    sents = [sent for sent in sents if 10 <= sent.count(" ") <= 30]
+    sents = sents[:3*n]
     # preds = []
     # for sent in sents:
     #     tree = tree_parser.sent_to_tree(sent)
@@ -142,7 +142,7 @@ def main(wiki_path, n):
     ranked_questions = sorted(questions, key=lambda x:(-x[1],x[0]))
     ranked_questions = [q for q in ranked_questions if len(q[0]) > 0][:n]
     for question in ranked_questions:
-        sys.stdout.write(question[0]+" "+str(question[1])+"\n")
+        sys.stdout.write(question[0]+" "+"\n")
 
 import time
 for i in xrange(1, 9):

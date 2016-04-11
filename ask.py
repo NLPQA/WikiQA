@@ -338,7 +338,10 @@ def get_when(sentence):
                     #ners.pop(i)
                     #print ners
                 break
+    if len(ners) < 2:
+        return ""
     #print ners
+
     if (ners[1][0] == 'In' or ners[1][0] == 'On') and (ners[2][1] == 'DATE' and ners[3][1] == 'DATE'):
         ners.pop(1)
         ners.pop(1)
@@ -368,7 +371,7 @@ def get_when(sentence):
     question = "When " + ' '.join([w for (w, t) in sentence_ners])+"?"
 
     #correct question
-    question, errs = grammar_checker.correct_sent(question)
+    # question, errs = grammar_checker.correct_sent(question)
     return question
 
 tests = ['Clinton Drew, born March 9, 1983, is an American soccer player who plays for Tottenham Hotspur and the United States national team.',
