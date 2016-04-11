@@ -276,7 +276,7 @@ def get_when(sentence):
 	tags = nltk.pos_tag(text)
 	#print tags
 
-	if tags[0][1] != 'NN' and tags[0][1] != 'NNS' and tags[0][1] != 'NNP' and tags[0][1] != 'NNPS' and tags[0][1] != 'PRP' and tags[0][0] != 'In' and tags[0][0] != 'On':
+	if tags[0][1] != 'NN' and tags[0][1] != 'NNS' and tags[0][1] != 'NNP' and tags[0][1] != 'NNPS' and tags[0][1] != 'PRP' and tags[0][0] != 'In' and tags[0][0] != 'On' and tags[0][1] != 'DT':
 		#print tags[0][1]
 		while tags[0][1] != ',':
 			tags.pop(0)
