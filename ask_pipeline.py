@@ -128,12 +128,12 @@ def main(wiki_path, n):
             question, errs = grammar_checker.correct_sent(question)
             # deductions for errors
             questions.append((question, score-errs+3))
-        # else:
-        #     question = ask.get_what(sent).capitalize()
-        #     # correct grammar and find errors
-        #     question, errs = grammar_checker.correct_sent(question)
-        #     # deductions for errors
-        #     questions.append((question, score-errs+2))
+        else:
+            question = ask.get_what(parsed_sent).capitalize()
+            # correct grammar and find errors
+            question, errs = grammar_checker.correct_sent(question)
+            # deductions for errors
+            questions.append((question, score-errs+2))
         #
         # # binary question
         # binary_q = ask.get_binary(sent, twist=True).capitalize()
@@ -142,7 +142,7 @@ def main(wiki_path, n):
         # questions.append((binary_q, score-errs+2))
 
     for q in questions:
-        print q[0] + " " + str(q[1]) + " \n"
+        print q[0] + " " + str(q[1])
 
     # ranked_questions = sorted(questions, key=lambda x:(-x[1],x[0]))
     # ranked_questions = [q for q in ranked_questions if len(q[0]) > 0][:n]
@@ -155,5 +155,5 @@ def main(wiki_path, n):
 #     print i
 #     wiki_path = "test/a"+str(i)+".htm"
 #     main(wiki_path, 10)
-main("test/smalltest.html", 10)
+main("test/a2.htm", 10)
 # main(sys.argv[1], int(sys.argv[2]))
