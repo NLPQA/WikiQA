@@ -127,7 +127,7 @@ def main(wiki_path, n):
             # deductions for errors
             questions.append((question, score-errs+3))
         else:
-            question = ask.get_what(sent).capitalize()
+            question = ask.get_what(parsed_sent).capitalize()
             # correct grammar and find errors
             question, errs = grammar_checker.correct_sent(question)
             # deductions for errors

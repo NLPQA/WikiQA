@@ -118,77 +118,32 @@ def get_who(tree):
     question = question[:len(question)-3] + "?"
     return question
 
-def get_what(sentence):
-    # tokenize into words for each sentence
-    sent = nltk.word_tokenize(sentence)
-    # tag for words in each sentence
-    tagged = nltk.pos_tag(sent)
-    question = ""
-    for i in range(0,len(tagged)):
-        question = ''
-        start = 0
-        if (tagged[i][1] == 'MD' or tagged[i][1] == 'VBD' or tagged[i][1] == 'VBZ' or tagged[i][0] == 'has' or tagged[i][1] == 'is' or tagged[i][1] == 'was'or tagged[i][1] == 'are'):
-            if tagged[i][1] == 'MD':
-                start = 1
-                question += 'What '
-            elif tagged[i][0] == 'has':
-                if tagged[i+1][1][0:1] == 'V':
-                    question += 'What has '
-                    start = i + 1
-                else:
-                    question += 'What does have '
-                    start = i + 1
-            elif tagged[i][0] == 'is':
-                question += 'What is '
-                start = i + 1
-            elif tagged[i][0] == 'was':
-                question += 'What was '
-                start = i + 1
-            elif tagged[i][0] == 'are':
-                question += 'What are '
-                start = i + 1
-            elif tagged[i][1] == 'VBD':
-                verb = tagged[i][0]
-                question += 'What ' + verb + ' '
-                start = i + 1
-            elif tagged[i][1] == 'VBZ':
-                verb = tagged[i][0]
-                question += 'What ' + verb + ' '
-                start = i + 1
-            for j in range(start,len(tagged)):
-                if j < len(tagged) - 2:
-                    question += tagged[j][0] + ' '
-                elif j >= len(tagged) - 2 and tagged[j][0] != '.':
-                    question += tagged[j][0]
-                else:
-                    question += '?'
-            break
+# generate what question
+def get_what(tree):
+    question = "what "
+    verbP = re.compile("^V[BP].{0,1}$")
+    for node in tree[0]:
+        if node.label() != "NP":
+            if node.label() == "VP":
+                for i in xrange(len(node)):
+                    if node[i].label() == "MD":
+                        break;
+                    elif node[i].label() == "VBZ":
+                        if node[i][0] != "is" and not (node[i][0] == "has" and i+1<len(node) and verbP.match(node[i+1].label())):
+                            question = "what does" + question[question.find(" "):]
+                            for j in xrange(i, len(node)):
+                                if node[j].label() == "VBZ":
+                                    node[j][0] = basicForm(node[j][0], 'v')
+                            break;
+                    elif node[i].label() == "VBD":
+                        if node[i][0] != "was" and node[i][0] != "were" and not (node[i][0] == "had" and i+1<len(node) and verbP.match(node[i+1].label())):
+                            question = "what did" + question[question.find(" "):]
+                            for j in xrange(i, len(node)):
+                                if node[j].label() == "VBD":
+                                    node[j][0] = basicForm(node[j][0], 'v')
+            question += " ".join([leave for leave in node.leaves()]) + " "
+    question = question[:len(question)-3] + "?"
     return question
-# test = 'I can attest that my own expenditure when going to Starbucks has increased, in lieu of these food products.'
-# print get_what(test)
-# test_2 = "Beckham played in central midfield in United's win over Bayern Munich in the 1999 UEFA Champions League Final"
-# print get_what(test_2)
-
-# def get_what(sentence):
-#     words = nltk.word_tokenize(sentence)
-#     tagged = nltk.pos_tag(words)
-#     NN = []
-#     start = 0
-#     for i in range(0, len(tagged)):
-#         if tagged[i][0] == 'is' or tagged[i][0] == 'are' or tagged[i][0] == 'was':
-#             start = i
-#             break;
-#         if tagged[i][1][0:2] == 'NN':
-#             NN.append(tagged[i][0])
-#     question = 'What '
-#     for j in range(start, len(tagged)):
-#         if j < len(tagged) - 2:
-#             question += tagged[j][0] + ' '
-#         elif j >= len(tagged) - 2 and tagged[j][0] != '.':
-#             question += tagged[j][0]
-#         else:
-#             question += '?'
-#     return question
 
 def concat(l):
     return reduce(lambda a, b: a+" "+b, l)
