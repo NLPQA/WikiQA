@@ -1,6 +1,6 @@
 __author__ = 'laceyliu'
 
-dir = "/Users/laceyliu/Documents/workspace/"
+dir = "/Users/yitinghao/Desktop/Program/GitHub/"
 parser_path = dir + 'WikiQA/stanford-parser-full/'
 ner_path = dir+'WikiQA/stanford-ner'
 which_java = '/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/HOME/bin/java'

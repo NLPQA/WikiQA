@@ -121,7 +121,7 @@ def main(wiki_path, n):
 
         # who/what
         if contains_name(tagged_sent):
-            question = ask.get_who(sent).capitalize()
+            question = ask.get_who(parsed_sent).capitalize()
             # correct grammar and find errors
             question, errs = grammar_checker.correct_sent(question)
             # deductions for errors
