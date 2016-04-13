@@ -21,44 +21,57 @@ def basicForm(word, pos):
     else:
         return WordNetLemmatizer().lemmatize(word, pos)
 
-def get_binary(sentence,tagged, twist):
+def get_binary(sentence, tagged, ners, twist):
     question = ""
+    bes = ["am", "are", "was", "were", "have", "has", "is"]
     # sent = nltk.word_tokenize(sentence)
     # tagged = nltk.pos_tag(sent)
     if randint(0,9) < 4 and twist:
         tagged = twist_statement(tagged)
-    for i in xrange(len(tagged)):
-        if tagged[i][1] == 'MD' or tagged[i][0] == 'have' or (tagged[i][0] == 'has' and tagged[i][1] == 'VBZ') or tagged[i][0] == 'am'  or tagged[i][0] == 'are' or tagged[i][0] == 'was' or(tagged[i][0] == 'is' and tagged[i][1] == 'VBZ'):
-            if tagged[0][1] != 'NNP' or tagged[0][1] != 'NNPS':
-                tagged[0] = (tagged[0][0], tagged[0][1])
+
+    if len(tagged) == 0:
+        return ""
+
+    if tagged[0][1] != 'NNP' and tagged[0][1] != 'NNPS':
+            #if ners[0][1] != 'PERSON' and ners[0][1] != 'ORGANIZATION' and ners != 'LOCATION':
+        tagged[0] = (tagged[0][0].lower(), tagged[0][1])
+        ners[0] = (ners[0][0].lower(), ners[0][1])
+
+    i = 0
+    while i < len(tagged):
+
+        if tagged[i][0] in bes:
+            ners.insert(0, ners.pop(i))
+            tagged.insert(0, tagged.pop(i))
+            break
+        elif tagged[i][1] == 'MD':
+            ners.insert(0, ners.pop(i))
             tagged.insert(0, tagged.pop(i))
             break
         elif tagged[i][1] == 'VBD':
-            tagged[i] = (stem(tagged[i][0]), 'VB')
-            if tagged[0][1] != 'NNP' or tagged[0][1] != 'NNPS':
-                tagged[0] = (tagged[0][0], tagged[0][1])
-            tagged.insert(0, ('did', 'MD'))
+            ners[i] = (stem(tagged[i][0]), 'O')
+            tagged[i] = (stem(tagged[i][0]), 'VBP')
+            ners.insert(0, ('did','O'))
+            tagged.insert(0, ('did','MD'))
             break
         elif tagged[i][1] == 'VBZ':
-            tagged[i] = (stem(tagged[i][0]), 'VB')
-            if tagged[0][1] != 'NNP' or tagged[0][1] != 'NNPS':
-                tagged[0] = (tagged[0][0], tagged[0][1])
-            tagged.insert(0, ('does', 'MD'))
+            ners[i] = (stem(tagged[i][0]), 'O')
+            tagged[i] = (stem(tagged[i][0]), 'VBP')
+            ners.insert(0, ('does','O'))
+            tagged.insert(0, ('does','MD'))
             break
         elif tagged[i][1] == 'VBP':
-            tagged[i] = (stem(tagged[i][0]), 'VB')
-            if tagged[0][1] != 'NNP' or tagged[0][1] != 'NNPS':
-                tagged[0] = (tagged[0][0], tagged[0][1])
-            tagged.insert(0, ('do', 'MD'))
+            ners[i] = (stem(tagged[i][0]), 'O')
+            tagged[i] = (stem(tagged[i][0]), 'VBP')
+            ners.insert(0, ('do','O'))
+            tagged.insert(0, ('do','MD'))
             break
+        i+=1
 
-    for j in xrange(len(tagged)):
-        if j < len(tagged) - 2:
-            question += tagged[j][0] + ' '
-        elif j >= len(tagged) - 2 and tagged[j][0] != '.':
-            question += tagged[j][0]
+    for i in xrange(len(tagged)-1):
+        question += ' ' + tagged[i][0]
 
-    return question
+    return question.strip(), tagged, ners
 
 def twist_statement(tagged_sent):
     twisted = []
@@ -81,146 +94,146 @@ def twist_statement(tagged_sent):
         else:
             twisted.append(tagged_token)
     return twisted
-#
-# # generate who question
-# def get_who(tree):
-#     question = "who "
-#     verbP = re.compile("^V[BP].{0,1}$")
-#     for node in tree[0]:
-#         if node.label() != "NP":
-#             if node.label() == "VP":
-#                 for i in xrange(len(node)):
-#                     if node[i].label() == "MD":
-#                         break;
-#                     elif node[i].label() == "VBZ":
-#                         if node[i][0] != "is" and not (node[i][0] == "has" and i+1<len(node) and verbP.match(node[i+1].label())):
-#                             question = "who does" + question[question.find(" "):]
-#                             for j in xrange(i, len(node)):
-#                                 if node[j].label() == "VBZ":
-#                                     node[j][0] = basicForm(node[j][0], 'v')
-#                             break;
-#                     elif node[i].label() == "VBD":
-#                         if node[i][0] != "was" and node[i][0] != "were" and not (node[i][0] == "had" and i+1<len(node) and verbP.match(node[i+1].label())):
-#                             question = "who did" + question[question.find(" "):]
-#                             for j in xrange(i, len(node)):
-#                                 if node[j].label() == "VBD":
-#                                     node[j][0] = basicForm(node[j][0], 'v')
-#             question += " ".join([leave for leave in node.leaves()]) + " "
-#     question = question[:len(question)-3] + "?"
-#     return question
-#
-# # generate what question
-# def get_what(tree):
-#     question = "what "
-#     verbP = re.compile("^V[BP].{0,1}$")
-#     for node in tree[0]:
-#         if node.label() != "NP":
-#             if node.label() == "VP":
-#                 for i in xrange(len(node)):
-#                     if node[i].label() == "MD":
-#                         break;
-#                     elif node[i].label() == "VBZ":
-#                         if node[i][0] != "is" and not (node[i][0] == "has" and i+1<len(node) and verbP.match(node[i+1].label())):
-#                             question = "what does" + question[question.find(" "):]
-#                             for j in xrange(i, len(node)):
-#                                 if node[j].label() == "VBZ":
-#                                     node[j][0] = basicForm(node[j][0], 'v')
-#                             break;
-#                     elif node[i].label() == "VBD":
-#                         if node[i][0] != "was" and node[i][0] != "were" and not (node[i][0] == "had" and i+1<len(node) and verbP.match(node[i+1].label())):
-#                             question = "what did" + question[question.find(" "):]
-#                             for j in xrange(i, len(node)):
-#                                 if node[j].label() == "VBD":
-#                                     node[j][0] = basicForm(node[j][0], 'v')
-#             question += " ".join([leave for leave in node.leaves()]) + " "
-#     question = question[:len(question)-3] + "?"
-#     return question
-#
-def get_who(tagged):
-    question = ""
-    for i in range(0,len(tagged)):
-        question = ''
-        start = 0
-        if (tagged[i][1] == 'MD' or tagged[i][1] == 'VBD' or tagged[i][1] == 'VBZ' or tagged[i][0] == 'has' or tagged[i][1] == 'is' or tagged[i][1] == 'was'or tagged[i][1] == 'are'):
-            if tagged[i][1] == 'MD':
-                start = 1
-                question += 'Who '
-            elif tagged[i][0] == 'has':
-                if tagged[i+1][1][0:1] == 'V':
-                    question += 'Who has '
-                    start = i + 1
-                else:
-                    question += 'Who does have '
-                    start = i + 1
-            elif tagged[i][0] == 'is':
-                question += 'Who is '
-                start = i + 1
-            elif tagged[i][0] == 'was':
-                question += 'Who was '
-                start = i + 1
-            elif tagged[i][0] == 'are':
-                question += 'Who are '
-                start = i + 1
-            elif tagged[i][1] == 'VBD':
-                verb = tagged[i][0]
-                question += 'Who ' + verb + ' '
-                start = i + 1
-            elif tagged[i][1] == 'VBZ':
-                verb = tagged[i][0]
-                question += 'Who ' + verb + ' '
-                start = i + 1
-            for j in range(start,len(tagged)):
-                if j < len(tagged) - 2:
-                    question += tagged[j][0] + ' '
-                elif j >= len(tagged) - 2 and tagged[j][0] != '.':
-                    question += tagged[j][0]
-                else:
-                    question += '?'
-            break
+
+# generate who question
+def get_who(tree):
+    question = "who "
+    verbP = re.compile("^V[BP].{0,1}$")
+    for node in tree[0]:
+        if node.label() != "NP":
+            if node.label() == "VP":
+                for i in xrange(len(node)):
+                    if node[i].label() == "MD":
+                        break;
+                    elif node[i].label() == "VBZ":
+                        if node[i][0] != "is" and not (node[i][0] == "has" and i+1<len(node) and verbP.match(node[i+1].label())):
+                            question = "who does" + question[question.find(" "):]
+                            for j in xrange(i, len(node)):
+                                if node[j].label() == "VBZ":
+                                    node[j][0] = basicForm(node[j][0], 'v')
+                            break;
+                    elif node[i].label() == "VBD":
+                        if node[i][0] != "was" and node[i][0] != "were" and not (node[i][0] == "had" and i+1<len(node) and verbP.match(node[i+1].label())):
+                            question = "who did" + question[question.find(" "):]
+                            for j in xrange(i, len(node)):
+                                if node[j].label() == "VBD":
+                                    node[j][0] = basicForm(node[j][0], 'v')
+            question += " ".join([leave for leave in node.leaves()]) + " "
+    question = question[:len(question)-3] + "?"
     return question
 
-def get_what(tagged):
-    question = ""
-    for i in range(0,len(tagged)):
-        question = ''
-        start = 0
-        if (tagged[i][1] == 'MD' or tagged[i][1] == 'VBD' or tagged[i][1] == 'VBZ' or tagged[i][0] == 'has' or tagged[i][1] == 'is' or tagged[i][1] == 'was'or tagged[i][1] == 'are'):
-            if tagged[i][1] == 'MD':
-                start = 1
-                question += 'What '
-            elif tagged[i][0] == 'has':
-                if tagged[i+1][1][0:1] == 'V':
-                    question += 'What has '
-                    start = i + 1
-                else:
-                    question += 'What does have '
-                    start = i + 1
-            elif tagged[i][0] == 'is':
-                question += 'What is '
-                start = i + 1
-            elif tagged[i][0] == 'was':
-                question += 'What was '
-                start = i + 1
-            elif tagged[i][0] == 'are':
-                question += 'What are '
-                start = i + 1
-            elif tagged[i][1] == 'VBD':
-                verb = tagged[i][0]
-                question += 'What ' + verb + ' '
-                start = i + 1
-            elif tagged[i][1] == 'VBZ':
-                verb = tagged[i][0]
-                question += 'What ' + verb + ' '
-                start = i + 1
-            for j in range(start,len(tagged)):
-                if j < len(tagged) - 2:
-                    question += tagged[j][0] + ' '
-                elif j >= len(tagged) - 2 and tagged[j][0] != '.':
-                    question += tagged[j][0]
-                else:
-                    question += '?'
-            break
+# generate what question
+def get_what(tree):
+    question = "what "
+    verbP = re.compile("^V[BP].{0,1}$")
+    for node in tree[0]:
+        if node.label() != "NP":
+            if node.label() == "VP":
+                for i in xrange(len(node)):
+                    if node[i].label() == "MD":
+                        break;
+                    elif node[i].label() == "VBZ":
+                        if node[i][0] != "is" and not (node[i][0] == "has" and i+1<len(node) and verbP.match(node[i+1].label())):
+                            question = "what does" + question[question.find(" "):]
+                            for j in xrange(i, len(node)):
+                                if node[j].label() == "VBZ":
+                                    node[j][0] = basicForm(node[j][0], 'v')
+                            break;
+                    elif node[i].label() == "VBD":
+                        if node[i][0] != "was" and node[i][0] != "were" and not (node[i][0] == "had" and i+1<len(node) and verbP.match(node[i+1].label())):
+                            question = "what did" + question[question.find(" "):]
+                            for j in xrange(i, len(node)):
+                                if node[j].label() == "VBD":
+                                    node[j][0] = basicForm(node[j][0], 'v')
+            question += " ".join([leave for leave in node.leaves()]) + " "
+    question = question[:len(question)-3] + "?"
     return question
+
+# def get_who(tagged):
+#     question = ""
+#     for i in range(0,len(tagged)):
+#         question = ''
+#         start = 0
+#         if (tagged[i][1] == 'MD' or tagged[i][1] == 'VBD' or tagged[i][1] == 'VBZ' or tagged[i][0] == 'has' or tagged[i][1] == 'is' or tagged[i][1] == 'was'or tagged[i][1] == 'are'):
+#             if tagged[i][1] == 'MD':
+#                 start = 1
+#                 question += 'Who '
+#             elif tagged[i][0] == 'has':
+#                 if tagged[i+1][1][0:1] == 'V':
+#                     question += 'Who has '
+#                     start = i + 1
+#                 else:
+#                     question += 'Who does have '
+#                     start = i + 1
+#             elif tagged[i][0] == 'is':
+#                 question += 'Who is '
+#                 start = i + 1
+#             elif tagged[i][0] == 'was':
+#                 question += 'Who was '
+#                 start = i + 1
+#             elif tagged[i][0] == 'are':
+#                 question += 'Who are '
+#                 start = i + 1
+#             elif tagged[i][1] == 'VBD':
+#                 verb = tagged[i][0]
+#                 question += 'Who ' + verb + ' '
+#                 start = i + 1
+#             elif tagged[i][1] == 'VBZ':
+#                 verb = tagged[i][0]
+#                 question += 'Who ' + verb + ' '
+#                 start = i + 1
+#             for j in range(start,len(tagged)):
+#                 if j < len(tagged) - 2:
+#                     question += tagged[j][0] + ' '
+#                 elif j >= len(tagged) - 2 and tagged[j][0] != '.':
+#                     question += tagged[j][0]
+#                 else:
+#                     question += '?'
+#             break
+#     return question
+#
+# def get_what(tagged):
+#     question = ""
+#     for i in range(0,len(tagged)):
+#         question = ''
+#         start = 0
+#         if (tagged[i][1] == 'MD' or tagged[i][1] == 'VBD' or tagged[i][1] == 'VBZ' or tagged[i][0] == 'has' or tagged[i][1] == 'is' or tagged[i][1] == 'was'or tagged[i][1] == 'are'):
+#             if tagged[i][1] == 'MD':
+#                 start = 1
+#                 question += 'What '
+#             elif tagged[i][0] == 'has':
+#                 if tagged[i+1][1][0:1] == 'V':
+#                     question += 'What has '
+#                     start = i + 1
+#                 else:
+#                     question += 'What does have '
+#                     start = i + 1
+#             elif tagged[i][0] == 'is':
+#                 question += 'What is '
+#                 start = i + 1
+#             elif tagged[i][0] == 'was':
+#                 question += 'What was '
+#                 start = i + 1
+#             elif tagged[i][0] == 'are':
+#                 question += 'What are '
+#                 start = i + 1
+#             elif tagged[i][1] == 'VBD':
+#                 verb = tagged[i][0]
+#                 question += 'What ' + verb + ' '
+#                 start = i + 1
+#             elif tagged[i][1] == 'VBZ':
+#                 verb = tagged[i][0]
+#                 question += 'What ' + verb + ' '
+#                 start = i + 1
+#             for j in range(start,len(tagged)):
+#                 if j < len(tagged) - 2:
+#                     question += tagged[j][0] + ' '
+#                 elif j >= len(tagged) - 2 and tagged[j][0] != '.':
+#                     question += tagged[j][0]
+#                 else:
+#                     question += '?'
+#             break
+#     return question
 
 
 
@@ -240,7 +253,6 @@ def get_howmany(sent_tokens, tagged):
     return question
 
 def get_why(sent_tokens, tagged):
-
     consequence = ""
     for i in xrange(len(tagged)):
         # Case: .(consequence).. because (reason).....

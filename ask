@@ -6,13 +6,9 @@ import tree_parser
 import ask_modules
 import stanford_utils
 import ginger_python2 as grammar_checker
-from Queue import Queue
-from Queue import Empty
-import threading
-
 
 import sys
-tagger = stanford_utils.new_NERtagger()
+ner_tagger = stanford_utils.new_NERtagger()
 why_keywords = ["because"]
 def contains_reason(sent):
     for why_keyword in why_keywords:
@@ -20,15 +16,27 @@ def contains_reason(sent):
                 return True
     return False
 
-def contains_time(tagged_sent):
-    for tup in tagged_sent:
-        if tup[1] == "DATE" or tup[1] == "TIME":
+def contains_time(ner_sent, pos_sent):
+    ps = ['during', 'since', 'when', 'before', 'after']
+    for i in xrange(0, len(pos_sent)):
+        tup = pos_sent[i]
+        if tup[1] == "IN":
+            if i + 1 < len(ner_sent) and \
+                    (ner_sent[i+1][1] == "DATE" or ner_sent[i+1][1] == "TIME"):
+                return True
+        if tup[0] in ps:
             return True
     return False
 
-def contains_loc(tagged_sent):
-    for tup in tagged_sent:
-        if tup[1] == "LOCATION" or tup[1] == "ORGANIZATION":
+def contains_loc(ner_sent, pos_sent):
+    ps = ['where']
+    for i in xrange(0, len(pos_sent)):
+        tup = pos_sent[i]
+        if tup[1] == "IN":
+            if i + 1 < len(ner_sent) and \
+                    (ner_sent[i+1][1] == "LOCATION" or ner_sent[i+1][1] == "ORGANIZATION"):
+                return True
+        if tup[0] in ps:
             return True
     return False
 
@@ -65,82 +73,6 @@ def preprocess_sents(sents):
         preds.append(pred)
     return preds
 
-def worker_main(queue=None, out_queue=None, lock=None):
-    if queue == None or out_queue == None or lock == None:
-        print "Unalloc queue"
-        return
-
-    while True:
-        try:
-            sent = queue.get()
-            # bonus for average len
-            score = (20 - math.fabs(sent.count(" ")-10))*0.5
-
-            # bonus for question difficulties
-
-            # binary question
-            with lock:
-                # tokenize into words for each sentence
-                sent_tokens = nltk.word_tokenize(sent)
-                # tag for words in each sentence
-                tagged_sent = nltk.pos_tag(sent_tokens)
-                # deductions for errors
-                binary_q = ask_modules.get_binary(sent,tagged_sent, twist=False)
-                binary_q_tokens = nltk.word_tokenize(binary_q)
-                pos_binary = nltk.pos_tag(binary_q_tokens)
-                ner_binary = tagger.tag(binary_q_tokens)
-
-            binary_q, errs = grammar_checker.correct_sent(binary_q.capitalize()+"?")
-            out_queue.put((binary_q, score-errs+2))
-
-            # bonus for more pps
-            pps = 0
-            for (w, t) in pos_binary:
-                if t == "IN":
-                    pps += 1
-            score += pps-1
-
-            # when
-            if contains_time(ner_binary):
-                question = ask_modules.get_when(sent, pos_binary, ner_binary)
-                # correct grammar and find errors
-                question, errs = grammar_checker.correct_sent(question)
-                # deductions for errors
-                if question.count(" ") > 5:
-                    out_queue.put((question, score-errs+4))
-            # where
-            if contains_loc(ner_binary):
-                question = ask_modules.get_where(sent, pos_binary, ner_binary).capitalize()
-                # correct grammar and find errors
-                question, errs = grammar_checker.correct_sent(question)
-                # deductions for errors
-                if question.count(" ") > 5:
-                    out_queue.put((question, score-errs+4))
-
-
-            # who/what
-            if contains_name(ner_binary):
-                question = ask_modules.get_who(tagged_sent).capitalize()
-                # correct grammar and find errors
-                question, errs = grammar_checker.correct_sent(question)
-                # deductions for errors
-                if question.count(" ") > 5:
-                    out_queue.put((question, score-errs+3))
-            else:
-                question = ask_modules.get_what(tagged_sent).capitalize()
-                # correct grammar and find errors
-                question, errs = grammar_checker.correct_sent(question)
-                # deductions for errors
-                if question.count(" ") > 5:
-                    out_queue.put((question, score-errs+2))
-            print out_queue.qsize()
-        except Empty:
-            print "Queue empty"
-            return
-        except:
-            print "Request done"
-            return
-    return
 
 def main(wiki_path, n):
     title, sents = doc_parser.doc_to_sents(wiki_path)
@@ -149,38 +81,24 @@ def main(wiki_path, n):
     sents = [sent for sent in sents if 10 <= sent.count(" ") <= 30]
     sents = sents[:3*n]
 
-    # input_queue = Queue(1000)
-    # out_queue = Queue(1000)
-    # lock = threading.Lock()
-    # threads = []
     for sent in sents:
-    #     input_queue.put(sent)
-    #
-    # for i in range(0, 5):
-    #     t = threading.Thread(target=worker_main, args=(input_queue, out_queue, lock))
-    #     threads.append(t)
-    #     t.start()
-    #
-    # for t in threads:
-    #     t.join()
         # bonus for average len
         score = (20 - math.fabs(sent.count(" ")-10))*0.5
-    #
-    #     # bonus for question difficulties
-    #
+
+        # bonus for question difficulties
+
         # tokenize into words for each sentence
         sent_tokens = nltk.word_tokenize(sent)
         # tag for words in each sentence
-        tagged_sent = nltk.pos_tag(sent_tokens)
-
+        pos_sent = nltk.pos_tag(sent_tokens)
+        ner_sent = ner_tagger.tag(sent_tokens)
         # binary question
-        binary_q = ask_modules.get_binary(sent,tagged_sent, twist=False)
-        binary_q_tokens = nltk.word_tokenize(binary_q)
-        pos_binary = nltk.pos_tag(binary_q_tokens)
-        ner_binary = tagger.tag(binary_q_tokens)
+        binary_q, pos_binary, ner_binary = ask_modules.get_binary(sent,pos_sent, ner_sent, twist=False)
+        # pos_binary = nltk.pos_tag(binary_q_tokens)
+        # ner_binary = ner_tagger.tag(binary_q_tokens)
         parsed_sent = tree_parser.sent_to_tree(sent)
         # deductions for errors
-        binary_q, errs = grammar_checker.correct_sent(binary_q.capitalize()+"?")
+        binary_q2, errs = grammar_checker.correct_sent(binary_q.capitalize()+"?")
         questions.append((binary_q, score-errs+2))
 
         # bonus for more pps
@@ -190,85 +108,87 @@ def main(wiki_path, n):
                 pps += 1
         score += pps-1
 
-        # # when
-        # if contains_time(ner_binary):
-        #     question = ask.get_when(sent, pos_binary, ner_binary)
-        #     # correct grammar and find errors
-        #     question, errs = grammar_checker.correct_sent(question)
-        #     # deductions for errors
-        #     if question.count(" ") > 5:
-        #         questions.append((question, score-errs+4))
-        # # where
-        # if contains_loc(ner_binary):
-        #     question = ask.get_where(sent, pos_binary, ner_binary).capitalize()
-        #     # correct grammar and find errors
-        #     question, errs = grammar_checker.correct_sent(question)
-        #     # deductions for errors
-        #     if question.count(" ") > 5:
-        #         questions.append((question, score-errs+4))
+        # when
+        if contains_time(ner_binary, pos_binary):
+            question = ask_modules.get_when(sent, pos_binary, ner_binary)
+            # correct grammar and find errors
+            question2, errs = grammar_checker.correct_sent(question)
+            # deductions for errors
+            if question.count(" ") > 5:
+                questions.append((question, score-errs+4))
+        # where
+        if contains_loc(ner_binary, pos_binary):
+            question = ask_modules.get_where(sent, pos_binary, ner_binary).capitalize()
+            # correct grammar and find errors
+            question2, errs = grammar_checker.correct_sent(question)
+            # deductions for errors
+            if question.count(" ") > 5:
+                questions.append((question, score-errs+4))
 
         # who/what
-        if contains_name(ner_binary):
-            question = ask_modules.get_who(tagged_sent).capitalize()
-            # correct grammar and find errors
-            question, errs = grammar_checker.correct_sent(question)
-            # deductions for errors
-            if question.count(" ") > 5:
-                questions.append((question, score-errs+3))
-        else:
-            question = ask_modules.get_what(tagged_sent).capitalize()
-            # correct grammar and find errors
-            question, errs = grammar_checker.correct_sent(question)
-            # deductions for errors
-            if question.count(" ") > 5:
-                questions.append((question, score-errs+2))
-
-        # # who/what
-        # if contains_name(tagged_sent):
-        #     question = ask.get_who(parsed_sent).capitalize()
+        # if contains_name(ner_binary):
+        #     question = ask_modules.get_who(tagged_sent).capitalize()
         #     # correct grammar and find errors
         #     question, errs = grammar_checker.correct_sent(question)
         #     # deductions for errors
-        #     questions.append((question, score-errs+5))
+        #     if question.count(" ") > 5:
+        #         questions.append((question, score-errs+3))
         # else:
-        #     question = ask.get_what(parsed_sent).capitalize()
-        #     question, errs = grammar_checker.correct_sent(question)
-        #     if question.count(" ") > 5:
-        #         questions.append((question, score-errs+5))
-        # #why
-        # if contains_reason(tagged_sent):
-        #     question = ask.get_why(sent_tokens, tagged_sent).capitalize()
+        #     question = ask_modules.get_what(tagged_sent).capitalize()
         #     # correct grammar and find errors
         #     question, errs = grammar_checker.correct_sent(question)
         #     # deductions for errors
         #     if question.count(" ") > 5:
-        #         questions.append((question, score-errs+5))
-        #
-        # # how-many
-        # elif contains_quant(sent, tagged_sent):
-        #     question = ask.get_howmany(sent_tokens, tagged_sent).capitalize()
-        #     # correct grammar and find errors
-        #     question, errs = grammar_checker.correct_sent(question)
-        #     # deductions for errors
-        #     if question.count(" ") > 5:
-        #         questions.append((question, score-errs+5))
+        #         questions.append((question, score-errs+2))
+
+        who/what
+        if contains_name(ner_binary):
+            question = ask_modules.get_who(parsed_sent).capitalize()
+            # correct grammar and find errors
+            question, errs = grammar_checker.correct_sent(question)
+            # deductions for errors
+            questions.append((question, score-errs+5))
+        else:
+            question = ask_modules.get_what(parsed_sent).capitalize()
+            question, errs = grammar_checker.correct_sent(question)
+            if question.count(" ") > 5:
+                questions.append((question, score-errs+5))
+        #why
+        if contains_reason(tagged_sent):
+            question = ask.get_why(sent_tokens, tagged_sent).capitalize()
+            # correct grammar and find errors
+            question, errs = grammar_checker.correct_sent(question)
+            # deductions for errors
+            if question.count(" ") > 5:
+                questions.append((question, score-errs+5))
+
+        # how-many
+        elif contains_quant(sent, tagged_sent):
+            question = ask.get_howmany(sent_tokens, tagged_sent).capitalize()
+            # correct grammar and find errors
+            question, errs = grammar_checker.correct_sent(question)
+            # deductions for errors
+            if question.count(" ") > 5:
+                questions.append((question, score-errs+5))
 
     # while not out_queue.empty():
     #     questions.append(out_queue.get())
     # print "questions size " + str(len(questions))
 
-    ranked_questions = sorted(questions, key=lambda x:(-x[1],x[0]))[:n]
+    ranked_questions = sorted(questions, key=lambda x:(-x[1],x[0]))[:2*n]
     for question in ranked_questions:
         sys.stdout.write(question[0]+" "+"\n")
 
 import time
-for i in xrange(1, 10):
-    start = time.time()
-    if i == 5 or i == 6:
-        continue
-    print i
-    wiki_path = "test_sw/a"+str(i)+".htm"
-    main(wiki_path, 10)
-    print time.time() - start
-# main("test/a6.htm", 10)
+start = time.time()
+# for i in xrange(1, 10):
+#     start = time.time()
+#     if i == 5 or i == 6:
+#         continue
+#     print i
+#     wiki_path = "test_sw/a"+str(i)+".htm"
+#     main(wiki_path, 10)
+#     print time.time() - start
+main("test_sw/a1.htm", 10)
+print time.time() - start
 # main(sys.argv[1], int(sys.argv[2]))
