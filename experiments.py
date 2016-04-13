@@ -4,6 +4,10 @@ __author__ = 'laceyliu'
 # s = "What is Delta Cancri also known as?"
 # tagged = pos_tag(tokenize.word_tokenize(s))
 # print tagged
+import re
+from nltk.stem.wordnet import WordNetLemmatizer
+from nltk.corpus import wordnet as wn
+import stanford_utils
 
 import tree_parser
 qs = [
@@ -29,7 +33,57 @@ s = [
     "Perl was originally named \"Pearl\".",
     "Tottenham Hotspur was the first club he played for.",
 ]
-for q in s:
-    tree = tree_parser.sent_to_tree(q)
-    for t in tree:
-        print(t)
+# for q in s:
+#     tree = tree_parser.sent_to_tree(q)
+#     for t in tree:
+#         print(t)
+
+test = "Harry, Ron and Hermione head back to school on the Hogwarts Express. "
+ner_tagger = stanford_utils.new_NERtagger()
+tagged = ner_tagger.tag(test.split(" "))
+parsed = tree_parser.sent_to_tree(test)
+
+def contains_name(tagged_sent):
+    for tup in tagged_sent:
+        if tup[1] == "PERSON":
+            return True
+        elif tup[0].lower() == "he" or tup[0].lower() == "she":
+            return True
+    return False
+
+# get basic form for verb (set pos = 'v' for verb)
+def basicForm(word, pos):
+    exceptions = wn._exception_map[pos]
+    if word in exceptions:
+        return exceptions[word][0]
+    else:
+        return WordNetLemmatizer().lemmatize(word, pos)
+
+def get_who(tree):
+    question = "who "
+    verbP = re.compile("^V[BP].{0,1}$")
+    for node in tree[0]:
+        if node.label() != "NP":
+            if node.label() == "VP":
+                for i in xrange(len(node)):
+                    if node[i].label() == "MD":
+                        break;
+                    elif node[i].label() == "VBZ":
+                        if node[i][0] != "is" and not (node[i][0] == "has" and i+1<len(node) and verbP.match(node[i+1].label())):
+                            question = "who does" + question[question.find(" "):]
+                            for j in xrange(i, len(node)):
+                                if node[j].label() == "VBZ":
+                                    node[j][0] = basicForm(node[j][0], 'v')
+                            break;
+                    elif node[i].label() == "VBD":
+                        if node[i][0] != "was" and node[i][0] != "were" and not (node[i][0] == "had" and i+1<len(node) and verbP.match(node[i+1].label())):
+                            question = "who did" + question[question.find(" "):]
+                            for j in xrange(i, len(node)):
+                                if node[j].label() == "VBD":
+                                    node[j][0] = basicForm(node[j][0], 'v')
+            question += " ".join([leave for leave in node.leaves()]) + " "
+    question = question[:len(question)-3] + "?"
+    return question
+
+print contains_name(tagged)
+print get_who(parsed)
