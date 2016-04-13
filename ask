@@ -40,12 +40,18 @@ def contains_name(tagged_sent):
             return True
     return False
 
-def contains_quant(sent, tagged_sent):
-    tokens = nltk.tokenize.word_tokenize(sent)
-    for i in xrange(0, len(tokens)):
-        if str.isdigit(str(tokens[i])):
-            if i + 1 < len(tokens) and tagged_sent[i+1][1].endswith('s'):
-                return True
+def contains_quant(sent, tagged):
+    # tokens = nltk.tokenize.word_tokenize(sent)
+    # for i in xrange(0, len(tokens)):
+    #     if str.isdigit(str(tokens[i])):
+    #         if i + 1 < len(tokens) and tagged_sent[i+1][1].endswith('s'):
+    #             return True
+    # return False
+    for i in xrange(len(tagged)):
+        if tagged[i][1] == "CD":
+            for j in xrange(len(tagged[i:])):
+                if tagged[i+j][1] == "NNS" or tagged[i+j][1] == "NN":
+                    return True
     return False
 
 def preprocess_sents(sents):
