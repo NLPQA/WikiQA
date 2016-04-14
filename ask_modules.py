@@ -1,10 +1,6 @@
 __author__ = 'laceyliu'
 
 import re
-import nltk
-import nltk.tokenize
-import nltk.tag
-import nltk.stem
 from random import randint
 from nltk.stem.wordnet import WordNetLemmatizer
 from nltk.corpus import wordnet as wn
@@ -238,6 +234,8 @@ def get_what(tree):
 
 
 def concat(l):
+    if len(l) == 0:
+        return ""
     return reduce(lambda a, b: a+" "+b, l)
 
 def get_howmany(sent_tokens, tagged):
@@ -247,7 +245,8 @@ def get_howmany(sent_tokens, tagged):
                 if tagged[i+j][1] == "NNS" or tagged[i+j][1] == "NN":
                     object = tagged[i+1:i+j+1]
                     main_sentence = sent_tokens[:i]
-                    main_sentence[0] = main_sentence[0].lower()
+                    if len(main_sentence) > 0:
+                        main_sentence[0] = main_sentence[0].lower()
                     break
     question = "How many " + concat(map(lambda x: x[0], object)) + " " + concat(main_sentence)+"?"
     return question
@@ -264,8 +263,8 @@ def get_why(sent_tokens, tagged):
             consequence = reduce(lambda a, b: a+" "+b, sent_tokens[sent_tokens.index(",")+1:])
             break
         # other cases: due to ...
-    question = get_binary(consequence, twist=False)
-    question = "Why "+question+"?"
+    # question = get_binary(consequence, twist=False)
+    question = "Why "+consequence+"?"
     return question
 
 # test = "Chris Columbus, the director of the previous two films, decided not to return and helm the third instalment as he \"hadn't seen [his] own kids for supper in the week for about two and a half years.\""

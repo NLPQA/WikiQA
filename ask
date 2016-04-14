@@ -4,6 +4,7 @@ import doc_parser
 import nltk
 import tree_parser
 import ask_modules
+import ask_parse
 import stanford_utils
 import ginger_python2 as grammar_checker
 
@@ -93,7 +94,7 @@ def main(wiki_path, n):
         pos_sent = nltk.pos_tag(sent_tokens)
         ner_sent = ner_tagger.tag(sent_tokens)
         # binary question
-        binary_q, pos_binary, ner_binary = ask_modules.get_binary(sent,pos_sent, ner_sent, twist=False)
+        binary_q, pos_binary, ner_binary = ask_modules.get_binary(sent, pos_sent[:], ner_sent[:], twist=False)
         # pos_binary = nltk.pos_tag(binary_q_tokens)
         # ner_binary = ner_tagger.tag(binary_q_tokens)
         parsed_sent = tree_parser.sent_to_tree(sent)
@@ -106,8 +107,8 @@ def main(wiki_path, n):
         score += pps-1
 
         # when
-        if contains_time(ner_binary, pos_binary):
-            question = ask_modules.get_when(sent, pos_binary, ner_binary)
+        if contains_time(ner_binary[:], pos_binary[:]):
+            question = ask_modules.get_when(sent, pos_binary[:], ner_binary[:])
             # correct grammar and find errors
             question2, errs = grammar_checker.correct_sent(question)
             # deductions for errors
@@ -115,7 +116,7 @@ def main(wiki_path, n):
                 questions.append((question, score-errs+4))
         # where
         if contains_loc(ner_binary, pos_binary):
-            question = ask_modules.get_where(sent, pos_binary, ner_binary).capitalize()
+            question = ask_modules.get_where(sent, pos_binary[:], ner_binary[:]).capitalize()
             # correct grammar and find errors
             question2, errs = grammar_checker.correct_sent(question)
             # deductions for errors
@@ -140,19 +141,20 @@ def main(wiki_path, n):
 
         # who/what
         if contains_name(ner_binary):
-            question = ask_modules.get_who(parsed_sent).capitalize()
+            question = ask_parse.get_who(parsed_sent).capitalize()
             # correct grammar and find errors
             question, errs = grammar_checker.correct_sent(question)
             # deductions for errors
-            questions.append((question, score-errs+5))
+            if question.count(" ") > 5:
+                questions.append((question, score-errs+5))
         else:
-            question = ask_modules.get_what(parsed_sent).capitalize()
+            question = ask_parse.get_what(parsed_sent).capitalize()
             question, errs = grammar_checker.correct_sent(question)
             if question.count(" ") > 5:
                 questions.append((question, score-errs+5))
         #why
         if contains_reason(sent):
-            question = ask_modules.get_why(sent_tokens, pos_sent).capitalize()
+            question = ask_modules.get_why(sent_tokens[:], pos_binary[:]).capitalize()
             # correct grammar and find errors
             question, errs = grammar_checker.correct_sent(question)
             # deductions for errors
@@ -160,8 +162,8 @@ def main(wiki_path, n):
                 questions.append((question, score-errs+5))
 
         # how-many
-        elif contains_quant(sent, pos_sent):
-            question = ask_modules.get_howmany(sent_tokens, pos_sent).capitalize()
+        elif contains_quant(sent, pos_sent[:]):
+            question = ask_modules.get_howmany(sent_tokens[:], pos_sent[:]).capitalize()
             # correct grammar and find errors
             question, errs = grammar_checker.correct_sent(question)
             # deductions for errors
@@ -172,20 +174,20 @@ def main(wiki_path, n):
     #     questions.append(out_queue.get())
     # print "questions size " + str(len(questions))
 
-    ranked_questions = sorted(questions, key=lambda x:(-x[1],x[0]))[:2*n]
+    ranked_questions = sorted(questions, key=lambda x:(-x[1],x[0]))[:n]
     for question in ranked_questions:
         sys.stdout.write(question[0]+" "+"\n")
 
 import time
-start = time.time()
-# for i in xrange(1, 10):
-#     start = time.time()
-#     if i == 5 or i == 6:
-#         continue
-#     print i
-#     wiki_path = "test_sw/a"+str(i)+".htm"
-#     main(wiki_path, 10)
-#     print time.time() - start
-main("test_sw/a1.htm", 10)
-print time.time() - start
+# start = time.time()
+for i in xrange(1, 9):
+    start = time.time()
+    if i == 4:
+        continue
+    print i
+    wiki_path = "test/a"+str(i)+".htm"
+    main(wiki_path, 10)
+    print time.time() - start
+# main("test_sw/a1.htm", 10)
+# print time.time() - start
 # main(sys.argv[1], int(sys.argv[2]))
