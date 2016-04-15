@@ -8,6 +8,7 @@ import stanford_utils
 import ginger_python2 as grammar_checker
 import ask_parse
 import sys
+import preprocess
 ner_tagger = stanford_utils.new_NERtagger()
 why_keywords = ["because"]
 def contains_reason(sent):
@@ -62,16 +63,16 @@ def contains_quant(sent, tagged):
                     return True
     return False
 
-def preprocess_sents(sents):
-    preds = []
-    for sent in sents:
-        tree = tree_parser.sent_to_tree(sent)
-    if tree_parser.contains_appos(tree):
-        preds += tree_parser.appps_to_sents(tree)
-    else:
-        pred = tree_parser.sent_to_predicate(tree)
-        preds.append(pred)
-    return preds
+# def preprocess_sents(sents):
+#     preds = []
+#     for sent in sents:
+#         tree = tree_parser.sent_to_tree(sent)
+#     if tree_parser.contains_appos(tree):
+#         preds += tree_parser.appps_to_sents(tree)
+#     else:
+#         pred = tree_parser.sent_to_predicate(tree)
+#         preds.append(pred)
+#     return preds
 
 
 def main(wiki_path, n):
@@ -92,11 +93,15 @@ def main(wiki_path, n):
         # tag for words in each sentence
         pos_sent = nltk.pos_tag(sent_tokens)
         ner_sent = ner_tagger.tag(sent_tokens)
-        # binary question
-        binary_q, pos_binary, ner_binary = ask_modules.get_binary(sent, pos_sent[:], ner_sent[:], twist=False)
         # pos_binary = nltk.pos_tag(binary_q_tokens)
         # ner_binary = ner_tagger.tag(binary_q_tokens)
         parsed_sent = tree_parser.sent_to_tree(sent)
+        # general preprocess
+        preprocess.removeParts(parsed_sent)
+
+
+        # binary question
+        binary_q, pos_binary, ner_binary = ask_modules.get_binary(sent, pos_sent[:], ner_sent[:], twist=False)
         # deductions for errors
         binary_q = ask_parse.get_binary(parsed_sent)
         binary_q2, errs = grammar_checker.correct_sent(binary_q.capitalize()+"?")
@@ -182,14 +187,14 @@ def main(wiki_path, n):
 
 import time
 # start = time.time()
-for i in xrange(1, 10):
-    start = time.time()
-    if i == 5 or i == 6:
-        continue
-    print i
-    wiki_path = "test_sw/a"+str(i)+".htm"
-    main(wiki_path, 10)
-    print time.time() - start
-# main("test_sw/a1.htm", 10)
+# for i in xrange(1, 10):
+#     start = time.time()
+#     if i == 5 or i == 6:
+#         continue
+#     print i
+#     wiki_path = "test_sw/a"+str(i)+".htm"
+#     main(wiki_path, 1)
+#     print time.time() - start
+main("test_sw/a1.htm", 1)
 # print time.time() - start
 # main(sys.argv[1], int(sys.argv[2]))

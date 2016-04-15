@@ -27,7 +27,7 @@ def get_binary(sentence, tagged, ners, twist):
 
     if len(tagged) == 0:
         return ""
-
+    # lower the first letter if it is not NNP or NNPS
     if tagged[0][1] != 'NNP' and tagged[0][1] != 'NNPS':
             #if ners[0][1] != 'PERSON' and ners[0][1] != 'ORGANIZATION' and ners != 'LOCATION':
         tagged[0] = (tagged[0][0].lower(), tagged[0][1])
@@ -35,7 +35,6 @@ def get_binary(sentence, tagged, ners, twist):
 
     i = 0
     while i < len(tagged):
-
         if tagged[i][0] in bes:
             ners.insert(0, ners.pop(i))
             tagged.insert(0, tagged.pop(i))
