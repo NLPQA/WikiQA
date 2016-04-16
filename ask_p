@@ -182,12 +182,12 @@ def main(wiki_path, n):
 
 import time
 # start = time.time()
-for i in xrange(1, 10):
+for i in xrange(1, 9):
     start = time.time()
-    if i == 5 or i == 6:
+    if i == 4:
         continue
     print i
-    wiki_path = "test_sw/a"+str(i)+".htm"
+    wiki_path = "test/a"+str(i)+".htm"
     main(wiki_path, 10)
     print time.time() - start
 # main("test_sw/a1.htm", 10)

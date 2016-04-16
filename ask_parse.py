@@ -30,7 +30,7 @@ def get_howmany(tree):
                 break
         if len(num) > 0 and len(obj)>0:
             break
-    return "How many "+obj+ " "+question.replace(num+" ", "").replace(obj, "").strip()+"?"
+    return "How many "+obj+ " "+question.replace(num+" ", "").replace(obj, "").strip().rstrip(',').rstrip('.') +"?"
 
 
 def get_where(tree):
@@ -43,7 +43,7 @@ def get_where(tree):
             if tag == "LOCATION" or tag == "ORGANIZATION":
                 where = " ".join(pp.leaves())
                 break
-    return "where "+question.replace(where, "").strip()+"?"
+    return "where "+question.replace(where, "").strip().rstrip(',').rstrip('.') +"?"
 
 def get_when(tree):
     when = ""
@@ -55,7 +55,7 @@ def get_when(tree):
             if tag == "TIME" or tag == "DATE":
                 when = " ".join(pp.leaves())
                 break
-    return "when "+question.replace(when, "")+"?"
+    return "when "+question.replace(when, "").rstrip(',').rstrip('.') + "?"
 
 def get_binary(tree):
     question = ""
@@ -100,7 +100,7 @@ def get_binary(tree):
                 question += " ".join([leave for leave in node.leaves()]).replace(md, "")
             else:
                 question += " ".join([leave for leave in node.leaves()])
-    return question
+    return question.rstrip(',').rstrip('.')
 
 # generate who question
 def get_who(tree):
@@ -126,8 +126,8 @@ def get_who(tree):
                                 # if node[j].label() == "VBD":
                                 #     node[j][0] = basicForm(node[j][0], 'v')
             question += " ".join([leave for leave in node.leaves()]) + " "
-    question = question[:len(question)-3] + "?"
-    return question
+    question = question[:len(question)-3]
+    return question.rstrip(',').rstrip('.') + "?"
 
 # generate what question
 def get_what(tree):
@@ -137,7 +137,7 @@ def get_what(tree):
         if node.label() != "NP":
             if node.label() == "VP":
                 for i in xrange(len(node)):
-                    if node[i].label() == "MD" or (node[i][0] in bes and verbP.match(node[i+1].label())):
+                    if node[i].label() == "MD" or (node[i][0] in bes ):
                         break
                     elif node[i].label() == "VBZ":
                         #if node[i][0] != "is" and not (node[i][0] == "has" and i+1<len(node) and verbP.match(node[i+1].label())):
@@ -154,8 +154,8 @@ def get_what(tree):
                             #     if node[j].label() == "VBD":
                             #         node[j][0] = basicForm(node[j][0], 'v')
             question += " ".join([leave for leave in node.leaves()]) + " "
-    question = question[:len(question)-3] + "?"
-    return question
+    question = question[:len(question)-3]
+    return question.rstrip(',').rstrip('.') + "?"
 #
 # import tree_parser
 # test = "the 2nd century AD astronomer Ptolemy described 48 constellations."
