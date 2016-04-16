@@ -15,7 +15,7 @@ def remove(parent, component):
 
 # Split sentences
 
-def general(tree):
+def removeParts(tree):
     # remove part that tagged with "PRN"
     remove(tree, "PRN")
     # remove part that tagged with "FRAG"

@@ -144,14 +144,14 @@ def main(wiki_path, n):
     for question in ranked_questions:
         sys.stdout.write(question[0]+" "+"\n")
 
-import time
-for i in xrange(1, 9):
-    start = time.time()
-    if i == 4:
-        continue
-    print i
-    wiki_path = "test/a"+str(i)+".htm"
-    main(wiki_path, i)
-    print time.time() - start
-# main("test/a6.htm", 10)
+# import time
+# for i in xrange(1, 9):
+#     start = time.time()
+#     if i == 4:
+#         continue
+#     print i
+#     wiki_path = "test/a"+str(i)+".htm"
+#     main(wiki_path, i)
+#     print time.time() - start
+main("test/a6.htm", 10)
 # main(sys.argv[1], int(sys.argv[2]))
