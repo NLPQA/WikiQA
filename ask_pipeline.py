@@ -5,6 +5,7 @@ import tree_parser
 import ask
 import stanford_utils
 import ginger_python2 as grammar_checker
+import preprocess
 
 
 import sys
@@ -59,9 +60,18 @@ def main(wiki_path, n):
     title, sents = doc_parser.doc_to_sents(wiki_path)
     questions = []
 
+<<<<<<< HEAD
     sents = [sent for sent in sents if 10 <= sent.count(" ") <= 30]
     sents = sents[:3*n]
     # preds = []
+=======
+    # sents = [sent for sent in sents if 10 <= sent.count(" ") <= 30]
+    sents = sents[:n]
+    for sent in sents:
+        print sent
+
+    preds = []
+>>>>>>> 42332f23fa4118fcc19430039b520973ce0aa720
     # for sent in sents:
     #     tree = tree_parser.sent_to_tree(sent)
     #     if tree_parser.contains_appos(tree):
@@ -76,12 +86,13 @@ def main(wiki_path, n):
     #     print pred
     for sent in sents:
         parsed_sent = tree_parser.sent_to_tree(sent)
-        pps = tree_parser.get_phrases(parsed_sent, "PP", False, False)
-
+        # general pre-processing
+        preprocess.general(parsed_sent)
+        # pps = tree_parser.get_phrases(parsed_sent, "PP", False, False)
         tagged_sent = tagger.tag(nltk.tokenize.word_tokenize(sent))
-
         # bonus for average len
         score = (20 - math.fabs(sent.count(" ")-10))*0.5
+<<<<<<< HEAD
         # bonus for more pps
         score += len(pps)-1
 
@@ -119,6 +130,44 @@ def main(wiki_path, n):
             # deductions for errors
             questions.append((question, score-errs+4))
 
+=======
+        # # bonus for more pps
+        # score += len(pps)-1
+        #
+        # # bonus for question difficulties
+        # # distribute sents to generators
+        # # why
+        # if contains_reason(tagged_sent):
+        #     question = ask.get_why(sent).capitalize()
+        #     # correct grammar and find errors
+        #     question, errs = grammar_checker.correct_sent(question)
+        #     # deductions for errors
+        #     questions.append((question, score-errs+6))
+        #
+        # # how-many
+        # elif contains_quant(sent, tagged_sent):
+        #     question = ask.get_howmany(sent).capitalize()
+        #     # correct grammar and find errors
+        #     question, errs = grammar_checker.correct_sent(question)
+        #     # deductions for errors
+        #     questions.append((question, score-errs+5))
+        #
+        # # when
+        # if contains_time(tagged_sent):
+        #     question = ask.get_when(sent).capitalize()
+        #     # correct grammar and find errors
+        #     question, errs = grammar_checker.correct_sent(question)
+        #     # deductions for errors
+        #     questions.append((question, score-errs+4))
+        # # where
+        # if contains_loc(tagged_sent):
+        #     question = ask.get_where(sent).capitalize()
+        #     # correct grammar and find errors
+        #     question, errs = grammar_checker.correct_sent(question)
+        #     # deductions for errors
+        #     questions.append((question, score-errs+4))
+        #
+>>>>>>> 42332f23fa4118fcc19430039b520973ce0aa720
         # who/what
         if contains_name(tagged_sent):
             question = ask.get_who(parsed_sent).capitalize()
@@ -132,7 +181,14 @@ def main(wiki_path, n):
             question, errs = grammar_checker.correct_sent(question)
             # deductions for errors
             questions.append((question, score-errs+2))
+        #
+        # # binary question
+        # binary_q = ask.get_binary(sent, twist=True).capitalize()
+        # binary_q, errs = grammar_checker.correct_sent(binary_q)
+        # # deductions for errors
+        # questions.append((binary_q, score-errs+2))
 
+<<<<<<< HEAD
         # binary question
         binary_q = ask.get_binary(sent, twist=False).capitalize()
         binary_q, errs = grammar_checker.correct_sent(binary_q)
@@ -143,6 +199,11 @@ def main(wiki_path, n):
     ranked_questions = [q for q in ranked_questions if len(q[0]) > 0][:n]
     for question in ranked_questions:
         sys.stdout.write(question[0]+" "+"\n")
+
+    # ranked_questions = sorted(questions, key=lambda x:(-x[1],x[0]))
+    # ranked_questions = [q for q in ranked_questions if len(q[0]) > 0][:n]
+    # for question in ranked_questions:
+    #     sys.stdout.write(question[0]+"\n")
 
 # import time
 # for i in xrange(1, 9):

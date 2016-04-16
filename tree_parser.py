@@ -11,15 +11,7 @@ def sents_to_trees(sentences):
 
 def sent_to_tree(sentence):
     t = parser.raw_parse(sentence)
-    # return t.next()
-    t = parser.raw_parse(sentence)
-    tree = None
-    for subtree in t:
-        tree = subtree
-    subs = []
-    for sub in tree:
-        subs.append(sub)
-    return Tree(tree.label(), sub)
+    return t.next()
 
 def tree_to_sent(tree):
     if tree == None:
@@ -38,6 +30,7 @@ def get_phrases(tree, pattern, reversed=False, sort=False):
         #     phrases.append(t)
     if sort == True:
         phrases = sorted(phrases, key=lambda x:len(x.leaves()), reverse=reversed)
+        print phrases
     return phrases
 
 def sent_to_predicate(tree):
