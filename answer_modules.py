@@ -11,14 +11,21 @@ def answer_which(q, s):
     return ""
 
 def answer_binary(sent, miss):
+    ans = ""
     s_vect = sent.split(" ")
-    if miss >= 3:
-        return "No"
     negs = ["not", "no", "never"]
+    if miss >= 3:
+        ans = "No"
+    else:
+        ans = "Yes"
+
     for neg in negs:
         if neg in s_vect:
-            return "No"
-    return "Yes"
+            if ans == "Yes":
+                ans = "No"
+            else:
+                ans = "Yes"
+    return ans
 
 def answer_how_many(q, s):
     q_tokens = nltk.tokenize.word_tokenize(q)

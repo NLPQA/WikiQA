@@ -53,7 +53,7 @@ def doc_to_string(article):
     headings = soup.find_all('h1')
     hs = [h.get_text() for h in headings]
     title = ' '.join(hs)
-    return  title, content
+    return title, content
 
 def doc_to_vocab(article):
     global vocab
