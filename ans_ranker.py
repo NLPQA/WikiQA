@@ -77,11 +77,11 @@ def rank_sents(q_vect, sents, sent_vects, sent_idfs):
     rank_tfidf = []
     filtered_sents = []
     for i in xrange(0, len(sent_vects)):
-        if get_boolean(q_vect, sent_vects[i]) >= len(q_vect)-4:
+        if get_boolean(q_vect, sent_vects[i])+1 >= (len(q_vect)/3*2):
             filtered_sents.append((sents[i], sent_vects[i]))
     for (sent, sent_v) in filtered_sents:
         tfidf = get_tfidf(q_vect, sent_v, sent_idfs)
-        cosine =  get_cosine(q_vect, sent_v)
+        cosine = get_cosine(q_vect, sent_v)
         rank_cos.append((sent, cosine))
         rank_tfidf.append((sent,tfidf))
 
@@ -113,16 +113,18 @@ def rank_sents(q_vect, sents, sent_vects, sent_idfs):
             i_tf+=1
             i+=1
     return rank[:size]
-
+q_tokens = ["why", "what", "who", "how", "when", "where", "which"]
 def rerank_match(q_vect, sents, stop_words):
     mis_matched_num = []
     for sent in sents:
         s_vect = doc_parser.sent_to_vect(sent[0].lower())
         mis_matched = 0
         for token, cnt in q_vect.items():
-            if token not in s_vect and (token not in stop_words):
-                # mis_matched += cnt
-                mis_matched += 1
+            if token not in s_vect \
+                    and (token not in stop_words)\
+                    and (token not in q_tokens):
+                mis_matched += cnt
+                #mis_matched += 1
         mis_matched_num += [mis_matched]
     # print q_vect, mis_matched_num
     best_idx = mis_matched_num.index(min(mis_matched_num))

@@ -10,21 +10,31 @@ from nltk.corpus import wordnet as wn
 def answer_which(q, s):
     return ""
 
-def answer_binary(sent, miss):
+def answer_binary(sent, question, miss):
     ans = ""
+    q_tokens = question.split(" ")
     s_vect = sent.split(" ")
     negs = ["not", "no", "never"]
+    limits = ["only", "just", "all"]
     if miss >= 3:
         ans = "No"
     else:
         ans = "Yes"
 
     for neg in negs:
-        if neg in s_vect:
+        if neg in s_vect and neg not in q_tokens:
             if ans == "Yes":
                 ans = "No"
             else:
                 ans = "Yes"
+
+    for limit in limits:
+        if limit in q_tokens and (limit not in s_vect):
+            if ans == "Yes":
+                ans = "No"
+            else:
+                ans = "Yes"
+
     return ans
 
 def answer_how_many(q, s):

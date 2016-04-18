@@ -30,6 +30,7 @@ def main(wiki, qpath):
         quests = f.read().splitlines()
 
     answers = []
+
     for q in quests:
         q2 = quest_to_state(q)
         q_vect = doc_parser.sent_to_vect(q2)
@@ -72,7 +73,7 @@ def main(wiki, qpath):
         elif q_tokens[0] == "How" or 'how' in q_tokens:
             ans = ""
         else:
-            ans = answer_modules.answer_binary(reranked_best, miss)
+            ans = answer_modules.answer_binary(reranked_best, q, miss)
             best = reranked_best
         answers.append(ans.capitalize() if ans != None and len(ans)>0 else best)
         print best

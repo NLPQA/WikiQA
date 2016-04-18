@@ -22,3 +22,10 @@ def removeParts(tree):
     remove(tree, "FRAG")
     # tree.draw()
 
+def appos(tree):
+    pass
+
+def seperateSBars(tree):
+    pass
+
+

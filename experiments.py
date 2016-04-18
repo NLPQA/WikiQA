@@ -10,33 +10,41 @@ from nltk.corpus import wordnet as wn
 import stanford_utils
 
 import tree_parser
-qs = [
-    "What is the magnitude of the brightest star in Gemini?",
-    "What is the maximum rate of Geminids meteor showers?",
-    "What is the magnitude of M35 (NGC 2168)?",
-    "What is the length of production cycle of Prisoner of Azkaban?"
-]
+# qs = [
+#     "What is the magnitude of the brightest star in Gemini?",
+#     "What is the maximum rate of Geminids meteor showers?",
+#     "What is the magnitude of M35 (NGC 2168)?",
+#     "What is the length of production cycle of Prisoner of Azkaban?"
+# ]
+#
+# qs2 = [
+#     "What was Perl originally named?",
+#     "What is Delta Cancri also known as?",
+#     "What did manilius and ovid call the constellation in ancient rome?"
+# ]
+#
+# qs3 = [
+#     "What is the three-letter abbreviation for the constellation?",
+#     "What was the first club Beckham played for?"
+#        ]
+# s = [
+#     "In Ancient Rome, Manilius and Ovid called the constellation Litoreus (shore-inhabiting).",
+#     "With Prisoner of Azkaban, production of the Harry Potter films switched to an eighteen-month cycle, which producer David Heyman explained was \"to give each [film] the time it required.\"",
+#     "A small section of the triple-decker bus scene, where it weaves in between traffic, was filmed in North London's Palmers Green.",
+#     "Tottenham Hotspur was the first club he played for.",
+#     "Harry then threatens to curse Vernon when he tries to discipline him but flees, fed up with his life at Privet Drive.",
+#     "They unknowingly share a compartment with the new Defence Against the Dark Arts teacher, Remus Lupin, who is sleeping.",
+#     "As the Gryffindor Dormitory has been compromised, the students sleep in the main hall which allows Harry to overhear an argument between Snape and Dumbledore about Lupin's suspected role.",
+#     "Hermione reveals that she possesses a time-turner that she has used all year to take multiple classes simultaneously."]
 
-qs2 = [
-    "What was Perl originally named?",
-    "What is Delta Cancri also known as?",
-    "What did manilius and ovid call the constellation in ancient rome?"
-]
-
-qs3 = [
-    "What is the three-letter abbreviation for the constellation?",
-    "What was the first club Beckham played for?"
-       ]
-s = [
-    "In Ancient Rome, Manilius and Ovid called the constellation Litoreus (shore-inhabiting).",
-    "With Prisoner of Azkaban, production of the Harry Potter films switched to an eighteen-month cycle, which producer David Heyman explained was \"to give each [film] the time it required.\"",
-    "Perl was originally named \"Pearl\".",
-    "Tottenham Hotspur was the first club he played for.",
-]
-# for q in s:
-#     tree = tree_parser.sent_to_tree(q)
-#     for t in tree:
-#         print(t)
+s = ["English is a West Germanic language that was first spoken in early medieval England and is now a global lingua franca.",
+     "As the Dementors overpower Black and his earlier self, Harry realises that he himself was the one to cast the Patronus, and rushes to do so."]
+for q in s:
+    print q
+    tree = tree_parser.sent_to_tree(q)
+    for t in tree:
+        print(t)
+    print
 
 # test = "Harry, Ron and Hermione head back to school on the Hogwarts Express. "
 # ner_tagger = stanford_utils.new_NERtagger()
@@ -88,8 +96,3 @@ s = [
 # print contains_name(tagged)
 # print get_who(parsed)
 
-# test = "Harry then threatens to curse Vernon when he tries to discipline him but flees , fed up with his life at Privet Drive."
-test = "13 years old "
-parsed = tree_parser.sent_to_tree(test)
-for t in parsed:
-    print(t)

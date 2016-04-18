@@ -3,6 +3,7 @@ from bs4 import BeautifulSoup
 from nltk import tokenize
 import string
 from nltk.corpus import wordnet as wn
+from nltk.stem.snowball import SnowballStemmer
 
 cur_article = ""
 content = ""
@@ -15,6 +16,10 @@ stopwords = []
 with open('stopwords.txt') as sf:
     stopwords = sf.read().splitlines()
 sf.close()
+
+stemmer = SnowballStemmer("english")
+def stem(orginal):
+    return stemmer.stem(orginal)
 
 def clear(article):
     if article != cur_article:
@@ -66,8 +71,8 @@ def doc_to_vocab(article):
 
         for token in tokens:
             #token = stemmer.stem(token).encode('ascii', 'ignore')
-
-            token_wn = wn.morphy(token)
+            token_wn = stem(token)
+            #token_wn = wn.morphy(token)
             if token_wn == None:
                 token = token.encode('ascii', 'ignore')
             else:
@@ -87,9 +92,8 @@ def sent_to_vect(sent):
     for token in tokens:
         # if token in stopwords:
         #     continue
-        if token == "TaurusAuriga":
-            a = 1
-        token_wn = wn.morphy(token)
+        # token_wn = wn.morphy(token)
+        token_wn = stem(token)
         if token_wn == None:
             token = token.encode('ascii', 'ignore')
         else:
