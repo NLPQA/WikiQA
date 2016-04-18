@@ -44,7 +44,8 @@ def rerank_num(sents, keyword):
 def get_tfidf(q_vect, s_vect, idfs):
     tfidf = 0.0
     for q_token, q_cnt in q_vect.items():
-        if q_token in s_vect.keys():
+        #if q_token in s_vect.keys():
+        if s_vect.has_key(q_token):
             tfidf += s_vect[q_token]*idfs[q_token]
     return tfidf
 
@@ -76,7 +77,7 @@ def rank_sents(q_vect, sents, sent_vects, sent_idfs):
     rank_tfidf = []
     filtered_sents = []
     for i in xrange(0, len(sent_vects)):
-        if get_boolean(q_vect, sent_vects[i]) >= len(q_vect)-3:
+        if get_boolean(q_vect, sent_vects[i]) >= len(q_vect)-4:
             filtered_sents.append((sents[i], sent_vects[i]))
     for (sent, sent_v) in filtered_sents:
         tfidf = get_tfidf(q_vect, sent_v, sent_idfs)

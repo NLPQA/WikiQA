@@ -67,11 +67,11 @@ def doc_to_vocab(article):
         for token in tokens:
             #token = stemmer.stem(token).encode('ascii', 'ignore')
 
-            token = wn.morphy(token)
-            if token == None:
-                continue
+            token_wn = wn.morphy(token)
+            if token_wn == None:
+                token = token.encode('ascii', 'ignore')
             else:
-               token = token .encode('ascii', 'ignore')
+                token = token_wn .encode('ascii', 'ignore')
 
             if not vocab.has_key(token):
                 vocab[token] = 1
@@ -81,17 +81,19 @@ def doc_to_vocab(article):
 
 def sent_to_vect(sent):
     vect = {}
-    sent = sent.translate(None, string.punctuation)
+    sent = sent.translate(None, string.punctuation.replace('-','').replace('\'',''))
     tokens = tokenize.word_tokenize(sent)
     tokens = filter(None, tokens)
     for token in tokens:
         # if token in stopwords:
         #     continue
-        token = wn.morphy(token)
-        if token == None:
-            continue
-        else:
+        if token == "TaurusAuriga":
+            a = 1
+        token_wn = wn.morphy(token)
+        if token_wn == None:
             token = token.encode('ascii', 'ignore')
+        else:
+            token = token_wn.encode('ascii', 'ignore')
 
         #token = stemmer.stem(token).encode('ascii', 'ignore')
 

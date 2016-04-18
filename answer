@@ -33,7 +33,9 @@ def main(wiki, qpath):
     for q in quests:
         q2 = quest_to_state(q)
         q_vect = doc_parser.sent_to_vect(q2)
+
         ranked_sents = ans_ranker.rank_sents(q_vect, sents, sent_vects, sent_idfs)
+
         best = ranked_sents[0][0]
         title_tokens = title.lower().split(" ")
         reranked_best, miss = ans_ranker.rerank_match(q_vect, ranked_sents[:6], mds+title_tokens)

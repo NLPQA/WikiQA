@@ -12,7 +12,7 @@ def answer_which(q, s):
 
 def answer_binary(sent, miss):
     s_vect = sent.split(" ")
-    if miss >= 2:
+    if miss >= 3:
         return "No"
     negs = ["not", "no", "never"]
     for neg in negs:
@@ -196,13 +196,24 @@ def answer_what(q, s):
 # print answer_what(what_q, what_s)
 
 def answer_who(q, s):
-    ans = ""
-    qbody = q.replace("Who", "Doug").replace("?", "")
-    s = s.lower()
-    parsed_q = tree_parser.sent_to_tree(qbody)
-    main_nps = tree_parser.get_phrases(parsed_q, "NP",True, True)
-    ans = answer_non_definitions(s, main_nps)
-    return ans
+    parsed_q = tree_parser.sent_to_tree(q)
+    sq = tree_parser.get_phrases(parsed_q, "SQ", False, False)
+    what_type = get_what_type(sq)
+    main_nps = tree_parser.get_phrases(parsed_q, "NP", True, True)
+
+    if what_type == "definition":
+        return answer_definitions(s, main_nps)
+    elif what_type == "specific":
+        return answer_non_definitions(s, main_nps)
+    else:
+        return ""
+    # ans = ""
+    # qbody = q.replace("Who", "Doug").replace("?", "")
+    # s = s.lower()
+    # parsed_q = tree_parser.sent_to_tree(qbody)
+    # main_nps = tree_parser.get_phrases(parsed_q, "NP",True, True)
+    # ans = answer_non_definitions(s, main_nps)
+    # return ans
     # tagged_s = tagger.tag(s.split(" "))
     #
     # persons = []
