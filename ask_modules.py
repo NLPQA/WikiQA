@@ -370,6 +370,6 @@ def get_when(sentence, tagged, ners):
     while (tagged[-1][1] == 'IN' or tagged[-1][1] == 'CC' or tagged[-1][1] == 'DT'):
         sentence_ners.pop(-1)
         tagged.pop(-1)
-    question = "When " + ' '.join([w for (w, t) in sentence_ners])+"?"
+    question = "When " + ' '.join([w for (w, t) in sentence_ners]).rstrip(",").rstrip(".").strip()+"?"
     return question
 

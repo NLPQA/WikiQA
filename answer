@@ -7,8 +7,10 @@ from nltk import tokenize
 import ans_ranker
 import answer_modules
 
+import time
+# start = time.time()
 # wiki_path, question_path = sys.argv[1], sys.argv[2]
-mds = ["did", "do", "does", "di", "do", "doe"]
+mds = ["did", "do", "does", "di", "do", "doe", "could", "can", "will", "would", "has", "have", "had", "is", "are", "was", "were"]
 def quest_to_state(q):
    q = q.replace("?", ".")
    tokens = q.split(" ")
@@ -18,15 +20,15 @@ def quest_to_state(q):
        return ' '.join(tokens[3:])
    return ' '. join(tokens[1:])
 
-wiki_path, question_path = "a6.htm", "a6.txt"
+# wiki_path, question_path = "a6.htm", "a6.txt"
 
 def main(wiki, qpath):
-    title, sents = doc_parser.doc_to_sents(wiki_path)
-    sent_vects = doc_parser.doc_to_vects(wiki_path)
-    sent_idfs = doc_parser.doc_to_idfs(wiki_path)
-    quests = []
+    title, sents = doc_parser.doc_to_sents(wiki)
+    sent_vects = doc_parser.doc_to_vects(wiki)
+    sent_idfs = doc_parser.doc_to_idfs(wiki)
 
-    with  open(question_path) as f:
+    quests = []
+    with open(qpath) as f:
         quests = f.read().splitlines()
 
     answers = []
@@ -43,7 +45,7 @@ def main(wiki, qpath):
         q_tokens = tokenize.word_tokenize(q)
         # if "Who" in q:
         #     sys.stdout.write("Q: " + q.capitalize()  + '\n')
-        sys.stdout.write("Q: " + (q.capitalize() +'\n'))
+        # sys.stdout.write("Q: " + (q.capitalize() +'\n'))
         # for sent in ranked_sents[:6]:
         #        print sent[0]
         if q_tokens[0] == 'What' or 'what' in q_tokens:
@@ -61,7 +63,8 @@ def main(wiki, qpath):
             if len(best) > 0:
                 ans = answer_modules.answer_how_many(q, best)
             else:
-                best = ranked_sents[0][0]
+                # best = ranked_sents[0][0]
+                best = reranked_best
         elif q_tokens[0] == 'Where' or 'where' in q_tokens:
             ans = answer_modules.answer_where(reranked_best)
             best = reranked_best
@@ -76,7 +79,7 @@ def main(wiki, qpath):
             ans = answer_modules.answer_binary(reranked_best, q, miss)
             best = reranked_best
         answers.append(ans.capitalize() if ans != None and len(ans)>0 else best)
-        print best
+        # print best
         # print
         # for sent in ranked_sents:
         #     print sent[0]
@@ -86,19 +89,32 @@ def main(wiki, qpath):
         #     sys.stdout.write("A: " + (ans.capitalize() if ans != None and len(ans)>0 else best) + '\n')
         #     sys.stdout.write("----------\n")
 
-        sys.stdout.write("A: " + (ans.capitalize()+"." if len(ans)>0 else best) + '\n')
-        sys.stdout.write("----------\n")
+        if len(ans) > 0:
+            short = ans[:1].upper()+ans[1:]+"."
+            long = best
+            if short == "Yes." or short == "No.":
+                sys.stdout.write(short+"\n")
+            else:
+                sys.stdout.write("SHORT: "+short + "\t" + "LONG: "+long + "\n")
+        else:
+            sys.stdout.write(best+"\n")
+        # sys.stdout.write("A: " + (ans.capitalize()+"." if len(ans)>0 else best) + '\n')
+        # sys.stdout.write("----------\n")
 
-
-
-for i in xrange(1, 10):
-    if i == 5 or i == 6:
-        continue
-    print i
-
-    wiki_path, question_path = "test_sw/a"+str(i)+".htm", "test_sw/a"+str(i)+"q.txt"
-    main(wiki_path, question_path)
+#
+#
+# for i in xrange(1, 10):
+#     if i == 5 or i == 6:
+#         continue
+#     print i
+#
+#     wiki_path, question_path = "test_sw/a"+str(i)+".htm", "test_sw/a"+str(i)+"q.txt"
+#     main(wiki_path, question_path)
 # for quest, ans in zip(quests, answers):
 #     sys.stdout.write("Q: " + quest + '\n')
 #     sys.stdout.write("A: " + ans + '\n')
 #     sys.stdout.write("----------\n")
+wiki_path, question_path = sys.argv[1].replace(".txt", "")+".htm", sys.argv[2]
+
+main(wiki_path, question_path)
+# print time.time()-start

@@ -37,8 +37,10 @@ import tree_parser
 #     "As the Gryffindor Dormitory has been compromised, the students sleep in the main hall which allows Harry to overhear an argument between Snape and Dumbledore about Lupin's suspected role.",
 #     "Hermione reveals that she possesses a time-turner that she has used all year to take multiple classes simultaneously."]
 
-s = ["English is a West Germanic language that was first spoken in early medieval England and is now a global lingua franca.",
-     "As the Dementors overpower Black and his earlier self, Harry realises that he himself was the one to cast the Patronus, and rushes to do so."]
+s = ["It is a West Germanic language that was first spoken in early medieval England and is now a global lingua franca.",
+     "As the Dementors overpower Black and his earlier self, Harry realises that he himself was the one to cast the Patronus, and rushes to do so.",
+     "I am a student",
+     "Beckham is a master"]
 for q in s:
     print q
     tree = tree_parser.sent_to_tree(q)

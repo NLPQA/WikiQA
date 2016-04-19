@@ -66,8 +66,11 @@ def get_binary(tree):
     for node in tree:
         if node.label() == "NP" and len(mbody) == 0:
             for sub in node:
-                if sub.label() == "DT":
-                    mbody += " ".join(sub.leaves()).lower()
+                if sub.label() == "DT" or sub.label() == "PRP" or sub.label() == "IN":
+                    first = " ".join(sub.leaves()).lower()
+                    if first == "i":
+                        first = first.upper()
+                    mbody += first
                 else:
                     mbody += " "+ " ".join(sub.leaves())
             mbody += " "

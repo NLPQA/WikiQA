@@ -62,24 +62,69 @@ def contains_appos(tree):
         return True
     return False
 
-def appps_to_sents(tree):
-    appos = []
+
+# Remove parts we don't want
+def remove(parent, component):
+    for node in parent:
+        if type(node) is Tree:
+            if node.label() == component:
+                parent.remove(node)
+            else:
+                remove(node, component)
+
+# Split sentences
+def removeParts(tree):
+    # remove part that tagged with "PRN"
+    remove(tree, "PRN")
+    # remove part that tagged with "FRAG"
+    remove(tree, "FRAG")
+    # tree.draw()
+
+def seperateSBars(tree):
+    NP_found = False
+    np = None
+    sbar_s = ""
+    for sub in tree:
+        if sub.label() == "NP":
+            NP_found = True
+            np = sub
+        if NP_found and sub.label() == "SBAR":
+            WHNP_found = False
+            sbar = None
+            for sub_bar in sub:
+                if sub_bar.label() == "WHNP":
+                    WHNP_found = True
+                    sbar = sub.copy(deep=True)
+                    remove(tree, "SBAR")
+                    remove(sbar, "WHNP")
+                    break
+            if WHNP_found:
+                for sub_bar in sub:
+                    if sub_bar.label() != "WHNP":
+                        sbar_s += " ".join([l for l in sub_bar.leaves()])
+                sbar.insert(0, np)
+                #sbar_s = " ".join([l for l in np.leaves()])+sbar_s
+                break
+
+    return filter(sbar, None)
+
+def remove_appos(tree):
     np = None
     vp = ""
     NP_found = False
-    for subtree in tree:
-        if subtree.label() == "NP":
-            np = subtree
-            NP_found = True
-        elif subtree.label() == "VP" and NP_found:
-            vp = tree_to_sent(subtree)
-            break
-    sub_nps = get_phrases(np, "NP", True, True)
-    sub_nps.pop(0)
-    for appo in sub_nps:
-        sent = tree_to_sent(appo)+" "+vp
-        appos.append(sent)
-    return appos
+    if contains_appos(tree):
+        for subtree in tree:
+            if subtree.label() == "NP":
+                np = subtree
+                NP_found = True
+            elif subtree.label() == "VP" and NP_found:
+                vp = tree_to_sent(subtree)
+                break
+        sub_nps = get_phrases(np, "NP", True, True)
+        sub_nps.pop(0)
+        sent = tree_to_sent(sub_nps[0])+" "+vp
+    return sent
+
 tests =['Starbucks is doing very well lately.',
                'Overall, while it may seem there is already a Starbucks on every corner, Starbucks still has a lot of room to grow.',
                'They just began expansion into food products, which has been going quite well so far for them.',

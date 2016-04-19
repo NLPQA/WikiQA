@@ -4,11 +4,13 @@ import doc_parser
 import nltk
 import tree_parser
 import ask_modules
-import ask_parse
 import stanford_utils
 import ginger_python2 as grammar_checker
-
+import ask_parse
 import sys
+import time
+# start = time.time()
+
 ner_tagger = stanford_utils.new_NERtagger()
 why_keywords = ["because"]
 def contains_reason(sent):
@@ -63,16 +65,18 @@ def contains_quant(sent, tagged):
                     return True
     return False
 
-def preprocess_sents(sents):
-    preds = []
-    for sent in sents:
-        tree = tree_parser.sent_to_tree(sent)
-    if tree_parser.contains_appos(tree):
-        preds += tree_parser.appps_to_sents(tree)
-    else:
-        pred = tree_parser.sent_to_predicate(tree)
-        preds.append(pred)
-    return preds
+# def preprocess_sents(sents):
+#     preds = []
+#     for sent in sents:
+#         tree = tree_parser.sent_to_tree(sent)
+#     if tree_parser.contains_appos(tree):
+#         preds += tree_parser.appps_to_sents(tree)
+#     else:
+#         pred = tree_parser.sent_to_predicate(tree)
+#         preds.append(pred)
+#     return preds
+def capitalize(s):
+    return s[:1].upper() + s[1:]
 
 def main(wiki_path, n):
     title, sents = doc_parser.doc_to_sents(wiki_path)
@@ -80,6 +84,7 @@ def main(wiki_path, n):
 
     sents = [sent for sent in sents if 10 <= sent.count(" ") <= 30]
     sents = sents[:3*n]
+
 
     for sent in sents:
         # bonus for average len
@@ -92,18 +97,27 @@ def main(wiki_path, n):
         # tag for words in each sentence
         pos_sent = nltk.pos_tag(sent_tokens)
         ner_sent = ner_tagger.tag(sent_tokens)
-        # binary question
-        binary_q, pos_binary, ner_binary = ask_modules.get_binary(sent, pos_sent[:], ner_sent[:], twist=False)
         # pos_binary = nltk.pos_tag(binary_q_tokens)
         # ner_binary = ner_tagger.tag(binary_q_tokens)
         parsed_sent = tree_parser.sent_to_tree(sent)
+        # general preprocess
+        # parsed_sent = tree_parser.removeParts(parsed_sent)
+
+        # binary question
+        binary_q, pos_binary, ner_binary = ask_modules.get_binary(sent, pos_sent[:], ner_sent[:], twist=False)
         # deductions for errors
-        binary_q2, errs = grammar_checker.correct_sent(binary_q.capitalize()+"?")
-        questions.append((binary_q.capitalize()+"?", score-errs+2))
+        binary_q = ask_parse.get_binary(parsed_sent)
+        binary_q2, errs = grammar_checker.correct_sent(capitalize(binary_q)+"?")
+
+        if binary_q.count(" ") > 5:
+            questions.append((capitalize(binary_q)+"?", score-errs+2))
 
         # bonus for more pps
         pps = len(tree_parser.get_phrases(parsed_sent, "PP", reversed=False, sort=False))
-        score += pps-1
+        ss = len(tree_parser.get_phrases(parsed_sent, "S", reversed=False, sort=False))
+        ss += len(tree_parser.get_phrases(parsed_sent, "SBAR", reversed=False, sort=False))
+
+        score += pps-ss-1
 
         # when
         if contains_time(ner_binary[:], pos_binary[:]):
@@ -112,15 +126,15 @@ def main(wiki_path, n):
             question2, errs = grammar_checker.correct_sent(question)
             # deductions for errors
             if question.count(" ") > 5:
-                questions.append((question, score-errs+4))
+                questions.append((question, score-errs+5))
         # where
         if contains_loc(ner_binary, pos_binary):
-            question = ask_modules.get_where(sent, pos_binary[:], ner_binary[:]).capitalize()
+            question = capitalize(ask_parse.get_where(parsed_sent))
             # correct grammar and find errors
             question2, errs = grammar_checker.correct_sent(question)
             # deductions for errors
             if question.count(" ") > 5:
-                questions.append((question, score-errs+4))
+                questions.append((question, score-errs+5))
 
         # who/what
         # if contains_name(ner_binary):
@@ -140,34 +154,34 @@ def main(wiki_path, n):
 
         # who/what
         if contains_name(ner_binary):
-            question = ask_modules.get_who(pos_sent).capitalize()
+            question = capitalize(ask_parse.get_who(parsed_sent))
             # correct grammar and find errors
-            question, errs = grammar_checker.correct_sent(question)
+            question2, errs = grammar_checker.correct_sent(question)
             # deductions for errors
             if question.count(" ") > 5:
-                questions.append((question, score-errs+5))
+                questions.append((question, score-errs+3))
         else:
-            question = ask_modules.get_what(pos_binary).capitalize()
-            question, errs = grammar_checker.correct_sent(question)
+            question = capitalize(ask_parse.get_what(parsed_sent))
+            question2, errs = grammar_checker.correct_sent(question)
             if question.count(" ") > 5:
-                questions.append((question, score-errs+5))
+                questions.append((question, score-errs+2))
         #why
         if contains_reason(sent):
-            question = ask_modules.get_why(sent_tokens[:], pos_binary[:]).capitalize()
+            question = capitalize(ask_modules.get_why(sent_tokens[:], pos_binary[:]))
             # correct grammar and find errors
-            question, errs = grammar_checker.correct_sent(question)
+            question2, errs = grammar_checker.correct_sent(question)
             # deductions for errors
             if question.count(" ") > 5:
-                questions.append((question, score-errs+5))
+                questions.append((question, score-errs+4))
 
         # how-many
         elif contains_quant(sent, pos_sent[:]):
-            question = ask_modules.get_howmany(sent_tokens[:], pos_sent[:]).capitalize()
+            question = capitalize(ask_parse.get_howmany(parsed_sent))
             # correct grammar and find errors
-            question, errs = grammar_checker.correct_sent(question)
+            question2, errs = grammar_checker.correct_sent(question)
             # deductions for errors
             if question.count(" ") > 5:
-                questions.append((question, score-errs+5))
+                questions.append((question, score-errs+3))
 
     # while not out_queue.empty():
     #     questions.append(out_queue.get())
@@ -177,16 +191,26 @@ def main(wiki_path, n):
     for question in ranked_questions:
         sys.stdout.write(question[0]+" "+"\n")
 
-import time
-# start = time.time()
-for i in xrange(1, 9):
-    start = time.time()
-    if i == 4:
-        continue
-    print i
-    wiki_path = "test/a"+str(i)+".htm"
-    main(wiki_path, 10)
-    print time.time() - start
+# for i in xrange(1, 9):
+#     start = time.time()
+#     if i == 4:
+#         continue
+#     print i
+#     wiki_path = "test/a"+str(i)+".htm"
+#     main(wiki_path, 10)
+#     print time.time() - start
 # main("test_sw/a1.htm", 10)
-# print time.time() - start
-# main(sys.argv[1], int(sys.argv[2]))
+# for i in xrange(1, 10):
+#     start = time.time()
+#     if i == 5 or i == 6:
+#         continue
+#     print i
+#     wiki_path = "test_sw/a"+str(i)+".htm"
+#     main(wiki_path, 1)
+#     print time.time() - start
+
+
+wiki_path, num = sys.argv[1].replace(".txt", "")+".htm", int(sys.argv[2])
+
+main(wiki_path, num)
+#print time.time() - start
